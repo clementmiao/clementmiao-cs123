@@ -17,6 +17,8 @@ ideal outcome: If our clustering analysis works out, we should be able to have c
 
 2. Mahout : We might use Mahout to run the k-means clustering, but it would be more interesting and educational to implement our own version of the k-means algorithm on Hadoop. 
 
+3. Neo4j: graph database potentially for our recommendation tool. 
+
 #### Techniques
 1. k-means clustering: Cluster by pitcher type (using aspects described above). We will translate the qualitative characteristics into quantitative metrics. 
 
