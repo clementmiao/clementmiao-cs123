@@ -7,3 +7,17 @@ We will be able to download this dataset using an R package, called "pitchRx", a
 
 ### Data Exploration & ideal outcome
 After getting the data, we will agreggate all of the pitches that each pitcher threw, and then perform a clustering analysis on different aspects of their pitching style: pitch type, velocity, pitch break, ect. From this, we will be able to group similar pitchers together, and determine how similar they are to one another. Once we have this, we can take hitters who have faced 1 pitcher from a cluster, and see if he did in fact perform similarly against other pitchers in the cluster.
+Hypothesis: Pitch type matters a lot more than other factors such as delivery type, etc. 
+ideal outcome: If our clustering analysis works out, we should be able to have clearly defined clusters, and be able to make predictions about hitter performance given performance against other pitchers in the clusters. 
+
+#### Tools
+1. Hadoop
+2. Mahout?
+
+#### Techniques
+1. k-means clustering
+2. Map-Reduce
+
+
+### 
+
