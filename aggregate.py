@@ -5,13 +5,7 @@ import pickle
 
 curr = os.path.dirname(os.path.realpath(__file__))
 f=open(os.path.join(curr, "test.json"),"r+")
-# i = 0
-# for line in f:
-#     print line
-#     i = i + 1
-#     if i > 1:
-#         break
-# f.close()
+
 def get_data():
     data = json.load(f)
     f.close()
@@ -82,8 +76,6 @@ def produce_results():
                     elif pt == 'FT':
                         pitch_type['EP'] += 1
                         pitch_type['total'] += 1
-                    # else:
-                    #     print pt
                 else:    
                     for pi in pitch:
                         pt = pi['@pitch_type']
@@ -120,47 +112,18 @@ def produce_results():
                         elif pt == 'FT':
                             pitch_type['EP'] += 1
                             pitch_type['total'] += 1
-                        # else:
-                        #     print pt
-                        # else:
-                        #     print pt
-                    # else:
-                    #     print pi + " is not dictionary!"
+                        
     for player, attributes in dic.items():
         pitch_type_dic = attributes['pitch_type']
         pitch_total = pitch_type_dic['total']
         vector = []
-        vector.append(pitch_type_dic['FF']/ pitch_total)
-        vector.append(pitch_type_dic['FT']/ pitch_total)
-        vector.append(pitch_type_dic['FC']/ pitch_total)
-        vector.append(pitch_type_dic['SI']/ pitch_total)
-        vector.append(pitch_type_dic['SF']/ pitch_total)
-        vector.append(pitch_type_dic['SL']/ pitch_total)
-        vector.append(pitch_type_dic['CH']/ pitch_total)
-        vector.append(pitch_type_dic['CB']/ pitch_total)
-        vector.append(pitch_type_dic['KC']/ pitch_total)
-        vector.append(pitch_type_dic['KN']/ pitch_total)
-        vector.append(pitch_type_dic['EP']/ pitch_total)
-        # print (player, vector)
+        pitch_type_list = ['FF','FT','FC','SI','SF','SL','CH','CB','KC','KN','EP']
+        for ty in pitch_type_list:
+            vector.append(pitch_type_dic[ty] / pitch_total)
         vector = np.array(vector, float)
         tup = (player, vector)
         results.append(tup)
     return results 
 
-
-
-
-
-    
 results = produce_results()
 pickle.dump(results, open("results.p", "wb"))
-# print results[0]
-
-
-# print data['game']
-# for key in data['game']:
-#     print key
-# for line in f:
-#     print line
-#     data = json.load(line)
-#     print data
