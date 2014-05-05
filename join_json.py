@@ -8,6 +8,7 @@ for r,d,fi in os.walk(input_folder):
         if files.endswith(".json"):                         
             g=open(os.path.join(r,files))
             shutil.copyfileobj(g,f)
+            
             g.close()
 f.close()
  

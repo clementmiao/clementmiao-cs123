@@ -1,11 +1,6 @@
 import numpy
 from heapq import heappush,heappop 
 
-
-
-
-
-
 #reads player_ids.csv into a dictionary
 def getIdDict():
 	id_dict = {}
