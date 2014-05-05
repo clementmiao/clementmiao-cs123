@@ -24,7 +24,9 @@ def findPlayerName(player_id,id_dict):
 		return id_dict[player_id]
 	else:
 		print "Error: Id # not found"
-
+		exit()
+		
+		
 #Computes distance squared given two points (lists of coordinates)
 def findDistance(a_coordinates,b_coordinates):
 	sum = 0
