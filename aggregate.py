@@ -71,6 +71,7 @@ def produce_results(dic, file_name):
                                                 dic[pitcher]['total'] += 1.0
                                                 pitch_dic['counter'] += 1.0
                                                 for att in attributes_list:
+                                                    # print pi[att]
                                                     pitch_dic[att] += float(pi[att])
                                     # for poss in pitch_possibilities:
                                     #     pitch_dic = dic[pitcher][poss[0]]
@@ -101,11 +102,13 @@ def dict_to_list(dic):
             vector['handedness']['L'] = 0
             vector['handedness']['R'] = 1
         for pt in pitch_type_list:
+            vector[pt] = {}
+            vector[pt]['counter'] = attributes[pt]['counter']
             for att in attributes_list:
                 if attributes[pt]['counter'] == 0:
-                    vector[att] = 0.0
+                    vector[pt][att] = 0.0
                 else:
-                    vector[att] = attributes[pt][att] / attributes[pt]['counter']
+                    vector[pt][att] = attributes[pt][att] / attributes[pt]['counter']
         tup = (player, vector)
         results.append(tup)
     return results
@@ -153,6 +156,7 @@ def main_function():
     # results = []
     # results = produce_results()
     results = dict_to_list(dictionary)
+    print results[0]
     pickle.dump(results, open("results.p", "wb"))
 
 main_function()
