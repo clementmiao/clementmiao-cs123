@@ -47,9 +47,13 @@ Running all this for one month's worth of data returns our desired list of playe
 
 ### Clustering
 
+### Remaining Tasks
+- Matchups: We need to go through each hitter and find how they did aginst different clusters that we determine from our analysis. Since all of the data is organized by at-bats, aggragating a single hitter's at-bats could be more computationally expensive and might require parallelization.
+- Recommendation engine: Given our data, and if we implement the matchups part correctly, putting the data inside a graph database will allow for fast traversals hence fast recommendation for coaches.
+-Visualization: If enough time, we would like to be able to visualize the clusters.
+
 
 ###Challenges ahead
 With our current project, we believe that the benefits of parallelization are not fully maximized, as they would be more significant if we had a larger data set, or if we had more computationally expensive algorithms/analysis. Since we won't have a larger data set since we are grabbing the whole data set already, Hence, to fully realize the educational benefits of implementing parallelization, we are looking into performing more complex operations than pure clustering, even though we are running through multiple clustering methods. 
 Some of our ideas:
 - Making our recomendation smart enough to potentially predict the other manager's move. For example, if our engine said to use hitter A, the opposing team might then swithch with pitcher B, which may be a worse matchup than the original. We can try to have our recommendation engine predict this switch, and adjust its recommendation accordingly through a game theoretical approach.
-- 
