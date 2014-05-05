@@ -91,6 +91,7 @@ def dict_to_list(dic):
     for player, attributes in dic.items():
         vector = {}
         total = attributes['total']
+        vector['total'] = total
         attributes_list = ['@break_angle', '@break_length', '@break_y', '@pfx_x', '@pfx_z', '@spin_dir', '@spin_rate', '@start_speed', '@x0', '@y0', '@z0']
         pitch_type_list = ['FF','FT','FC','SI','SF','SL','CH','CB','KC','KN','EP']
         attributes['handedness'] = {}
