@@ -157,7 +157,7 @@ def main_function():
     # results = []
     # results = produce_results()
     results = dict_to_list(dictionary)
-    print results[0]
+    print len(results)
     pickle.dump(results, open("results.p", "wb"))
 
 main_function()

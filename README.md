@@ -31,3 +31,25 @@ ideal outcome: If our clustering analysis works out, we should be able to have c
 In the end, we think there will be several clear clusters of pitchers, and hopefully find that batters fair similarly against pitchers within a given cluster. It is possible we may find that certain clusters do better overall, which might predict the future success of a new pitcher based on their attributes. 
 
 Our implementation will hopefully be a recommendation tool for coaches, to help them determine who to put on the field from their benches for a given matchup. As a result, we will need a relatively quick recommendation time. 
+
+#Project Prototype
+### May 5th Update
+==================
+### Dataset
+The data set is from the pitchf/x database from the MLB Advanced Media Department. To get the data, we used a perl script from [this website](http://codepaste.net/ppw1oo) by Mike Fast. For our prototype, we are taking one month's worth of pitches(about 80,000 total) and agragating them by pitcher and pitch type. One of the challanges is to convert all of the xml files that are returned from the MLBAM website into json files that are easier to work with. 
+
+### Aggregation
+We now have a folder of JSON files. We created a python script that takes in a folder, and creates a dictionary of pitchers, with key-value pairs for each pitcher being: total pitches thrown, handedness (left or right handed), and dictionaries of pitch type attributes. For the latter, say that we are looking at the sub dictionary of "FF" (Four Seams FastBall), the key will be "FF", with values being sums of break_angle (the angle formed by the verticle line that passes through where the pitch would have ended up if it had traveled perfectly straight from the pitcher's hand and the line through where it actually crossed home plate), break_length (distance between where it would have been if it had been straight from pitchers hand and where it ended up), break_y (how far in front of home plate did the pitch start breaking), pfx_x, (the distance measure of horizontal movement) pfx_z (distance measure of vertical movement), spin_dir (which way the ball was spinning), spin_rate (how fast the ball spins), start_speed (how fast the ball leaves the pitcher's hand), x0, y0, z0 (the x,y,z coordinates of the release point of the pitcher). We decided to aggregate these attributes by pitch type because we believe that a pitcher's fastball and curveball have very different speeds for example, so it would make little sense to average the speed of a fastball and a curveball, and rather should average the speed of all curveballs by that pitcher. 
+
+Subsequently, we average all these attributes per pitch type per player, and return a list of tuples, with tuple[0] being the player id, and tuple[1] being a dictionary of attributes of the player. 
+
+Running all this for one month's worth of data returns our desired list of players in around 15.1s, which means a full 6 years worth of data will take us around 10 minutes, considering constant overhead. With parallelization, we could cut this time down even further, and account for the possibility of larger data sets in the future. 
+
+### Clustering
+
+
+###Challenges ahead
+With our current project, we believe that the benefits of parallelization are not fully maximized, as they would be more significant if we had a larger data set, or if we had more computationally expensive algorithms/analysis. Since we won't have a larger data set since we are grabbing the whole data set already, Hence, to fully realize the educational benefits of implementing parallelization, we are looking into performing more complex operations than pure clustering, even though we are running through multiple clustering methods. 
+Some of our ideas:
+- Making our recomendation smart enough to potentially predict the other manager's move. For example, if our engine said to use hitter A, the opposing team might then swithch with pitcher B, which may be a worse matchup than the original. We can try to have our recommendation engine predict this switch, and adjust its recommendation accordingly through a game theoretical approach.
+- 
