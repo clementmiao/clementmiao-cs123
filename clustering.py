@@ -4,6 +4,27 @@ from heapq import heappush,heappop
 
 
 
+
+
+#reads player_ids.csv into a dictionary
+def getIdDict():
+	id_dict = {}
+	player_ids=open("player_ids.csv","r")
+	for line in player_ids.readlines():
+		player_list = line.split(",")
+		player_id = int(player_list[0])
+		player_name = player_list[1] + " " + player_list[2]
+		id_dict[player_id] = player_name
+	return id_dict
+
+
+# Returns player's name
+def findPlayerName(player_id,id_dict):
+	if player_id in id_dict.keys():
+		return id_dict[player_id]
+	else:
+		print "Error: Id # not found"
+
 #Computes distance squared given two points (lists of coordinates)
 def findDistance(a_coordinates,b_coordinates):
 	sum = 0
