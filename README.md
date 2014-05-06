@@ -52,6 +52,11 @@ Since the data is relatively messy and at times does not follow its own pattern,
 Running all this for one month's worth of data returns our desired list of players in around 15.1s, which means a full 6 years worth of data will take us around 10 minutes, considering constant overhead. With parallelization, we could cut this time down even further, and account for the possibility of larger data sets in the future. 
 
 ### Clustering
+We have implemented a k nearest neighbors algorithm for determining the k pitchers most similar to any given pitcher, contained in the prototype database. We believe the algorithm yields reasonable results -- that is, it returns pitchers who have similar repertoires. Nonetheless, we would still like to explore ways to polish and remove unhelpful parameters from the 
+dataset.
+
+Looking forward, we will implement other clustering algorithms, and analyze their effectiveness. We have made some efforts to implement a k means clustering algorithm, but have some doubts that the pitcher data fits neatly in clusters, which may be causing problems with this technique.
+
 
 ### Remaining Tasks
 - Matchups: We need to go through each hitter and find how they did aginst different clusters that we determine from our analysis. Since all of the data is organized by at-bats, aggragating a single hitter's at-bats could be more computationally expensive and might require parallelization.
