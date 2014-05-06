@@ -44,9 +44,9 @@ Our implementation will hopefully be a recommendation tool for coaches, to help 
     starts from March (months are indexed from zero, so Jan = 0, Dec = 11) 31st, 2011 (111 years after 1900). To get data from Just june for example, the code would be $start = timelocal(0,0,0,1,5,111);
     Simillarly, change the end time in line 63: 
 
-        $now = timelocal(0,0,0,30,5,111)
+        $now = timelocal(0,0,0,31,9,111)
 
-    To get it to stop at June 31st, 2011, the code would be $now = timelocal(0,0,0,30,5,111);
+    To get it to stop at June 30th, 2011, the code would be $now = timelocal(0,0,0,30,5,111);
     Next, run the following code to get the data:
 
         perl mlbscript.pl
