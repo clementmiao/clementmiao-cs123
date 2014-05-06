@@ -35,6 +35,9 @@ Our implementation will hopefully be a recommendation tool for coaches, to help 
 #Project Prototype
 ### May 5th Update
 ==================
+### Process to run the prototype
+- 
+
 ### Dataset
 folder: [june_data](https://github.com/clementmiao/clementmiao-cs123/tree/master/june_data)
 
