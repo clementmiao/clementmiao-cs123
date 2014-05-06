@@ -42,6 +42,15 @@ Our implementation will hopefully be a recommendation tool for coaches, to help 
         pip install https://github.com/hay/xml2json/zipball/master
         cd /usr/local/bin
         chmod +x xml2json
+        python xml2jsonScript.py
+
+- To aggregate the json files into a pickle file of a list of player tuples:
+
+        python aggregate.py 
+
+- To run a test case of a k-nearest neighbors clustering on Max Scherzer:
+        
+        python clustering.py
 
 
 ### Dataset
