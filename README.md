@@ -35,13 +35,18 @@ Our implementation will hopefully be a recommendation tool for coaches, to help 
 #Project Prototype
 ### May 5th Update
 ==================
+### Process to run the prototype
+- 
+
 ### Dataset
-folder: june_data
+folder: [june_data](https://github.com/clementmiao/clementmiao-cs123/tree/master/june_data)
+
+file: [xml2jsonScript.py](https://github.com/clementmiao/clementmiao-cs123/blob/master/xml2jsonScript.py)
 
 The data set is from the pitchf/x database from the MLB Advanced Media Department. To get the data, we used a perl script from [this website](http://codepaste.net/ppw1oo) by Mike Fast. For our prototype, we are taking one month's worth of pitches(about 80,000 total) and agragating them by pitcher and pitch type. One of the challenges was to convert all of the xml files that are returned from the MLBAM website into json files that are easier to work with. 
 
 ### Aggregation
-file: aggregate.py
+file: [aggregate.py](https://github.com/clementmiao/clementmiao-cs123/blob/master/aggregate.py)
 
 We now have a folder of JSON files. We created a python script that takes in a folder, and creates a dictionary of pitchers, with key-value pairs for each pitcher being: total pitches thrown, handedness (left or right handed), and dictionaries of pitch type attributes. For the latter, say that we are looking at the sub dictionary of "FF" (Four Seams FastBall), the key will be "FF", with values being sums of break_angle (the angle formed by the verticle line that passes through where the pitch would have ended up if it had traveled perfectly straight from the pitcher's hand and the line through where it actually crossed home plate), break_length (distance between where it would have been if it had been straight from pitchers hand and where it ended up), break_y (how far in front of home plate did the pitch start breaking), pfx_x, (the distance measure of horizontal movement) pfx_z (distance measure of vertical movement), spin_dir (which way the ball was spinning), spin_rate (how fast the ball spins), start_speed (how fast the ball leaves the pitcher's hand), x0, y0, z0 (the x,y,z coordinates of the release point of the pitcher). We decided to aggregate these attributes by pitch type because we believe that a pitcher's fastball and curveball have very different speeds for example, so it would make little sense to average the speed of a fastball and a curveball, and rather should average the speed of all curveballs by that pitcher. 
 
@@ -52,6 +57,8 @@ Since the data is relatively messy and at times does not follow its own pattern,
 Running all this for one month's worth of data returns our desired list of players in around 15.1s, which means a full 6 years worth of data will take us around 10 minutes, considering constant overhead. With parallelization, we could cut this time down even further, and account for the possibility of larger data sets in the future. 
 
 ### Clustering
+file: [clustering.py](https://github.com/clementmiao/clementmiao-cs123/blob/master/clustering.py)
+
 We have implemented a k nearest neighbors algorithm for determining the k pitchers most similar to any given pitcher, contained in the prototype database. We believe the algorithm yields reasonable results -- that is, it returns pitchers who have similar repertoires. Nonetheless, we would still like to explore ways to polish and remove unhelpful parameters from the 
 dataset.
 
@@ -60,9 +67,9 @@ Looking forward, we will implement other clustering algorithms, and analyze thei
 
 ### Remaining Tasks
 - Matchups: We need to go through each hitter and find how they did aginst different clusters that we determine from our analysis. Since all of the data is organized by at-bats, aggragating a single hitter's at-bats could be more computationally expensive and might require parallelization.
--Parallelization: The Aggregation task can be converted into a map-reduce task, whereas the clustering could also be performed in a similar fashion. Additionally, the matchups could be parallelized using MPI.
+- Parallelization: The Aggregation task can be converted into a map-reduce task, whereas the clustering could also be performed in a similar fashion. Additionally, the matchups could be parallelized using MPI.
 - Recommendation engine: Given our data, and if we implement the matchups part correctly, putting the data inside a graph database will allow for fast traversals hence fast recommendation for coaches.
--Visualization: If enough time, we would like to be able to visualize the clusters.
+- Visualization: If enough time, we would like to be able to visualize the clusters.
 
 
 ###Challenges ahead
@@ -70,3 +77,8 @@ With our current project, we believe that the benefits of parallelization are no
 Some of our ideas:
 - Making our recomendation smart enough to potentially predict the other manager's move. For example, if our engine said to use hitter A, the opposing team might then swithch with pitcher B, which may be a worse matchup than the original. We can try to have our recommendation engine predict this switch, and adjust its recommendation accordingly through a game theoretical approach.
 - Performing Time-Series Analyses of players, either over a game or across the past few years.
+
+### Task Division
+We will divide the tasks into the following groups, with the goal of completing each of these by 8th week:
+- One member will handle parallelizing the current code, including aggregation and clustering.
+- The other two will work on the recommendation and visualization, as well as implementing one of the additional ideas.
