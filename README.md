@@ -38,10 +38,11 @@ Our implementation will hopefully be a recommendation tool for coaches, to help 
 ### Process to run the prototype
 - For Charlie
 - To convert to json: 
-    pip install https://github.com/hay/xml2json/zipball/master
-    cd /usr/local/bin
-    chmod +x xml2json
-     
+
+        pip install https://github.com/hay/xml2json/zipball/master
+        cd /usr/local/bin
+        chmod +x xml2json
+
 
 ### Dataset
 folder: [june_data](https://github.com/clementmiao/clementmiao-cs123/tree/master/june_data)
