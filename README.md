@@ -39,20 +39,25 @@ Our implementation will hopefully be a recommendation tool for coaches, to help 
 - To get the data, run the mlbscript.pl perl file. Currently, the file is set to download the enire 2011 season. To download a specific time interval:
     Change the start time in line 56: 
 
-        $start = timelocal(0,0,0,31,2,111); 
+        $start = timelocal(0,0,0,1,5,111);
 
     starts from March (months are indexed from zero, so Jan = 0, Dec = 11) 31st, 2011 (111 years after 1900). To get data from Just june for example, the code would be $start = timelocal(0,0,0,1,5,111);
     Simillarly, change the end time in line 63: 
 
-        $now = timelocal(0,0,0,29,9,111);
+        $now = timelocal(0,0,0,30,5,111)
 
     To get it to stop at June 31st, 2011, the code would be $now = timelocal(0,0,0,30,5,111);
+    Next, run the following code to get the data:
+
+        perl mlbscript.pl
+
 
 - To convert to json: 
 
         pip install https://github.com/hay/xml2json/zipball/master
         cd /usr/local/bin
         chmod +x xml2json
+        mkdir june_data
         python xml2jsonScript.py
 
 - To aggregate the json files into a pickle file of a list of player tuples:
