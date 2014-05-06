@@ -36,12 +36,14 @@ Our implementation will hopefully be a recommendation tool for coaches, to help 
 ### May 5th Update
 ==================
 ### Dataset
-folder: june_data
+folder: [june_data](https://github.com/clementmiao/clementmiao-cs123/tree/master/june_data)
+
+file: [xml2jsonScript.py](https://github.com/clementmiao/clementmiao-cs123/blob/master/xml2jsonScript.py)
 
 The data set is from the pitchf/x database from the MLB Advanced Media Department. To get the data, we used a perl script from [this website](http://codepaste.net/ppw1oo) by Mike Fast. For our prototype, we are taking one month's worth of pitches(about 80,000 total) and agragating them by pitcher and pitch type. One of the challenges was to convert all of the xml files that are returned from the MLBAM website into json files that are easier to work with. 
 
 ### Aggregation
-file: aggregate.py
+file: [aggregate.py](https://github.com/clementmiao/clementmiao-cs123/blob/master/aggregate.py)
 
 We now have a folder of JSON files. We created a python script that takes in a folder, and creates a dictionary of pitchers, with key-value pairs for each pitcher being: total pitches thrown, handedness (left or right handed), and dictionaries of pitch type attributes. For the latter, say that we are looking at the sub dictionary of "FF" (Four Seams FastBall), the key will be "FF", with values being sums of break_angle (the angle formed by the verticle line that passes through where the pitch would have ended up if it had traveled perfectly straight from the pitcher's hand and the line through where it actually crossed home plate), break_length (distance between where it would have been if it had been straight from pitchers hand and where it ended up), break_y (how far in front of home plate did the pitch start breaking), pfx_x, (the distance measure of horizontal movement) pfx_z (distance measure of vertical movement), spin_dir (which way the ball was spinning), spin_rate (how fast the ball spins), start_speed (how fast the ball leaves the pitcher's hand), x0, y0, z0 (the x,y,z coordinates of the release point of the pitcher). We decided to aggregate these attributes by pitch type because we believe that a pitcher's fastball and curveball have very different speeds for example, so it would make little sense to average the speed of a fastball and a curveball, and rather should average the speed of all curveballs by that pitcher. 
 
@@ -52,7 +54,7 @@ Since the data is relatively messy and at times does not follow its own pattern,
 Running all this for one month's worth of data returns our desired list of players in around 15.1s, which means a full 6 years worth of data will take us around 10 minutes, considering constant overhead. With parallelization, we could cut this time down even further, and account for the possibility of larger data sets in the future. 
 
 ### Clustering
-file: xml2jsonScript.py
+file: [clustering.py](https://github.com/clementmiao/clementmiao-cs123/blob/master/clustering.py)
 
 We have implemented a k nearest neighbors algorithm for determining the k pitchers most similar to any given pitcher, contained in the prototype database. We believe the algorithm yields reasonable results -- that is, it returns pitchers who have similar repertoires. Nonetheless, we would still like to explore ways to polish and remove unhelpful parameters from the 
 dataset.
