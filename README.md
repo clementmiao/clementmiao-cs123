@@ -74,3 +74,8 @@ With our current project, we believe that the benefits of parallelization are no
 Some of our ideas:
 - Making our recomendation smart enough to potentially predict the other manager's move. For example, if our engine said to use hitter A, the opposing team might then swithch with pitcher B, which may be a worse matchup than the original. We can try to have our recommendation engine predict this switch, and adjust its recommendation accordingly through a game theoretical approach.
 - Performing Time-Series Analyses of players, either over a game or across the past few years.
+
+### Task Division
+We will divide the tasks into the following groups, with the goal of completing each of these by 8th week:
+- One member will handle parallelizing the current code, including aggregation and clustering.
+- The other two will work on the recommendation and visualization, as well as implementing one of the additional ideas.
