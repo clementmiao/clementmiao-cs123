@@ -41,10 +41,6 @@ def produce_results(dic, file_name):
                             #end pitch type
                             if pitcher not in dic:
                                 dic[pitcher] = {}
-                                #start pitch type
-                                # dic[pitcher]['pitch_type'] = {}
-                                # pitch_type = dic[pitcher]['pitch_type']
-                                #end pitch type
                                 #start left handed or right handed
                                 dic[pitcher]['handedness'] = m['@p_throws']
                                 #end left handed or right handed
@@ -72,17 +68,7 @@ def produce_results(dic, file_name):
                                                 pitch_dic['counter'] += 1.0
                                                 for att in attributes_list:
                                                     # print pi[att]
-                                                    pitch_dic[att] += float(pi[att])
-                                    # for poss in pitch_possibilities:
-                                    #     pitch_dic = dic[pitcher][poss[0]]
-                                    #     pit
-                                        # for t in poss:
-                                        #     if pt == t:
-                                        #         pitch_type[poss[0]] += 1
-                                        #         pitch_type['total'] += 1
-                                #end pitch type
-                          
-                                          
+                                                    pitch_dic[att] += float(pi[att])                                          
 
     return dic
 
@@ -113,36 +99,6 @@ def dict_to_list(dic):
         tup = (player, vector)
         results.append(tup)
     return results
-    # results = []
-    # for player, attributes in dic.items():
-    #     #start pitch type
-    #     pitch_type_dic = attributes['pitch_type']
-    #     pitch_total = pitch_type_dic['total']
-    #     #end pitch type
-    #     #start handedness
-    #     handedness = attributes['handedness']
-    #     #end handedness
-    #     vector = []
-    #     #start pitch type
-    #     pitch_type_list = ['FF','FT','FC','SI','SF','SL','CH','CB','KC','KN','EP']
-    #     for ty in pitch_type_list:
-    #         vector.append(pitch_type_dic[ty] / pitch_total)
-    #     #end pitch type
-    #     #start handedness
-    #     if handedness == 'L':
-    #         vector.append(1)
-    #         vector.append(0)
-    #     elif handedness == 'R':
-    #         vector.append(0)
-    #         vector.append(1)
-    #     #end handedness
-    #     if len(vector) != 13:
-    #         print "VECTOR IS NOT CORRECT LENGTH"
-    #         exit()
-    #     vector = np.array(vector, float)
-    #     tup = (player, vector)
-    #     results.append(tup)
-    # return results 
 
 def main_function():
     dictionary = {}
@@ -153,11 +109,7 @@ def main_function():
             name = os.path.join(folder, game_file)
             if name.endswith('.json'):
                 dictionary = produce_results(dictionary, name)
-            # f = open(os.path.join(folder, filenames), "r+")    
-    # results = []
-    # results = produce_results()
     results = dict_to_list(dictionary)
-    print len(results)
     pickle.dump(results, open("results.p", "wb"))
 
 main_function()

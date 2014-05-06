@@ -12,7 +12,6 @@ i = 0
 sdepth = set()
 for x in ddepth:
     sdepth.add(x)
-#print len(ddepth)
 for file in ddepth:
     innings = os.path.join(file, "inning_all.xml")
     if "month_06" in innings:
