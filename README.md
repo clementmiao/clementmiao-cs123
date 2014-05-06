@@ -64,12 +64,9 @@ Looking forward, we will implement other clustering algorithms, and analyze thei
 
 ### Remaining Tasks
 - Matchups: We need to go through each hitter and find how they did aginst different clusters that we determine from our analysis. Since all of the data is organized by at-bats, aggragating a single hitter's at-bats could be more computationally expensive and might require parallelization.
-
--Parallelization: The Aggregation task can be converted into a map-reduce task, whereas the clustering could also be performed in a similar fashion. Additionally, the matchups could be parallelized using MPI.
-
+- Parallelization: The Aggregation task can be converted into a map-reduce task, whereas the clustering could also be performed in a similar fashion. Additionally, the matchups could be parallelized using MPI.
 - Recommendation engine: Given our data, and if we implement the matchups part correctly, putting the data inside a graph database will allow for fast traversals hence fast recommendation for coaches.
-
--Visualization: If enough time, we would like to be able to visualize the clusters.
+- Visualization: If enough time, we would like to be able to visualize the clusters.
 
 
 ###Challenges ahead
