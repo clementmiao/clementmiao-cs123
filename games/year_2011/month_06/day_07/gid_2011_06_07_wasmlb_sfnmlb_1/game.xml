@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:15" game_pk="287823" game_time_et="10:15 PM" gameday_sw="P">
+	<team type="home" code="sfn" file_code="sf" abbrev="SF" id="137" name="San Francisco" name_full="San Francisco Giants" name_brief="Giants" w="34" l="27" division_id="203" league_id="104" league="NL"/>
+	<team type="away" code="was" file_code="was" abbrev="WSH" id="120" name="Washington" name_full="Washington Nationals" name_brief="Nationals" w="27" l="34" division_id="204" league_id="104" league="NL"/>
+	<stadium id="2395" name="AT&amp;T Park" venue_w_chan_loc="USCA0987" location="San Francisco, CA"/>
+</game>

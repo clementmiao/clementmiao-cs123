@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="18:40" game_pk="287859" game_time_et="08:40 PM" gameday_sw="P">
+	<team type="home" code="col" file_code="col" abbrev="COL" id="115" name="Colorado" name_full="Colorado Rockies" name_brief="Rockies" w="31" l="32" division_id="203" league_id="104" league="NL"/>
+	<team type="away" code="lan" file_code="la" abbrev="LAD" id="119" name="LA Dodgers" name_full="Los Angeles Dodgers" name_brief="Dodgers" w="29" l="36" division_id="203" league_id="104" league="NL"/>
+	<stadium id="19" name="Coors Field" venue_w_chan_loc="USCO0105" location="Denver, CO"/>
+</game>

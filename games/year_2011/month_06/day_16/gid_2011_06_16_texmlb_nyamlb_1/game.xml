@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="13:05" game_pk="287946" game_time_et="01:05 PM" gameday_sw="P">
+	<team type="home" code="nya" file_code="nyy" abbrev="NYY" id="147" name="NY Yankees" name_full="New York Yankees" name_brief="Yankees" w="39" l="28" division_id="201" league_id="103" league="AL"/>
+	<team type="away" code="tex" file_code="tex" abbrev="TEX" id="140" name="Texas" name_full="Texas Rangers" name_brief="Rangers" w="36" l="34" division_id="200" league_id="103" league="AL"/>
+	<stadium id="3313" name="Yankee Stadium" venue_w_chan_loc="USNY0172" location="Bronx, NY"/>
+</game>

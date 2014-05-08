@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="12:40" game_pk="288102" game_time_et="03:40 PM" gameday_sw="P">
+	<team type="home" code="sea" file_code="sea" abbrev="SEA" id="136" name="Seattle" name_full="Seattle Mariners" name_brief="Mariners" w="39" l="42" division_id="200" league_id="103" league="AL"/>
+	<team type="away" code="atl" file_code="atl" abbrev="ATL" id="144" name="Atlanta" name_full="Atlanta Braves" name_brief="Braves" w="47" l="35" division_id="204" league_id="104" league="NL"/>
+	<stadium id="680" name="Safeco Field" venue_w_chan_loc="USWA0395" location="Seattle, WA"/>
+</game>

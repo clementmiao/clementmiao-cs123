@@ -1,0 +1,5 @@
+<!--Copyright 2012 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:05" game_pk="287957" game_time_et="07:05 PM" gameday_sw="P">
+	<team type="home" code="cle" file_code="cle" abbrev="CLE" id="114" name="Cleveland" name_full="Cleveland Indians" name_brief="Indians" w="37" l="31" division_id="202" league_id="103" league="AL"/>
+	<team type="away" code="pit" file_code="pit" abbrev="PIT" id="134" name="Pittsburgh" name_full="Pittsburgh Pirates" name_brief="Pirates" w="35" l="34" division_id="205" league_id="104" league="NL"/>
+	<stadium id="5" name="Progressive Field" venue_w_chan_loc="USOH0195" location="Cleveland, OH"/>
+</game>

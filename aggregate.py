@@ -110,6 +110,7 @@ def main_function():
             if name.endswith('.json'):
                 dictionary = produce_results(dictionary, name)
     results = dict_to_list(dictionary)
+    print results
     pickle.dump(results, open("results.p", "wb"))
 
 main_function()

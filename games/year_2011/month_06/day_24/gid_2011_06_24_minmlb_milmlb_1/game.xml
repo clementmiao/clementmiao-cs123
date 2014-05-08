@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:10" game_pk="288045" game_time_et="08:10 PM" gameday_sw="P">
+	<team type="home" code="mil" file_code="mil" abbrev="MIL" id="158" name="Milwaukee" name_full="Milwaukee Brewers" name_brief="Brewers" w="42" l="35" division_id="205" league_id="104" league="NL"/>
+	<team type="away" code="min" file_code="min" abbrev="MIN" id="142" name="Minnesota" name_full="Minnesota Twins" name_brief="Twins" w="32" l="42" division_id="202" league_id="103" league="AL"/>
+	<stadium id="32" name="Miller Park" venue_w_chan_loc="USWI0455" location="Milwaukee, WI"/>
+</game>

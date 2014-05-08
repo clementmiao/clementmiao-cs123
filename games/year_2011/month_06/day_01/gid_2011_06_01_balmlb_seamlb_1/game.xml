@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="12:40" game_pk="287732" game_time_et="03:40 PM" gameday_sw="P">
+	<team type="home" code="sea" file_code="sea" abbrev="SEA" id="136" name="Seattle" name_full="Seattle Mariners" name_brief="Mariners" w="28" l="27" division_id="200" league_id="103" league="AL"/>
+	<team type="away" code="bal" file_code="bal" abbrev="BAL" id="110" name="Baltimore" name_full="Baltimore Orioles" name_brief="Orioles" w="25" l="29" division_id="201" league_id="103" league="AL"/>
+	<stadium id="680" name="Safeco Field" venue_w_chan_loc="USWA0395" location="Seattle, WA"/>
+</game>

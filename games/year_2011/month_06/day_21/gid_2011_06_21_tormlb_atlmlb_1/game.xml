@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:10" game_pk="288016" game_time_et="07:10 PM" gameday_sw="P">
+	<team type="home" code="atl" file_code="atl" abbrev="ATL" id="144" name="Atlanta" name_full="Atlanta Braves" name_brief="Braves" w="42" l="33" division_id="204" league_id="104" league="NL"/>
+	<team type="away" code="tor" file_code="tor" abbrev="TOR" id="141" name="Toronto" name_full="Toronto Blue Jays" name_brief="Blue Jays" w="36" l="38" division_id="201" league_id="103" league="AL"/>
+	<stadium id="16" name="Turner Field" venue_w_chan_loc="USGA0028" location="Atlanta, GA"/>
+</game>

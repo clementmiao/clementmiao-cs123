@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="13:10" game_pk="288030" game_time_et="02:10 PM" gameday_sw="P">
+	<team type="home" code="mil" file_code="mil" abbrev="MIL" id="158" name="Milwaukee" name_full="Milwaukee Brewers" name_brief="Brewers" w="41" l="35" division_id="205" league_id="104" league="NL"/>
+	<team type="away" code="tba" file_code="tb" abbrev="TB" id="139" name="Tampa Bay" name_full="Tampa Bay Rays" name_brief="Rays" w="41" l="34" division_id="201" league_id="103" league="AL"/>
+	<stadium id="32" name="Miller Park" venue_w_chan_loc="USWI0455" location="Milwaukee, WI"/>
+</game>

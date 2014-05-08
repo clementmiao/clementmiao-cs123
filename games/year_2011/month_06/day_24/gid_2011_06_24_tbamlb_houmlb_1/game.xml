@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:05" game_pk="288049" game_time_et="08:05 PM" gameday_sw="P">
+	<team type="home" code="hou" file_code="hou" abbrev="HOU" id="117" name="Houston" name_full="Houston Astros" name_brief="Astros" w="28" l="49" division_id="205" league_id="104" league="NL"/>
+	<team type="away" code="tba" file_code="tb" abbrev="TB" id="139" name="Tampa Bay" name_full="Tampa Bay Rays" name_brief="Rays" w="42" l="34" division_id="201" league_id="103" league="AL"/>
+	<stadium id="2392" name="Minute Maid Park" venue_w_chan_loc="USTX0617" location="Houston, TX"/>
+</game>

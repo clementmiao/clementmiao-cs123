@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="13:10" game_pk="287986" game_time_et="04:10 PM" gameday_sw="P">
+	<team type="home" code="sea" file_code="sea" abbrev="SEA" id="136" name="Seattle" name_full="Seattle Mariners" name_brief="Mariners" w="37" l="35" division_id="200" league_id="103" league="AL"/>
+	<team type="away" code="phi" file_code="phi" abbrev="PHI" id="143" name="Philadelphia" name_full="Philadelphia Phillies" name_brief="Phillies" w="45" l="28" division_id="204" league_id="104" league="NL"/>
+	<stadium id="680" name="Safeco Field" venue_w_chan_loc="USWA0395" location="Seattle, WA"/>
+</game>

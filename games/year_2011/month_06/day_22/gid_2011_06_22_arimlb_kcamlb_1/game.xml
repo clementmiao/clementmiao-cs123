@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:10" game_pk="288018" game_time_et="08:10 PM" gameday_sw="P">
+	<team type="home" code="kca" file_code="kc" abbrev="KC" id="118" name="Kansas City" name_full="Kansas City Royals" name_brief="Royals" w="31" l="43" division_id="202" league_id="103" league="AL"/>
+	<team type="away" code="ari" file_code="ari" abbrev="ARI" id="109" name="Arizona" name_full="Arizona Diamondbacks" name_brief="D-backs" w="41" l="34" division_id="203" league_id="104" league="NL"/>
+	<stadium id="7" name="Kauffman Stadium" venue_w_chan_loc="USMO0460" location="Kansas City, MO"/>
+</game>

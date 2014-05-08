@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="17:10" game_pk="287964" game_time_et="08:10 PM" gameday_sw="P">
+	<team type="home" code="ari" file_code="ari" abbrev="ARI" id="109" name="Arizona" name_full="Arizona Diamondbacks" name_brief="D-backs" w="39" l="33" division_id="203" league_id="104" league="NL"/>
+	<team type="away" code="cha" file_code="cws" abbrev="CWS" id="145" name="Chi White Sox" name_full="Chicago White Sox" name_brief="White Sox" w="34" l="38" division_id="202" league_id="103" league="AL"/>
+	<stadium id="15" name="Chase Field" venue_w_chan_loc="USAZ0166" location="Phoenix, AZ"/>
+</game>

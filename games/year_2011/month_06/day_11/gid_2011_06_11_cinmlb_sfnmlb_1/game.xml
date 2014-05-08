@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="13:10" game_pk="287871" game_time_et="04:10 PM" gameday_sw="P">
+	<team type="home" code="sfn" file_code="sf" abbrev="SF" id="137" name="San Francisco" name_full="San Francisco Giants" name_brief="Giants" w="36" l="29" division_id="203" league_id="104" league="NL"/>
+	<team type="away" code="cin" file_code="cin" abbrev="CIN" id="113" name="Cincinnati" name_full="Cincinnati Reds" name_brief="Reds" w="34" l="32" division_id="205" league_id="104" league="NL"/>
+	<stadium id="2395" name="AT&amp;T Park" venue_w_chan_loc="USCA0987" location="San Francisco, CA"/>
+</game>

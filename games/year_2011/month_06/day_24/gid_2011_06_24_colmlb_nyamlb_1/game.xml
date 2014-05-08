@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:05" game_pk="288044" game_time_et="07:05 PM" gameday_sw="P">
+	<team type="home" code="nya" file_code="nyy" abbrev="NYY" id="147" name="NY Yankees" name_full="New York Yankees" name_brief="Yankees" w="43" l="31" division_id="201" league_id="103" league="AL"/>
+	<team type="away" code="col" file_code="col" abbrev="COL" id="115" name="Colorado" name_full="Colorado Rockies" name_brief="Rockies" w="38" l="37" division_id="203" league_id="104" league="NL"/>
+	<stadium id="3313" name="Yankee Stadium" venue_w_chan_loc="USNY0172" location="Bronx, NY"/>
+</game>

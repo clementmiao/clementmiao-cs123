@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:05" game_pk="287830" game_time_et="07:05 PM" gameday_sw="P">
+	<team type="home" code="phi" file_code="phi" abbrev="PHI" id="143" name="Philadelphia" name_full="Philadelphia Phillies" name_brief="Phillies" w="37" l="25" division_id="204" league_id="104" league="NL"/>
+	<team type="away" code="lan" file_code="la" abbrev="LAD" id="119" name="LA Dodgers" name_full="Los Angeles Dodgers" name_brief="Dodgers" w="29" l="34" division_id="203" league_id="104" league="NL"/>
+	<stadium id="2681" name="Citizens Bank Park" venue_w_chan_loc="USPA1276" location="Philadelphia, PA"/>
+</game>

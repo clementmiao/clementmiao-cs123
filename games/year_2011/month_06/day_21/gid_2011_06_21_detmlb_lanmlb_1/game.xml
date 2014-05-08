@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:10" game_pk="288007" game_time_et="10:10 PM" gameday_sw="P">
+	<team type="home" code="lan" file_code="la" abbrev="LAD" id="119" name="LA Dodgers" name_full="Los Angeles Dodgers" name_brief="Dodgers" w="34" l="41" division_id="203" league_id="104" league="NL"/>
+	<team type="away" code="det" file_code="det" abbrev="DET" id="116" name="Detroit" name_full="Detroit Tigers" name_brief="Tigers" w="39" l="35" division_id="202" league_id="103" league="AL"/>
+	<stadium id="22" name="Dodger Stadium" venue_w_chan_loc="USCA0638" location="Los Angeles, CA"/>
+</game>

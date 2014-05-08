@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:05" game_pk="288092" game_time_et="10:05 PM" gameday_sw="P">
+	<team type="home" code="oak" file_code="oak" abbrev="OAK" id="133" name="Oakland" name_full="Oakland Athletics" name_brief="Athletics" w="36" l="44" division_id="200" league_id="103" league="AL"/>
+	<team type="away" code="flo" file_code="fla" abbrev="FLA" id="146" name="Florida" name_full="Florida Marlins" name_brief="Marlins" w="34" l="45" division_id="204" league_id="104" league="NL"/>
+	<stadium id="10" name="Oakland Coliseum" venue_w_chan_loc="USCA0791" location="Oakland, CA"/>
+</game>

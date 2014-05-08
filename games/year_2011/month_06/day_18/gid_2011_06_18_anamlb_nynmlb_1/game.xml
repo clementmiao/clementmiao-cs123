@@ -1,0 +1,5 @@
+<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:10" game_pk="287962" game_time_et="07:10 PM" gameday_sw="P">
+	<team type="home" code="nyn" file_code="nym" abbrev="NYM" id="121" name="NY Mets" name_full="New York Mets" name_brief="Mets" w="35" l="36" division_id="204" league_id="104" league="NL"/>
+	<team type="away" code="ana" file_code="ana" abbrev="LAA" id="108" name="LA Angels" name_full="Los Angeles Angels" name_brief="Angels" w="34" l="38" division_id="200" league_id="103" league="AL"/>
+	<stadium id="3289" name="Citi Field" venue_w_chan_loc="USNY0504" location="Flushing, NY"/>
+</game>
