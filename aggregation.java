@@ -15,7 +15,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
-import org.apache.mahout;
+// import org.apache.mahout;
 
 public class aggregation {
 
@@ -98,10 +98,10 @@ public class aggregation {
             System.exit(2);
         }
         // Creates a MapReduce job and links it to our class
-        conf.set("xmlinput.start", "<game>");
-        conf.set("xmlinput.end", "</game>");
+        // conf.set("xmlinput.start", "<game>");
+        // conf.set("xmlinput.end", "</game>");
         Job job = Job.getInstance(conf);
-        job.setInputFormatClass(XmlInputFormat.class);
+        // job.setInputFormatClass(XmlInputFormat.class);
         job.setJarByClass(aggregation.class);
 
         // Selects mapper/combiner/reducer
