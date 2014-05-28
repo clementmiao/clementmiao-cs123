@@ -101,7 +101,7 @@ public class aggregation {
         conf.set("xmlinput.end", "</game>");
         Job job = Job.getInstance(conf);
         job.setInputFormatClass(XmlInputFormat.class);
-        job.setJarByClass(task4.class);
+        job.setJarByClass(aggregation.class);
 
         // Selects mapper/combiner/reducer
         job.setMapperClass(Map.class);
