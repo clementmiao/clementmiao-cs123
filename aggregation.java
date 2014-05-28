@@ -19,7 +19,7 @@ import org.apache.hadoop.util.GenericOptionsParser;
 public class aggregation {
 
     public static class Map 
-             extends Mapper<Object, Text, Text>{
+             extends Mapper<Object, Text, IntWritable, Text>{
         
         // Mapper function that takes (key, value) and uses the
         // output object to output data. The reporter object can
@@ -33,7 +33,7 @@ public class aggregation {
             // a String object from the Writable, we use toString 
             // String line = value.toString();
             String document = value.toString();
-            System.out.println("'" + document + "'\n");
+            System.out.println("'" + document "'\n");
             // Iterate over the words of the line and output one (key,
             // value) pair for each word. This task can be optimized
             // by using the StringTokenizer class instead
@@ -46,48 +46,48 @@ public class aggregation {
             
             // context.write(new Text(visitor), new MyWritable(1,0)); 
             // context.write(new Text(visitee), new MyWritable(0,1));
-            context.write(new Text(document));
+            context.write(new IntWritable(0), new Text(document));
         }
     }
 
-    public static class Combiner
-             extends Reducer<Text,MyWritable,Text,MyWritable> {
-        public void reduce(Text key, Iterable<MyWritable> values,
-                                             Context context
-                                             ) throws IOException, InterruptedException {
-            int counter1 = 0;
-            int counter2 = 0;
-            for (MyWritable val : values) {
-                counter1 += val.getCounter1();
-                counter2 += val.getCounter2();
-            }
-            //output
-            context.write(key, new MyWritable(counter1, counter2));
-        }
+    // public static class Combiner
+    //          extends Reducer<Text,MyWritable,Text,MyWritable> {
+    //     public void reduce(Text key, Iterable<MyWritable> values,
+    //                                          Context context
+    //                                          ) throws IOException, InterruptedException {
+    //         int counter1 = 0;
+    //         int counter2 = 0;
+    //         for (MyWritable val : values) {
+    //             counter1 += val.getCounter1();
+    //             counter2 += val.getCounter2();
+    //         }
+    //         //output
+    //         context.write(key, new MyWritable(counter1, counter2));
+    //     }
              
-    }
+    // }
     
-    public static class Reduce 
-             extends Reducer<Text,MyWritable,Text,MyWritable> {
+    // public static class Reduce 
+    //          extends Reducer<Text,MyWritable,Text,MyWritable> {
 
-        // This function expects a key of type Text (a word from our document, in this case)
-        // and a list of values obtained via iterator (a list of IntWritables, in this case).
-        public void reduce(Text key, Iterable<MyWritable> values, 
-                                             Context context
-                                             ) throws IOException, InterruptedException {
-            int counter1 = 0;
-            int counter2 = 0;
-            for (MyWritable val : values) {
-                counter1 += val.getCounter1();
-                counter2 += val.getCounter2();
-            }
+    //     // This function expects a key of type Text (a word from our document, in this case)
+    //     // and a list of values obtained via iterator (a list of IntWritables, in this case).
+    //     public void reduce(Text key, Iterable<MyWritable> values, 
+    //                                          Context context
+    //                                          ) throws IOException, InterruptedException {
+    //         int counter1 = 0;
+    //         int counter2 = 0;
+    //         for (MyWritable val : values) {
+    //             counter1 += val.getCounter1();
+    //             counter2 += val.getCounter2();
+    //         }
             
-            // Output the results with the same key as the input
-            if (counter1 > 0 && counter2 >0) {
-                context.write(key, new MyWritable(counter1, counter2));    
-            }
-        }
-    }
+    //         // Output the results with the same key as the input
+    //         if (counter1 > 0 && counter2 >0) {
+    //             context.write(key, new MyWritable(counter1, counter2));    
+    //         }
+    //     }
+    // }
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
