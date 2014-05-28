@@ -34,7 +34,8 @@ public class aggregation {
             // a String object from the Writable, we use toString 
             // String line = value.toString();
             String document = value.toString();
-            System.out.println("'" + document + "'\n");
+            // System.out.println("'" + document + "'\n");
+            
             // Iterate over the words of the line and output one (key,
             // value) pair for each word. This task can be optimized
             // by using the StringTokenizer class instead
