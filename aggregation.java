@@ -16,7 +16,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 // import org.apache.mahout;
-import javax.xml.stream;
+import javax.xml.*;
 
 public class aggregation {
 
