@@ -297,6 +297,7 @@ public class aggregation {
 
             for (int i = 0; i < 11; i++) {
                 if (counters[i] != 0) {
+                    System.out.println("MARKER");
                     for (int j = 0; j < 10; j++) {
                         rv.setAtr(i, j, rv.getAtr(i,j) / counters[i]);
                     }
