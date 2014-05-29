@@ -53,7 +53,7 @@ public class aggregation {
             out.writeInt(total);
             out.writeInt(handL);
             out.writeInt(handR);
-            out.writeInt(pitcher);
+            out.writeUTF(pitcher);
             for(int i = 0; i < pitches.length; i++) {
                 for(int j = 0; j < pitches[0].length; j++) {
                     out.writeDouble(pitches[i][j]);

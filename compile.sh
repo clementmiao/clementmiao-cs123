@@ -18,7 +18,7 @@ module load midway-hadoop
 mkdir -p ${CLASS_DIR} 
 
 # Compile
-javac -target 1.6 -source 1.6 -Xlint:deprecation -cp "${HADOOP_HOME}/*:${HADOOP}/parcels/CDH/lib/hadoop-mapreduce/*:${HADOOP}/parcels/CDH/lib/hadoop-fs/*:${HADOOP_HOME}/lib/*" -d ${CLASS_DIR} $FILES 
+javac -target 1.7 -source 1.7 -Xlint:deprecation -cp "${HADOOP_HOME}/*:${HADOOP}/parcels/CDH/lib/hadoop-mapreduce/*:${HADOOP}/parcels/CDH/lib/hadoop-fs/*:${HADOOP_HOME}/lib/*" -d ${CLASS_DIR} $FILES 
 
 # Package
 jar -cvf ${JAR_FILE} -C ${CLASS_DIR} .
