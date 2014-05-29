@@ -194,6 +194,7 @@ public class aggregation {
             String propertyName = "";
             String propertyValue = "";
             String currentElement = "";
+            Value pitcher;
             while (reader.hasNext()) {
                 int code = reader.next();
                 switch (code) {
@@ -211,7 +212,7 @@ public class aggregation {
                                 } else {
                                     System.out.println("ERROR ABORT");
                                 }
-                                Value pitcher;
+                                
                                 int index = containsPitcher(currentElement, pitcherList);                                
                                 if ( index == -1) {
                                     pitcher = new Value();
