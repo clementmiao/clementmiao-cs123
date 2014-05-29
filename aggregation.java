@@ -148,7 +148,7 @@ public class aggregation {
         String[] pitch_attributes = {"break_angle", "break_length", "break_y", "pfx_x", "pfx_z", "spin_dir", "spin_rate", "start_speed", "x0", "y0", "z0"};
         double[] attr = new double[12];
             for (int i = 0; i < pitch_attributes.length; i++) {
-                attr[i] = reader.getAttributeValue(null, pitch_attributes[i]);
+                attr[i] = Double.parseDouble(reader.getAttributeValue(null, pitch_attributes[i]));
             }
         attr[pitch_attributes.length] = 1.0;
         if (attribute == "FF" || attribute == "FA") {
