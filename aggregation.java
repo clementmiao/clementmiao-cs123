@@ -258,6 +258,7 @@ public class aggregation {
             // that contains one line from one input file. To extract 
             // a String object from the Writable, we use toString 
             // String line = value.toString();
+            System.out.println("IM HERE");
             String document = value.toString();
             ArrayList<Value> pitcherList = new ArrayList<Value>();
             parseString(document, pitcherList);
