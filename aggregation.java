@@ -194,7 +194,7 @@ public class aggregation {
             String propertyName = "";
             String propertyValue = "";
             String currentElement = "";
-            Value pitcher;
+            Value pitcher = new Value();
             while (reader.hasNext()) {
                 int code = reader.next();
                 switch (code) {
