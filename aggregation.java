@@ -151,27 +151,27 @@ public class aggregation {
                 attr[i] = Double.parseDouble(reader.getAttributeValue(null, pitch_attributes[i]));
             }
         attr[pitch_attributes.length] = 1.0;
-        if (attribute == "FF" || attribute == "FA") {
+        if (attribute.equals("FF") || attribute.equals("FA")) {
             pitcher.addPitch(0, attr);
-        } else if (attribute == "FT") {
+        } else if (attribute.equals("FT")) {
             pitcher.addPitch(1, attr);
-        } else if (attribute == "FC") {
+        } else if (attribute.equals("FC")) {
             pitcher.addPitch(2, attr);
-        } else if (attribute == "SI" || attribute == "FS") {
+        } else if (attribute.equals("SI") || attribute.equals("FS")) {
             pitcher.addPitch(3, attr);
-        } else if (attribute == "SF") {
+        } else if (attribute.equals("SF")) {
             pitcher.addPitch(4, attr);
-        } else if (attribute == "SL") {
+        } else if (attribute.equals("SL")) {
             pitcher.addPitch(5, attr);
-        } else if (attribute == "CH") {
+        } else if (attribute.equals("CH")) {
             pitcher.addPitch(6, attr);
-        } else if (attribute == "CB" || attribute == "CU") {
+        } else if (attribute.equals("CB") || attribute.equals("CU")) {
             pitcher.addPitch(7, attr);
-        } else if (attribute == "KC") {
+        } else if (attribute.equals("KC")) {
             pitcher.addPitch(8, attr);
-        } else if (attribute == "KN") {
+        } else if (attribute.equals("KN")) {
             pitcher.addPitch(9, attr);
-        } else if (attribute == "EP") {
+        } else if (attribute.equals("EP")) {
             pitcher.addPitch(10, attr);
         } else {
             System.out.println("BALL TYPE NOT FOUND");
@@ -205,9 +205,9 @@ public class aggregation {
                         // System.out.println("[END_ELEMENT] closing tag is: " + reader.getName());
                         break;
                     case XMLStreamConstants.START_ELEMENT:
-                        switch (reader.getName().toString()) {
-                            case "atbat":
-                                if (currentElement == "") {
+                        String tag = reader.getName().toString();
+                        if (tag.equals("atbat")) {
+                            if (currentElement.equals("")) {
                                     currentElement = reader.getAttributeValue(null, "pitcher");
                                 } else {
                                     System.out.println("ERROR ABORT");
@@ -224,22 +224,18 @@ public class aggregation {
                                 for (int i = 0; i < atbat_attributes.length; i++) {
                                     sort_atbat(atbat_attributes[i], reader, pitcher);    
                                 }
-                                break;
-
-                            case "pitch":
-                                
+                            } else if (tag.equals("pitch")) {
                                 String pitch_type = reader.getAttributeValue(null, "pitch_type");
-                                sort_pitch(pitch_type, reader, pitcher);
-                                break;
-                        }
+                                sort_pitch(pitch_type, reader, pitcher);    
+                            }
                         
                         
+                        break;
                         // if (reader.getName().toString() == "atbat") {
                             // System.out.println("[START_ELEMENT] name is: " + reader.getName() + " element text is: " + reader.getAttributeValue(null, "pitcher") + "; " + reader.getAttributeValue(null, "p_throws"));    
                         // }
                         
-                        break;
-                    default:
+                        
                         // System.out.println("reader text is: " + reader.getText());    
 
                 }
