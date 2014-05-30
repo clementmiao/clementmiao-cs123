@@ -76,7 +76,7 @@ public class aggregation {
         }
 
         public String toString() {
-            return "(pitcher: " + pitcher + ", total: " + total + ", handL: " + handL + ", handR: " + handR + ")"; 
+            return "(pitcher: " + this.pitcher + ")"; 
         }
         
         public void setHand(String h) {
@@ -308,6 +308,8 @@ public class aggregation {
                     }
                 }
             }
+
+            rv.setPitcher("WE ARE HERE");
             
             // Output the results with the same key as the input
             context.write(key, rv);
@@ -327,7 +329,7 @@ public class aggregation {
         Job job = Job.getInstance(conf);
         // job.setInputFormatClass(XmlInputFormat.class);
         job.setJarByClass(aggregation.class);
-        System.out.println("MARKER");
+        // System.out.println("MARKER");
 
         // Selects mapper/combiner/reducer
         job.setMapperClass(Map.class);
