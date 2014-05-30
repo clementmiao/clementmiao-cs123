@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:05" game_pk="288085" game_time_et="10:05 PM" gameday_sw="P">
-	<team type="home" code="sdn" file_code="sd" abbrev="SD" id="135" name="San Diego" name_full="San Diego Padres" name_brief="Padres" w="35" l="45" division_id="203" league_id="104" league="NL"/>
-	<team type="away" code="kca" file_code="kc" abbrev="KC" id="118" name="Kansas City" name_full="Kansas City Royals" name_brief="Royals" w="33" l="46" division_id="202" league_id="103" league="AL"/>
-	<stadium id="2680" name="PETCO Park" venue_w_chan_loc="USCA0982" location="San Diego, CA"/>
-</game>

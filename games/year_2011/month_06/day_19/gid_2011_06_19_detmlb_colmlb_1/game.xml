@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="13:10" game_pk="287980" game_time_et="03:10 PM" gameday_sw="P">
-	<team type="home" code="col" file_code="col" abbrev="COL" id="115" name="Colorado" name_full="Colorado Rockies" name_brief="Rockies" w="35" l="36" division_id="203" league_id="104" league="NL"/>
-	<team type="away" code="det" file_code="det" abbrev="DET" id="116" name="Detroit" name_full="Detroit Tigers" name_brief="Tigers" w="39" l="33" division_id="202" league_id="103" league="AL"/>
-	<stadium id="19" name="Coors Field" venue_w_chan_loc="USCO0105" location="Denver, CO"/>
-</game>

@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:10" game_pk="287966" game_time_et="07:10 PM" gameday_sw="P">
-	<team type="home" code="tba" file_code="tb" abbrev="TB" id="139" name="Tampa Bay" name_full="Tampa Bay Rays" name_brief="Rays" w="38" l="33" division_id="201" league_id="103" league="AL"/>
-	<team type="away" code="flo" file_code="fla" abbrev="FLA" id="146" name="Florida" name_full="Florida Marlins" name_brief="Marlins" w="32" l="39" division_id="204" league_id="104" league="NL"/>
-	<stadium id="12" name="Tropicana Field" venue_w_chan_loc="USFL0438" location="St. Petersburg, FL"/>
-</game>

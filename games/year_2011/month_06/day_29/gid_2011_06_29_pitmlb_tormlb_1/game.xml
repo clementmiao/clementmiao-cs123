@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:07" game_pk="288112" game_time_et="07:07 PM" gameday_sw="P">
-	<team type="home" code="tor" file_code="tor" abbrev="TOR" id="141" name="Toronto" name_full="Toronto Blue Jays" name_brief="Blue Jays" w="40" l="41" division_id="201" league_id="103" league="AL"/>
-	<team type="away" code="pit" file_code="pit" abbrev="PIT" id="134" name="Pittsburgh" name_full="Pittsburgh Pirates" name_brief="Pirates" w="40" l="39" division_id="205" league_id="104" league="NL"/>
-	<stadium id="14" name="Rogers Centre" venue_w_chan_loc="CAXX0504" location="Toronto, Canada"/>
-</game>

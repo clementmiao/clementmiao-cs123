@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:05" game_pk="288040" game_time_et="07:05 PM" gameday_sw="P">
-	<team type="home" code="pit" file_code="pit" abbrev="PIT" id="134" name="Pittsburgh" name_full="Pittsburgh Pirates" name_brief="Pirates" w="38" l="37" division_id="205" league_id="104" league="NL"/>
-	<team type="away" code="bos" file_code="bos" abbrev="BOS" id="111" name="Boston" name_full="Boston Red Sox" name_brief="Red Sox" w="44" l="31" division_id="201" league_id="103" league="AL"/>
-	<stadium id="31" name="PNC Park" venue_w_chan_loc="USPA1290" location="Pittsburgh, PA"/>
-</game>

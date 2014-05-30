@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:10" game_pk="288002" game_time_et="07:10 PM" gameday_sw="P">
-	<team type="home" code="flo" file_code="fla" abbrev="FLA" id="146" name="Florida" name_full="Florida Marlins" name_brief="Marlins" w="33" l="41" division_id="204" league_id="104" league="NL"/>
-	<team type="away" code="ana" file_code="ana" abbrev="LAA" id="108" name="LA Angels" name_full="Los Angeles Angels" name_brief="Angels" w="36" l="39" division_id="200" league_id="103" league="AL"/>
-	<stadium id="20" name="Sun Life Stadium" venue_w_chan_loc="USFL0316" location="Miami, FL"/>
-</game>

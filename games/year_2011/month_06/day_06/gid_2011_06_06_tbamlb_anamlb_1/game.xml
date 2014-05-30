@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:05" game_pk="287806" game_time_et="10:05 PM" gameday_sw="P">
-	<team type="home" code="ana" file_code="ana" abbrev="LAA" id="108" name="LA Angels" name_full="Los Angeles Angels" name_brief="Angels" w="30" l="32" division_id="200" league_id="103" league="AL"/>
-	<team type="away" code="tba" file_code="tb" abbrev="TB" id="139" name="Tampa Bay" name_full="Tampa Bay Rays" name_brief="Rays" w="31" l="29" division_id="201" league_id="103" league="AL"/>
-	<stadium id="1" name="Angel Stadium of Anaheim" venue_w_chan_loc="USCA0027" location="Anaheim, CA"/>
-</game>

@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="13:20" game_pk="287955" game_time_et="02:20 PM" gameday_sw="P">
-	<team type="home" code="chn" file_code="chc" abbrev="CHC" id="112" name="Chi Cubs" name_full="Chicago Cubs" name_brief="Cubs" w="29" l="40" division_id="205" league_id="104" league="NL"/>
-	<team type="away" code="nya" file_code="nyy" abbrev="NYY" id="147" name="NY Yankees" name_full="New York Yankees" name_brief="Yankees" w="39" l="29" division_id="201" league_id="103" league="AL"/>
-	<stadium id="17" name="Wrigley Field" venue_w_chan_loc="USIL0225" location="Chicago, IL"/>
-</game>

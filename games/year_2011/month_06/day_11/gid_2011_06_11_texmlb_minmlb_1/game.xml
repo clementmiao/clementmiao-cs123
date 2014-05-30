@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="15:10" game_pk="287880" game_time_et="04:10 PM" gameday_sw="P">
-	<team type="home" code="min" file_code="min" abbrev="MIN" id="142" name="Minnesota" name_full="Minnesota Twins" name_brief="Twins" w="25" l="39" division_id="202" league_id="103" league="AL"/>
-	<team type="away" code="tex" file_code="tex" abbrev="TEX" id="140" name="Texas" name_full="Texas Rangers" name_brief="Rangers" w="36" l="30" division_id="200" league_id="103" league="AL"/>
-	<stadium id="3312" name="Target Field" venue_w_chan_loc="USMN0503" location="Minneapolis, MN"/>
-</game>

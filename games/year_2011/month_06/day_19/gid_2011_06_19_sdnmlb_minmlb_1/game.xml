@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="13:10" game_pk="287988" game_time_et="02:10 PM" gameday_sw="P">
-	<team type="home" code="min" file_code="min" abbrev="MIN" id="142" name="Minnesota" name_full="Minnesota Twins" name_brief="Twins" w="31" l="39" division_id="202" league_id="103" league="AL"/>
-	<team type="away" code="sdn" file_code="sd" abbrev="SD" id="135" name="San Diego" name_full="San Diego Padres" name_brief="Padres" w="30" l="43" division_id="203" league_id="104" league="NL"/>
-	<stadium id="3312" name="Target Field" venue_w_chan_loc="USMN0503" location="Minneapolis, MN"/>
-</game>

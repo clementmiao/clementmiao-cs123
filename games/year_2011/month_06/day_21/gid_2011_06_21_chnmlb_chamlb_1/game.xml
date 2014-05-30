@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:10" game_pk="288005" game_time_et="08:10 PM" gameday_sw="P">
-	<team type="home" code="cha" file_code="cws" abbrev="CWS" id="145" name="Chi White Sox" name_full="Chicago White Sox" name_brief="White Sox" w="36" l="39" division_id="202" league_id="103" league="AL"/>
-	<team type="away" code="chn" file_code="chc" abbrev="CHC" id="112" name="Chi Cubs" name_full="Chicago Cubs" name_brief="Cubs" w="30" l="43" division_id="205" league_id="104" league="NL"/>
-	<stadium id="4" name="U.S. Cellular Field" venue_w_chan_loc="USIL0225" location="Chicago, IL"/>
-</game>

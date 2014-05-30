@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="12:35" game_pk="287740" game_time_et="03:35 PM" gameday_sw="P">
-	<team type="home" code="oak" file_code="oak" abbrev="OAK" id="133" name="Oakland" name_full="Oakland Athletics" name_brief="Athletics" w="27" l="30" division_id="200" league_id="103" league="AL"/>
-	<team type="away" code="nya" file_code="nyy" abbrev="NYY" id="147" name="NY Yankees" name_full="New York Yankees" name_brief="Yankees" w="31" l="23" division_id="201" league_id="103" league="AL"/>
-	<stadium id="10" name="Oakland Coliseum" venue_w_chan_loc="USCA0791" location="Oakland, CA"/>
-</game>

@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="18:05" game_pk="287532" game_time_et="06:05 PM" gameday_sw="P">
-	<team type="home" code="det" file_code="det" abbrev="DET" id="116" name="Detroit" name_full="Detroit Tigers" name_brief="Tigers" w="43" l="36" division_id="202" league_id="103" league="AL"/>
-	<team type="away" code="tor" file_code="tor" abbrev="TOR" id="141" name="Toronto" name_full="Toronto Blue Jays" name_brief="Blue Jays" w="39" l="40" division_id="201" league_id="103" league="AL"/>
-	<stadium id="2394" name="Comerica Park" venue_w_chan_loc="USMI0229" location="Detroit, MI"/>
-</game>

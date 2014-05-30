@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:07" game_pk="287854" game_time_et="07:07 PM" gameday_sw="P">
-	<team type="home" code="tor" file_code="tor" abbrev="TOR" id="141" name="Toronto" name_full="Toronto Blue Jays" name_brief="Blue Jays" w="32" l="32" division_id="201" league_id="103" league="AL"/>
-	<team type="away" code="bos" file_code="bos" abbrev="BOS" id="111" name="Boston" name_full="Boston Red Sox" name_brief="Red Sox" w="37" l="26" division_id="201" league_id="103" league="AL"/>
-	<stadium id="14" name="Rogers Centre" venue_w_chan_loc="CAXX0504" location="Toronto, Canada"/>
-</game>

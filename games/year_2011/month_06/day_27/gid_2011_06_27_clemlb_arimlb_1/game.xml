@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="18:40" game_pk="288084" game_time_et="09:40 PM" gameday_sw="P">
-	<team type="home" code="ari" file_code="ari" abbrev="ARI" id="109" name="Arizona" name_full="Arizona Diamondbacks" name_brief="D-backs" w="43" l="37" division_id="203" league_id="104" league="NL"/>
-	<team type="away" code="cle" file_code="cle" abbrev="CLE" id="114" name="Cleveland" name_full="Cleveland Indians" name_brief="Indians" w="41" l="36" division_id="202" league_id="103" league="AL"/>
-	<stadium id="15" name="Chase Field" venue_w_chan_loc="USAZ0166" location="Phoenix, AZ"/>
-</game>

@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="14:05" game_pk="288076" game_time_et="03:05 PM" gameday_sw="P">
-	<team type="home" code="tex" file_code="tex" abbrev="TEX" id="140" name="Texas" name_full="Texas Rangers" name_brief="Rangers" w="41" l="38" division_id="200" league_id="103" league="AL"/>
-	<team type="away" code="nyn" file_code="nym" abbrev="NYM" id="121" name="NY Mets" name_full="New York Mets" name_brief="Mets" w="39" l="39" division_id="204" league_id="104" league="NL"/>
-	<stadium id="13" name="Rangers Ballpark in Arlington" venue_w_chan_loc="USTX0045" location="Arlington, TX"/>
-</game>

@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:15" game_pk="288024" game_time_et="10:15 PM" gameday_sw="P">
-	<team type="home" code="sfn" file_code="sf" abbrev="SF" id="137" name="San Francisco" name_full="San Francisco Giants" name_brief="Giants" w="40" l="34" division_id="203" league_id="104" league="NL"/>
-	<team type="away" code="min" file_code="min" abbrev="MIN" id="142" name="Minnesota" name_full="Minnesota Twins" name_brief="Twins" w="32" l="40" division_id="202" league_id="103" league="AL"/>
-	<stadium id="2395" name="AT&amp;T Park" venue_w_chan_loc="USCA0987" location="San Francisco, CA"/>
-</game>

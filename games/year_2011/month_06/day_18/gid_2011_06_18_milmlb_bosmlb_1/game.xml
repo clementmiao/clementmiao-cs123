@@ -1,5 +1,0 @@
-<!--Copyright 2014 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt--><game type="R" local_game_time="19:10" game_pk="287969" game_time_et="07:10 PM" gameday_sw="P">
-	<team type="home" code="bos" file_code="bos" abbrev="BOS" id="111" name="Boston" name_full="Boston Red Sox" name_brief="Red Sox" w="42" l="28" division_id="201" league_id="103" league="AL"/>
-	<team type="away" code="mil" file_code="mil" abbrev="MIL" id="158" name="Milwaukee" name_full="Milwaukee Brewers" name_brief="Brewers" w="40" l="32" division_id="205" league_id="104" league="NL"/>
-	<stadium id="3" name="Fenway Park" venue_w_chan_loc="USMA0046" location="Boston, MA"/>
-</game>
