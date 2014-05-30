@@ -34,7 +34,7 @@ public class test {
             // of the file (of type Object) and the value will a Writable 
             // that contains one line from one input file. To extract 
             // a String object from the Writable, we use toString 
-            String line = value.toString();
+            String useless_line = value.toString();
 
             String file_name = "clusters.txt";
 
