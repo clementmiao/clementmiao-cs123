@@ -35,7 +35,7 @@ public class test {
                     in = fs.open(path);
                     br = new BufferedReader(new InputStreamReader(in));
                 } catch (FileNotFoundException e1) {
-                    e1.printStackTrace():
+                    e1.printStackTrace();
                     System.out.println("read from distributed cache: file not found!");
                 } catch (IOException e1) {
                     e1.printStackTrace();
