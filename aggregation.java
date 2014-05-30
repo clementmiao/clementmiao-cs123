@@ -224,7 +224,7 @@ public class aggregation {
                                 }
                                 String[] atbat_attributes = {"pitcher", "p_throws"};
                                 for (int i = 0; i < atbat_attributes.length; i++) {
-                                    pitcher = sort_atbat(atbat_attributes[i], reader, pitcher);
+                                    sort_atbat(atbat_attributes[i], reader, pitcher);
 
                                 }
                             } else if (tag.equals("pitch")) {
