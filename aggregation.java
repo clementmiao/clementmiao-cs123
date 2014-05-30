@@ -77,7 +77,7 @@ public class aggregation {
 
         public String toString() {
             String rv = "";
-            rv = rv + this.pitcher;
+            // rv = rv + this.pitcher;
             rv = rv + "," + this.total + ",";
             rv = rv + this.handL + ",";
             rv = rv + this.handR;
@@ -271,7 +271,7 @@ public class aggregation {
             pitcherList = parseString(document, pitcherList);
 
             for (int i = 0; i < pitcherList.size(); i++) {
-                context.write(new Text("pitcher is: " + pitcherList.get(i).getPitcher()), pitcherList.get(i));
+                context.write(new Text(pitcherList.get(i).getPitcher()), pitcherList.get(i));
             }
         }
     }
