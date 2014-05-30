@@ -133,8 +133,8 @@ public class aggregation {
     }
 
     public static class Map 
-             // extends Mapper<Object, Text, Text, Value>{
-             extends Mapper<Object, Text, Text, Text>{
+             extends Mapper<Object, Text, Text, Value>{
+             // extends Mapper<Object, Text, Text, Text>{
 
         public static void sort_atbat(String attribute, XMLStreamReader reader, Value pitcher) {
         // System.out.println("[START_ELEMENT] name is: " + reader.getName() + " element text is: " + reader.getAttributeValue(null, attribute)); 
