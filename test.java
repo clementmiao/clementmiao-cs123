@@ -44,6 +44,7 @@ public class test {
                     System.out.println("read from distributed cache: IO Exception");
                 }
                 try {
+                    clusters = new ArrayList<String>();
                     String line = "";
                     while ((line = br.readLine()) != null) {
                         clusters.add(line);
@@ -70,19 +71,8 @@ public class test {
             // a String object from the Writable, we use toString 
             String useless_line = value.toString();
 
-            String file_name = "clusters.txt";
-
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(file_name));
-                String line;
-                while ((line = br.readLine()) != null) {
-                    context.write(new Text("cluster:"), new Text(line));
-                }
-                br.close();
-            }
-            
-            catch (IOException e) {
-                System.out.println( e.getMessage() );
+            for (int i = 0; i < clusters.size(); i++) {
+                context.write(new Text("cluster is:"), new Text(clusters.get(i)));
             }
 
              
