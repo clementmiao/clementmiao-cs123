@@ -140,8 +140,8 @@ public class aggregation {
         String att = reader.getAttributeValue(null, attribute);
         if (attribute == "p_throws") {
             pitcher.setHand(att);
+            }
         }
-    }
 
     public static void sort_pitch(String attribute, XMLStreamReader reader, Value pitcher) {
         // System.out.println("[START_ELEMENT] name is: " + attribute + ", element text is: " + reader.getAttributeValue(null, attribute)); 
@@ -246,6 +246,8 @@ public class aggregation {
             System.out.println(e.getMessage());
         }
     }        
+
+        @Override
         
         // Mapper function that takes (key, value) and uses the
         // output object to output data. The reporter object can
@@ -273,6 +275,8 @@ public class aggregation {
     public static class Reduce 
              extends Reducer<Text,Value,Text,Value> {
 
+                @Override
+
         // This function expects a key of type Text (a word from our document, in this case)
         // and a list of values obtained via iterator (a list of IntWritables, in this case).
         public void reduce(Text key, Iterable<Value> values, 
@@ -298,7 +302,7 @@ public class aggregation {
 
             for (int i = 0; i < 11; i++) {
                 if (counters[i] != 0) {
-                    System.out.println("MARKER");
+                    System.out.println("MARKER I");
                     for (int j = 0; j < 10; j++) {
                         rv.setAtr(i, j, rv.getAtr(i,j) / counters[i]);
                     }
@@ -323,6 +327,7 @@ public class aggregation {
         Job job = Job.getInstance(conf);
         // job.setInputFormatClass(XmlInputFormat.class);
         job.setJarByClass(aggregation.class);
+        System.out.println("MARKER");
 
         // Selects mapper/combiner/reducer
         job.setMapperClass(Map.class);
