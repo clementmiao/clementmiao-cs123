@@ -332,8 +332,8 @@ public class aggregation {
         // This says that (k1, v1) should be read from text files 
         // and that (k3, v3) should be written to text files 
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(Text.class);
-        // job.setOutputValueClass(Value.class);
+        // job.setOutputValueClass(Text.class);
+        job.setOutputValueClass(Value.class);
 
         // The paths of these input/output are from application arguments
         FileInputFormat.addInputPath(job, new Path(otherArgs[0]));
