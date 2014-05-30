@@ -101,11 +101,14 @@ public class xmltesting {
     public static void main(String[] args) throws IOException {
         String file_name = args[0];
 
+        file_name = "clusters.txt";
+
         try {
             BufferedReader br = new BufferedReader(new FileReader(file_name));
             String line;
             while ((line = br.readLine()) != null) {
-                parseString(line);
+                // parseString(line);
+                System.out.println(line);
                 //System.out.println(Arrays.deepToString(line_data));
                 // System.out.println(replace(line_data));
             }
