@@ -5,7 +5,10 @@ import java.io.DataOutput;
 import java.io.IOException;
 import java.util.*;
 import java.util.StringTokenizer;
-
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
@@ -33,7 +36,22 @@ public class test {
             // a String object from the Writable, we use toString 
             String line = value.toString();
 
-            context.write(new Text(name), tuple); 
+            String file_name = "clusters.txt";
+
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file_name));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    context.write(new Text(name), new Text(line));
+                }
+                br.close();
+            }
+            
+            catch (IOException e) {
+                System.out.println( e.getMessage() );
+            }
+
+             
         }
     }
 
