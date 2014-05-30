@@ -42,7 +42,7 @@ public class test {
                 BufferedReader br = new BufferedReader(new FileReader(file_name));
                 String line;
                 while ((line = br.readLine()) != null) {
-                    context.write(new Text(name), new Text(line));
+                    context.write(new Text("cluster:"), new Text(line));
                 }
                 br.close();
             }
