@@ -273,7 +273,8 @@ public class aggregation {
 
     
     public static class Reduce 
-             extends Reducer<Text,Value,Text,Value> {
+             // extends Reducer<Text,Value,Text,Value> {
+             extends Reducer<Text,Value,Text,Text> {
 
                 @Override
 
@@ -312,7 +313,7 @@ public class aggregation {
             rv.setPitcher("WE ARE HERE");
             
             // Output the results with the same key as the input
-            context.write(key, rv);
+            context.write(key, new Text("WE ARE HERE"));
         }
     }
 
@@ -339,7 +340,8 @@ public class aggregation {
         // This says that (k1, v1) should be read from text files 
         // and that (k3, v3) should be written to text files 
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(Value.class);
+        job.setOutputValueClass(Text.class);
+        // job.setOutputValueClass(Value.class);
 
         // The paths of these input/output are from application arguments
         FileInputFormat.addInputPath(job, new Path(otherArgs[0]));
