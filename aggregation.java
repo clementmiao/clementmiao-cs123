@@ -76,7 +76,17 @@ public class aggregation {
         }
 
         public String toString() {
-            return "(pitcher: " + this.pitcher + ")"; 
+            String rv = "";
+            rv = rv + this.pitcher;
+            rv = rv + "," + this.total + ",";
+            rv = rv + this.handL + ",";
+            rv = rv + this.handR;
+            for (int i = 0; i < pitches.length; i++) {
+                for (int j = 0; j < pitches[0].length; j++) {
+                    rv = rv + "," + this.pitches[i][j];
+                }
+            }
+            return rv; 
         }
         
         public void setHand(String h) {
