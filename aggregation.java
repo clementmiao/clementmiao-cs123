@@ -217,13 +217,15 @@ public class aggregation {
                                 int index = containsPitcher(currentElement, pitcherList);                                
                                 if ( index == -1) {
                                     pitcher = new Value();
+                                    pitcherList.add(pitcher);
                                     pitcher.setPitcher(currentElement);
                                 } else {
                                     pitcher = pitcherList.get(index);
                                 }
                                 String[] atbat_attributes = {"pitcher", "p_throws"};
                                 for (int i = 0; i < atbat_attributes.length; i++) {
-                                    sort_atbat(atbat_attributes[i], reader, pitcher);    
+                                    pitcher = sort_atbat(atbat_attributes[i], reader, pitcher);
+
                                 }
                             } else if (tag.equals("pitch")) {
                                 String pitch_type = reader.getAttributeValue(null, "pitch_type");
@@ -239,6 +241,7 @@ public class aggregation {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return pitcherList;
     }        
 
         // @Override
