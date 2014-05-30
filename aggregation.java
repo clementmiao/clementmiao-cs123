@@ -268,8 +268,8 @@ public class aggregation {
 
     
     public static class Reduce 
-             // extends Reducer<Text,Value,Text,Value> {
-             extends Reducer<Text,Value,Text,Text> {
+             extends Reducer<Text,Value,Text,Value> {
+             // extends Reducer<Text,Value,Text,Text> {
 
                 // @Override
 
@@ -298,17 +298,17 @@ public class aggregation {
 
             for (int i = 0; i < 11; i++) {
                 if (counters[i] != 0) {
-                    System.out.println("MARKER I");
+                    // System.out.println("MARKER I");
                     for (int j = 0; j < 10; j++) {
                         rv.setAtr(i, j, rv.getAtr(i,j) / counters[i]);
                     }
                 }
             }
 
-            rv.setPitcher("WE ARE HERE");
+            // rv.setPitcher("WE ARE HERE");
             
             // Output the results with the same key as the input
-            context.write(key, new Text("WE ARE HERE"));
+            context.write(key, rv);
         }
     }
 
@@ -329,8 +329,8 @@ public class aggregation {
 
         // Selects mapper/combiner/reducer
         job.setMapperClass(Map.class);
-        // job.setCombinerClass(Reduce.class);
-        // job.setReducerClass(Reduce.class);
+        job.setCombinerClass(Reduce.class);
+        job.setReducerClass(Reduce.class);
 
         // This says that (k1, v1) should be read from text files 
         // and that (k3, v3) should be written to text files 
