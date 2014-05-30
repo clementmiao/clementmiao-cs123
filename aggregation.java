@@ -98,6 +98,10 @@ public class aggregation {
             }
         }
 
+        public void setTotal(int sum) {
+            this.total = sum;
+        }
+
         public void setPitcher(String pitcher) {
             this.pitcher = pitcher;
         }
@@ -305,8 +309,9 @@ public class aggregation {
                     rv.addPitch(i, val.getCol(i));
                 }
             }
-
+            int total = 0;
             for (int i = 0; i < 11; i++) {
+                total += counters[i];
                 if (counters[i] != 0) {
                     // System.out.println("MARKER I");
                     for (int j = 0; j < 10; j++) {
@@ -314,6 +319,9 @@ public class aggregation {
                     }
                 }
             }
+            rv.setTotal(total);
+
+
 
             // rv.setPitcher("WE ARE HERE");
             
