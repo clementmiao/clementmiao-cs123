@@ -136,117 +136,110 @@ public class aggregation {
              // extends Mapper<Object, Text, Text, Value>{
              extends Mapper<Object, Text, Text, Text>{
 
-    //     public static void sort_atbat(String attribute, XMLStreamReader reader, Value pitcher) {
-    //     // System.out.println("[START_ELEMENT] name is: " + reader.getName() + " element text is: " + reader.getAttributeValue(null, attribute)); 
-    //     String att = reader.getAttributeValue(null, attribute);
-    //     if (attribute == "p_throws") {
-    //         pitcher.setHand(att);
-    //         }
-    //     }
+        public static void sort_atbat(String attribute, XMLStreamReader reader, Value pitcher) {
+        // System.out.println("[START_ELEMENT] name is: " + reader.getName() + " element text is: " + reader.getAttributeValue(null, attribute)); 
+        String att = reader.getAttributeValue(null, attribute);
+        if (attribute == "p_throws") {
+            pitcher.setHand(att);
+            }
+        }
 
-    // public static void sort_pitch(String attribute, XMLStreamReader reader, Value pitcher) {
-    //     // System.out.println("[START_ELEMENT] name is: " + attribute + ", element text is: " + reader.getAttributeValue(null, attribute)); 
-    //     String[] pitch_attributes = {"break_angle", "break_length", "break_y", "pfx_x", "pfx_z", "spin_dir", "spin_rate", "start_speed", "x0", "y0", "z0"};
-    //     double[] attr = new double[12];
-    //         for (int i = 0; i < pitch_attributes.length; i++) {
-    //             attr[i] = Double.parseDouble(reader.getAttributeValue(null, pitch_attributes[i]));
-    //         }
-    //     attr[pitch_attributes.length] = 1.0;
-    //     if (attribute.equals("FF") || attribute.equals("FA")) {
-    //         pitcher.addPitch(0, attr);
-    //     } else if (attribute.equals("FT")) {
-    //         pitcher.addPitch(1, attr);
-    //     } else if (attribute.equals("FC")) {
-    //         pitcher.addPitch(2, attr);
-    //     } else if (attribute.equals("SI") || attribute.equals("FS")) {
-    //         pitcher.addPitch(3, attr);
-    //     } else if (attribute.equals("SF")) {
-    //         pitcher.addPitch(4, attr);
-    //     } else if (attribute.equals("SL")) {
-    //         pitcher.addPitch(5, attr);
-    //     } else if (attribute.equals("CH")) {
-    //         pitcher.addPitch(6, attr);
-    //     } else if (attribute.equals("CB") || attribute.equals("CU")) {
-    //         pitcher.addPitch(7, attr);
-    //     } else if (attribute.equals("KC")) {
-    //         pitcher.addPitch(8, attr);
-    //     } else if (attribute.equals("KN")) {
-    //         pitcher.addPitch(9, attr);
-    //     } else if (attribute.equals("EP")) {
-    //         pitcher.addPitch(10, attr);
-    //     } else {
-    //         System.out.println("BALL TYPE NOT FOUND");
-    //     }
-    // }
+    public static void sort_pitch(String attribute, XMLStreamReader reader, Value pitcher) {
+        // System.out.println("[START_ELEMENT] name is: " + attribute + ", element text is: " + reader.getAttributeValue(null, attribute)); 
+        String[] pitch_attributes = {"break_angle", "break_length", "break_y", "pfx_x", "pfx_z", "spin_dir", "spin_rate", "start_speed", "x0", "y0", "z0"};
+        double[] attr = new double[12];
+            for (int i = 0; i < pitch_attributes.length; i++) {
+                attr[i] = Double.parseDouble(reader.getAttributeValue(null, pitch_attributes[i]));
+            }
+        attr[pitch_attributes.length] = 1.0;
+        if (attribute.equals("FF") || attribute.equals("FA")) {
+            pitcher.addPitch(0, attr);
+        } else if (attribute.equals("FT")) {
+            pitcher.addPitch(1, attr);
+        } else if (attribute.equals("FC")) {
+            pitcher.addPitch(2, attr);
+        } else if (attribute.equals("SI") || attribute.equals("FS")) {
+            pitcher.addPitch(3, attr);
+        } else if (attribute.equals("SF")) {
+            pitcher.addPitch(4, attr);
+        } else if (attribute.equals("SL")) {
+            pitcher.addPitch(5, attr);
+        } else if (attribute.equals("CH")) {
+            pitcher.addPitch(6, attr);
+        } else if (attribute.equals("CB") || attribute.equals("CU")) {
+            pitcher.addPitch(7, attr);
+        } else if (attribute.equals("KC")) {
+            pitcher.addPitch(8, attr);
+        } else if (attribute.equals("KN")) {
+            pitcher.addPitch(9, attr);
+        } else if (attribute.equals("EP")) {
+            pitcher.addPitch(10, attr);
+        } else {
+            System.out.println("BALL TYPE NOT FOUND");
+        }
+    }
 
-    // public static int containsPitcher(String pitcher, ArrayList<Value> pitcherList) {
-    //     int rv = -1;
-    //     for (int i = 0; i < pitcherList.size(); i++) {
-    //         if (pitcherList.get(i).getPitcher() == pitcher) {
-    //             return i;
-    //         }
-    //     }
-    //     return rv;
-    // }
+    public static int containsPitcher(String pitcher, ArrayList<Value> pitcherList) {
+        int rv = -1;
+        for (int i = 0; i < pitcherList.size(); i++) {
+            if (pitcherList.get(i).getPitcher() == pitcher) {
+                return i;
+            }
+        }
+        return rv;
+    }
 
-    // public static void parseString(String line, ArrayList<Value> pitcherList) {
-    //     try {
-    //         XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(new ByteArrayInputStream(line.getBytes()));
-    //         String propertyName = "";
-    //         String propertyValue = "";
-    //         String currentElement = "";
-    //         Value pitcher = new Value();
-    //         while (reader.hasNext()) {
-    //             int code = reader.next();
-    //             switch (code) {
-    //                 case XMLStreamConstants.END_ELEMENT:
-    //                     if (reader.getName().toString() == "atbat") {
-    //                         currentElement = "";
-    //                     }
-    //                     // System.out.println("[END_ELEMENT] closing tag is: " + reader.getName());
-    //                     break;
-    //                 case XMLStreamConstants.START_ELEMENT:
-    //                     String tag = reader.getName().toString();
-    //                     if (tag.equals("atbat")) {
-    //                         if (currentElement.equals("")) {
-    //                                 currentElement = reader.getAttributeValue(null, "pitcher");
-    //                             } else {
-    //                                 System.out.println("ERROR ABORT");
-    //                             }
+    public static ArrayList<Value> parseString(String line, ArrayList<Value> pitcherList) {
+        try {
+            XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(new ByteArrayInputStream(line.getBytes()));
+            String propertyName = "";
+            String propertyValue = "";
+            String currentElement = "";
+            Value pitcher = new Value();
+            while (reader.hasNext()) {
+                int code = reader.next();
+                switch (code) {
+                    case XMLStreamConstants.END_ELEMENT:
+                        if (reader.getName().toString() == "atbat") {
+                            currentElement = "";
+                        }
+                        // System.out.println("[END_ELEMENT] closing tag is: " + reader.getName());
+                        break;
+                    case XMLStreamConstants.START_ELEMENT:
+                        String tag = reader.getName().toString();
+                        if (tag.equals("atbat")) {
+                            if (currentElement.equals("")) {
+                                    currentElement = reader.getAttributeValue(null, "pitcher");
+                                } else {
+                                    System.out.println("ERROR ABORT");
+                                }
                                 
-    //                             int index = containsPitcher(currentElement, pitcherList);                                
-    //                             if ( index == -1) {
-    //                                 pitcher = new Value();
-    //                                 pitcher.setPitcher(currentElement);
-    //                             } else {
-    //                                 pitcher = pitcherList.get(index);
-    //                             }
-    //                             String[] atbat_attributes = {"pitcher", "p_throws"};
-    //                             for (int i = 0; i < atbat_attributes.length; i++) {
-    //                                 sort_atbat(atbat_attributes[i], reader, pitcher);    
-    //                             }
-    //                         } else if (tag.equals("pitch")) {
-    //                             String pitch_type = reader.getAttributeValue(null, "pitch_type");
-    //                             sort_pitch(pitch_type, reader, pitcher);    
-    //                         }
+                                int index = containsPitcher(currentElement, pitcherList);                                
+                                if ( index == -1) {
+                                    pitcher = new Value();
+                                    pitcher.setPitcher(currentElement);
+                                } else {
+                                    pitcher = pitcherList.get(index);
+                                }
+                                String[] atbat_attributes = {"pitcher", "p_throws"};
+                                for (int i = 0; i < atbat_attributes.length; i++) {
+                                    sort_atbat(atbat_attributes[i], reader, pitcher);    
+                                }
+                            } else if (tag.equals("pitch")) {
+                                String pitch_type = reader.getAttributeValue(null, "pitch_type");
+                                sort_pitch(pitch_type, reader, pitcher);    
+                            }
                         
                         
-    //                     break;
-    //                     // if (reader.getName().toString() == "atbat") {
-    //                         // System.out.println("[START_ELEMENT] name is: " + reader.getName() + " element text is: " + reader.getAttributeValue(null, "pitcher") + "; " + reader.getAttributeValue(null, "p_throws"));    
-    //                     // }
-                        
-                        
-    //                     // System.out.println("reader text is: " + reader.getText());    
-
-    //             }
+                        break;
+                }
                 
-    //         }
-    //         reader.close();
-    //     } catch (Exception e) {
-    //         System.out.println(e.getMessage());
-    //     }
-    // }        
+            }
+            reader.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }        
 
         // @Override
         
@@ -260,14 +253,13 @@ public class aggregation {
             // of the file (of type Object) and the value will a Writable 
             // that contains one line from one input file. To extract 
             // a String object from the Writable, we use toString 
-            // String document = value.toString();
-            // ArrayList<Value> pitcherList = new ArrayList<Value>();
-            // parseString(document, pitcherList);
+            String document = value.toString();
+            ArrayList<Value> pitcherList = new ArrayList<Value>();
+            pitcherList = parseString(document, pitcherList);
 
-            // for (int i = 0; i < pitcherList.size(); i++) {
-            //     context.write(new Text(pitcherList.get(i).getPitcher()), pitcherList.get(i));
-            // }
-            context.write(new Text("CHARLIE"), new Text("I AM HERE"));
+            for (int i = 0; i < pitcherList.size(); i++) {
+                context.write(new Text("pitcher is: " + pitcherList.get(i).getPitcher()), pitcherList.get(i));
+            }
         }
     }
 
@@ -276,7 +268,7 @@ public class aggregation {
              // extends Reducer<Text,Value,Text,Value> {
              extends Reducer<Text,Value,Text,Text> {
 
-                @Override
+                // @Override
 
         // This function expects a key of type Text (a word from our document, in this case)
         // and a list of values obtained via iterator (a list of IntWritables, in this case).
