@@ -26,7 +26,7 @@ import javax.xml.stream.events.*;
 import javax.xml.stream.util.*;
 import javax.xml.namespace.QName;
 
-public static class matchup {
+public class matchup {
 
     public static class Batter implements Writable {
         private int total;
@@ -34,7 +34,10 @@ public static class matchup {
         private int[] data;
         
 
-        public Batter(){}
+        public Batter(){
+            total = 0;
+            batter = "";    
+        }
 
         public Batter(int len){
             total = 0;
@@ -74,6 +77,10 @@ public static class matchup {
 
         public void setTotal(int sum) {
             this.total = sum;
+        }
+        
+        public void incrementTotal(int increment) {
+            this.total += increment;
         }
 
         public void setBatter(String batter) {
@@ -171,6 +178,7 @@ public static class matchup {
                 }
                 else{
                     batter.addData(2*index + 1, 1);
+                    batter.incrementTotal(1);
                     if(!att.toLowerCase().contains("out") && !att.contains("DP") && !att.contains("Error")){//if the batter gets a hit
                         batter.addData(2*index, 1);
                     }
@@ -203,7 +211,7 @@ public static class matchup {
                                 int index = containsBatter(currentElement, batterList);                                
                                 if ( index == -1) {
                                     batter = new Batter();
-                                    int size = clusters.size();
+                                    int size = clusters.size() * 2;
                                     batter.initArray(size);
                                     batterList.add(batter);
                                     batter.setBatter(currentElement);
@@ -269,7 +277,7 @@ public static class matchup {
                 for (int i = 0; i < data.length; i++) {
                     rv.addData(i, data[i]);
                 }
-                // something about adding to the total
+                rv.incrementTotal(val.getTotal());
             }
             
             
