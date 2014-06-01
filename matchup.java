@@ -245,7 +245,7 @@ public class matchup {
 
     
     public static class Reduce 
-             extends Reducer<Text,Value,Text,Value> {
+             extends Reducer<Text,Batter,Text,Batter> {
              // extends Reducer<Text,Value,Text,Text> {
 
                 // @Override
