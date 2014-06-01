@@ -206,7 +206,7 @@ public class matchup {
                     case XMLStreamConstants.START_ELEMENT:
                         String tag = reader.getName().toString();
                         if (tag.equals("atbat")) {
-                            batte = new Batter();
+                            batter = new Batter();
                             // batter.setBatter(currentElement);
                             batterList.add(batter);
                             if (currentElement.equals("")) {
