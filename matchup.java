@@ -211,8 +211,8 @@ public class matchup {
                                 int index = containsBatter(currentElement, batterList);                                
                                 if ( index == -1) {
                                     batter = new Batter();
-                                    // int size = clusters.size() * 2;
-                                    // batter.initArray(size);
+                                    int size = clusters.size() * 2;
+                                    batter.initArray(size);
                                     batter.setBatter(currentElement);
                                     batterList.add(batter);
                                 } else {
