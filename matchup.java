@@ -171,7 +171,6 @@ public class matchup {
                     }
                 }
                 if(index == -1) {
-                    LOG.info("Pitcher not found");
                 }
                 else{
                     batter.addData(2*index + 1, 1);
