@@ -254,7 +254,7 @@ public class matchup {
             parseString(document, batterList);
             // LOG.info("log thing works");
             // context.write(new Text("-1"), new Text(Integer.toString(batterList.size())));
-            context.write(new Text("-1"), new Text(document.substring(0, 50)));
+            context.write(new Text(Integer.toString(batterList.size())), new Text(document.substring(0, 250)));
             // for (int i = 0; i < batterList.size(); i++) {
             //     // LOG.info("batterlist is not empty");
             //     // context.write(new Text(Integer.toString(i)), new Text(document));
@@ -322,7 +322,7 @@ public class matchup {
         // This says that (k1, v1) should be read from text files 
         // and that (k3, v3) should be written to text files 
         job.setOutputKeyClass(Text.class);
-        // job.setOutputValueClass(Text.class);
+        job.setOutputValueClass(Text.class);
         // job.setOutputValueClass(Batter.class);
 
         // The paths of these input/output are from application arguments
