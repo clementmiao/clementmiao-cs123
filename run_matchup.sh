@@ -13,6 +13,8 @@ hdfs dfs -rm -r -f output_matchups
 
 RES_FILE=results_matchups.txt
 
+sh compile.sh matchup matchup.java
+
 # Run Hadoop
 hadoop jar matchup.jar org.myorg.matchup input/flat_games output_matchups
 
