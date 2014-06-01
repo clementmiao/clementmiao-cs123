@@ -169,7 +169,7 @@ public class matchup {
                 }
                 else{
                     batter.addData(2*index + 1, 1)
-                    if(!att.toLowerCase().contains("out") && !att.contains("DP") && !att.contains("Error")){//if the batter gets a hit
+                    if(!att.toLowerCase().contains("out") && !att.contains("DP") && !att.contains("Error")){//if the batter does get a hit
                         batter.addData(2*index, 1);
                     }
                 }
