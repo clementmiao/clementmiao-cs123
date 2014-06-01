@@ -251,10 +251,11 @@ public class matchup {
             String document = value.toString();
             ArrayList<Batter> batterList = new ArrayList<Batter>();
             batterList = parseString(document, batterList);
-            LOG.info("log thing works");
+            // LOG.info("log thing works");
+            context.write(new Text("-1"), new Text(document));
             for (int i = 0; i < batterList.size(); i++) {
-                LOG.info("batterlist is not empty");
-                context.write(new Text(Integer.toString(i)), new Text(""));
+                // LOG.info("batterlist is not empty");
+                context.write(new Text(Integer.toString(i)), new Text(document));
                 // context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
             }
         }
