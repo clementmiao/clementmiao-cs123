@@ -6,7 +6,7 @@ import pickle
 
 def get_data(file_name):
     f = open(file_name, "r+")   
-    data = json.load(f)
+    data = json.load(f)4
     f.close()
     return data
 
