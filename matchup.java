@@ -25,6 +25,7 @@ import java.io.*;
 import javax.xml.stream.events.*;
 import javax.xml.stream.util.*;
 import javax.xml.namespace.QName;
+import org.apache.commons.logging.LogFactory;
 
 public class matchup {
 
@@ -117,6 +118,8 @@ public class matchup {
     public static class Map 
              extends Mapper<Object, Text, Text, Batter>{
              // extends Mapper<Object, Text, Text, Text>{
+             public static final log LOG = LogFactory.getLog(MyMapper.class)
+             
 
             public static ArrayList<String> clusters;
 
@@ -174,7 +177,7 @@ public class matchup {
                     }
                 }
                 if(index == -1) {
-                    System.out.println("Pitcher not found");
+                    LOG.info("Pitcher not found");
                 }
                 else{
                     batter.addData(2*index + 1, 1);
@@ -205,7 +208,7 @@ public class matchup {
                             if (currentElement.equals("")) {
                                     currentElement = reader.getAttributeValue(null, "batter");
                                 } else {
-                                    System.out.println("ERROR ABORT");
+                                    LOG.("ERROR ABORT");
                                 }
                                 
                                 int index = containsBatter(currentElement, batterList);                                
@@ -247,8 +250,9 @@ public class matchup {
             String document = value.toString();
             ArrayList<Batter> batterList = new ArrayList<Batter>();
             batterList = parseString(document, batterList);
-
+            Log.info("log thing works");
             for (int i = 0; i < batterList.size(); i++) {
+                Log.info("batterlist is not empty");
                 context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
             }
         }
