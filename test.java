@@ -69,8 +69,7 @@ public class test {
             // of the file (of type Object) and the value will a Writable 
             // that contains one line from one input file. To extract 
             // a String object from the Writable, we use toString 
-            String useless_line = value.toString();
-
+            String useless_line = value.toString(); 
             for (int i = 0; i < clusters.size(); i++) {
                 context.write(new Text("cluster is:"), new Text(clusters.get(i)));
             }
@@ -79,44 +78,6 @@ public class test {
         }
     }
 
-    // public static class Combiner
-    //          extends Reducer<Text,MyWritable,Text,MyWritable> {
-    //     public void reduce(Text key, Iterable<MyWritable> values,
-    //                                          Context context
-    //                                          ) throws IOException, InterruptedException {
-    //         int counter1 = 0;
-    //         int counter2 = 0;
-    //         for (MyWritable val : values) {
-    //             counter1 += val.getCounter1();
-    //             counter2 += val.getCounter2();
-    //         }
-    //         //output
-    //         context.write(key, new MyWritable(counter1, counter2));
-    //     }
-             
-    // }
-    
-    // public static class Reduce 
-    //          extends Reducer<Text,MyWritable,Text,MyWritable> {
-
-    //     // This function expects a key of type Text (a word from our document, in this case)
-    //     // and a list of values obtained via iterator (a list of IntWritables, in this case).
-    //     public void reduce(Text key, Iterable<MyWritable> values, 
-    //                                          Context context
-    //                                          ) throws IOException, InterruptedException {
-    //         int counter1 = 0;
-    //         int counter2 = 0;
-    //         for (MyWritable val : values) {
-    //             counter1 += val.getCounter1();
-    //             counter2 += val.getCounter2();
-    //         }
-            
-    //         // Output the results with the same key as the input
-    //         if (counter1 > 0 && counter2 >0) {
-    //             context.write(key, new MyWritable(counter1, counter2));    
-    //         }
-    //     }
-    // }
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();

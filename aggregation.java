@@ -153,9 +153,7 @@ public class aggregation {
         public static void sort_atbat(String attribute, XMLStreamReader reader, Value pitcher) {
         // System.out.println("[START_ELEMENT] name is: " + reader.getName() + " element text is: " + reader.getAttributeValue(null, attribute)); 
         String att = reader.getAttributeValue(null, attribute);
-        if (attribute == "p_throws") {
-            pitcher.setHand(att);
-            }
+        pitcher.setHand(att);
         }
 
     public static void sort_pitch(String attribute, XMLStreamReader reader, Value pitcher) {
@@ -196,7 +194,7 @@ public class aggregation {
     public static int containsPitcher(String pitcher, ArrayList<Value> pitcherList) {
         int rv = -1;
         for (int i = 0; i < pitcherList.size(); i++) {
-            if (pitcherList.get(i).getPitcher() == pitcher) {
+            if (pitcherList.get(i).getPitcher().equals(pitcher)) {
                 return i;
             }
         }
@@ -236,11 +234,7 @@ public class aggregation {
                                 } else {
                                     pitcher = pitcherList.get(index);
                                 }
-                                String[] atbat_attributes = {"pitcher", "p_throws"};
-                                for (int i = 0; i < atbat_attributes.length; i++) {
-                                    sort_atbat(atbat_attributes[i], reader, pitcher);
-
-                                }
+                                sort_atbat("p_throws", reader, pitcher);
                             } else if (tag.equals("pitch")) {
                                 String pitch_type = reader.getAttributeValue(null, "pitch_type");
                                 sort_pitch(pitch_type, reader, pitcher);    

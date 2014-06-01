@@ -5,7 +5,11 @@ import java.io.DataOutput;
 import java.io.IOException;
 import java.util.*;
 import java.util.StringTokenizer;
-
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
@@ -15,11 +19,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
-// import org.apache.mahout;
 import javax.xml.*;
-// import java.io.IOException;
-// import java.io.FileReader;
-// import java.io.BufferedReader;
 import javax.xml.stream.*;
 import java.io.*;
 import javax.xml.stream.events.*;
@@ -30,119 +30,81 @@ public class matchup {
 
     public static class Batter implements Writable {
         private int total;
-        private int handL;
-        private int handR;
-        private String pitcher;
-        private double[][] pitches = new double[11][12];
+        private String batter;
+        private int[] data;
+        // private ArrayList<int> data = new ArrayList<int>();
         
-        // public value(){};
-        
-        public Batter(){
+
+        public Batter(){}
+
+        public Batter(int len){
             total = 0;
-            handL = 0;
-            handR = 0;
-            pitcher = "";
-            for(int i = 0; i < pitches.length; i++) {
-                for(int j = 0; j < pitches[0].length; j++) {
-                    pitches[i][j] = 0.0;
-                }
-            }
+            batter = "";
+            data = new int[len];
         }
 
         public void write(DataOutput out) throws IOException {
             out.writeInt(total);
-            out.writeInt(handL);
-            out.writeInt(handR);
-            out.writeUTF(pitcher);
-            for(int i = 0; i < pitches.length; i++) {
-                for(int j = 0; j < pitches[0].length; j++) {
-                    out.writeDouble(pitches[i][j]);
-                }
+            out.writeUTF(batter);
+            out.writeInt(data.length);
+            for(int i = 0; i < data.length; i++) {
+                out.writeInt(data[i]);    
             }
+
 
         }
 
         public void readFields(DataInput in) throws IOException {
             total = in.readInt();
-            handL = in.readInt();
-            handR = in.readInt();
             pitcher = in.readUTF();
-            pitches = new double[11][12];
-            for (int i = 0; i < 11; i++) {
-                for (int j = 0; j < 12; j++) {
-                    pitches[i][j] = in.readDouble();
-                }
+            int len = in.readInt();
+            data = new int[len];
+            for (int i = 0; i < len; i++) {
+                data[i] = (in.readInt());
             }
         }
 
         public String toString() {
             String rv = "";
-            // rv = rv + this.pitcher;
-            rv = rv + "," + this.total + ",";
-            rv = rv + this.handL + ",";
-            rv = rv + this.handR;
-            for (int i = 0; i < pitches.length; i++) {
-                for (int j = 0; j < pitches[0].length; j++) {
-                    rv = rv + "," + this.pitches[i][j];
-                }
+            rv = rv + total;
+            for (int i = 0; i < data.length; i++) {
+                rv = rv + "," + data[i];
             }
             return rv; 
-        }
-        
-        public void setHand(String h) {
-            if(h.equals("L")){
-                this.handL = 1;
-            }
-            else {
-                this.handR = 1;
-            }
         }
 
         public void setTotal(int sum) {
             this.total = sum;
         }
 
-        public void setPitcher(String pitcher) {
-            this.pitcher = pitcher;
+        public void setBatter(String batter) {
+            this.batter = batter;
         }
-        
-        public void addPitch(int pitch, double[] attr) {
-            for(int i = 0; i < attr.length; i++){
-                this.pitches[pitch][i] += attr[i];
+
+        public void initArray(int n) {
+            if (data.length == 0) {
+                data = new int[n];
+                for (int i = 0; i < n; i++) {
+                    data[i] = 0;
+                }    
             }
-            this.total++;
+            ;
         }
-        
-        public double getAtr(int pitch, int atr) {
-            return this.pitches[pitch][atr];
-        }
-
-        public void setAtr(int pitch, int atr, double value) {
-            this.pitches[pitch][atr] = value;
-        }
-
-        public double[] getCol(int i) {
-            return this.pitches[i];
-        }
-        
-        public double[][] getPitches(){
-            return this.pitches;
-        }
-        
+                
         public int getTotal(){
             return this.total;
         }
         
-        public int getRight() {
-            return handR;
+        public String getBatter() {
+            return this.batter;
         }
 
-        public int getLeft() {
-            return handL;
-        }      
+        public int[] getData() {
+            return this.data;
+        }
 
-        public String getPitcher() {
-            return this.pitcher;
+        public void addData(int position, int value) {
+            data[i] += value;
         }
     }
 
@@ -150,30 +112,54 @@ public class matchup {
              extends Mapper<Object, Text, Text, Batter>{
              // extends Mapper<Object, Text, Text, Text>{
 
-        public static void sort_atbat(String attribute, XMLStreamReader reader, Value pitcher) {
-        String att = reader.getAttributeValue(null, attribute);
-        if (attribute == "p_throws") {
-            pitcher.setHand(att);
-            }
-        }
+            public ArrayList<String> clusters;
 
-    public static int containsBatter(String batter, ArrayList<Batter> batterList) {
-        int rv = -1;
-        for (int i = 0; i < batterList.size(); i++) {
-            if (batterList.get(i).getBatter() == batter) {
-                return i;
+            public void populate(Context context) {
+                FSDataInputStream in = null;
+                BufferedReader br = null;
+                try {
+                    FileSystem fs = FileSystem.get(context.getConfiguration());
+                    Path path = new Path("clusters.txt");
+                    in = fs.open(path);
+                    br = new BufferedReader(new InputStreamReader(in));
+                } catch (FileNotFoundException e1) {
+                    e1.printStackTrace();
+                    System.out.println("read from distributed cache: file not found!");
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                    System.out.println("read from distributed cache: IO Exception");
+                }
+                try {
+                    clusters = new ArrayList<String>();
+                    String line = "";
+                    while ((line = br.readLine()) != null) {
+                        clusters.add(line);
+                    }
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                    System.out.println("read from distributed cache: read length and instances");
+                }    
             }
-        }
-        return rv;
-    }
 
-    public static ArrayList<Batter> parseString(String line, ArrayList<Batter> pitcherList) {
+            public void setup(Context context) {
+                populate(context);
+            }
+
+            public static int containsBatter(String batter, ArrayList<Batter> batterList) {
+                int rv = -1;
+                for (int i = 0; i < batterList.size(); i++) {
+                    if (batterList.get(i).getBatter().equals(batter)) {
+                        return i;
+                    }
+                }
+                return rv;
+            }
+
+    public static ArrayList<Batter> parseString(String line, ArrayList<Batter> batterList) {
         try {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(new ByteArrayInputStream(line.getBytes()));
-            String propertyName = "";
-            String propertyValue = "";
             String currentElement = "";
-            Value pitcher = new Value();
+            Batter batter = new Batter();
             while (reader.hasNext()) {
                 int code = reader.next();
                 switch (code) {
@@ -181,36 +167,26 @@ public class matchup {
                         if (reader.getName().toString() == "atbat") {
                             currentElement = "";
                         }
-                        // System.out.println("[END_ELEMENT] closing tag is: " + reader.getName());
                         break;
                     case XMLStreamConstants.START_ELEMENT:
                         String tag = reader.getName().toString();
                         if (tag.equals("atbat")) {
                             if (currentElement.equals("")) {
-                                    currentElement = reader.getAttributeValue(null, "pitcher");
+                                    currentElement = reader.getAttributeValue(null, "batter");
                                 } else {
                                     System.out.println("ERROR ABORT");
                                 }
                                 
-                                int index = containsPitcher(currentElement, pitcherList);                                
+                                int index = containsBatter(currentElement, batterList);                                
                                 if ( index == -1) {
-                                    pitcher = new Value();
-                                    pitcherList.add(pitcher);
-                                    pitcher.setPitcher(currentElement);
+                                    batter = new Batter();
+                                    batterList.add(batter);
+                                    batter.setBatter(currentElement);
                                 } else {
-                                    pitcher = pitcherList.get(index);
+                                    batter = batterList.get(index);
                                 }
-                                String[] atbat_attributes = {"pitcher", "p_throws"};
-                                for (int i = 0; i < atbat_attributes.length; i++) {
-                                    sort_atbat(atbat_attributes[i], reader, pitcher);
-
-                                }
-                            } else if (tag.equals("pitch")) {
-                                String pitch_type = reader.getAttributeValue(null, "pitch_type");
-                                sort_pitch(pitch_type, reader, pitcher);    
+                                    sort_atbat("event", reader, batter);
                             }
-                        
-                        
                         break;
                 }
                 
@@ -219,7 +195,7 @@ public class matchup {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return pitcherList;
+        return batterList;
     }        
 
         // @Override
@@ -235,11 +211,11 @@ public class matchup {
             // that contains one line from one input file. To extract 
             // a String object from the Writable, we use toString 
             String document = value.toString();
-            ArrayList<Value> pitcherList = new ArrayList<Value>();
-            pitcherList = parseString(document, pitcherList);
+            ArrayList<Batter> batterList = new ArrayList<Batter>();
+            batterList = parseString(document, batterList);
 
-            for (int i = 0; i < pitcherList.size(); i++) {
-                context.write(new Text(pitcherList.get(i).getPitcher()), pitcherList.get(i));
+            for (int i = 0; i < batterList.size(); i++) {
+                context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
             }
         }
     }
@@ -256,35 +232,21 @@ public class matchup {
         public void reduce(Text key, Iterable<Value> values, 
                                              Context context
                                              ) throws IOException, InterruptedException {
-            Value rv = new Value();
-            int counters[] = new int[11];
-
-            for (Value val : values) {
-                if(rv.getRight() == rv.getLeft()){
-                    if (val.getRight() == 1) {
-                        rv.setHand("R");
-                    } else {
-                        rv.setHand("L");
-                    }
-                    rv.setPitcher(val.getPitcher());
-                }
-                for (int i = 0; i < 11; i++) {
-                    counters[i] += val.getAtr(i, 11);
-                    rv.addPitch(i, val.getCol(i));
-                }
-            }
+            Batter rv = new Batter();
             int total = 0;
-            for (int i = 0; i < 11; i++) {
-                total += counters[i];
-                if (counters[i] != 0) {
-                    // System.out.println("MARKER I");
-                    for (int j = 0; j < 10; j++) {
-                        rv.setAtr(i, j, rv.getAtr(i,j) / counters[i]);
-                    }
+            for (Value val : values) {
+                int[] data = val.getData();
+                if (rv.getTotal() == 0) {
+                    rv.initArray(data.length);
+                    rv.setBatter(val.getBatter());
                 }
+                for (int i = 0; i < data.length; i++) {
+                    rv.addData(i, data[i]);
+                }
+                // something about adding to the total
             }
-            rv.setTotal(total);2
-
+            
+            
 
 
             // rv.setPitcher("WE ARE HERE");
