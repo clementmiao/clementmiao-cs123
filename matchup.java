@@ -122,7 +122,6 @@ public class matchup {
              public static final Log LOG = LogFactory.getLog(Map.class);
              
             public static ArrayList<String> clusters;
-            public static ArrayList<Batter> batterList = new ArrayList<Batter>();
 
             public void populate(Context context) {
                 FSDataInputStream in = null;
@@ -250,6 +249,7 @@ public class matchup {
             // that contains one line from one input file. To extract 
             // a String object from the Writable, we use toString 
             String document = value.toString();
+            ArrayList<Batter> batterList = new ArrayList<Batter>();
             // batterList = parseString(document, batterList);
             parseString(document, batterList);
             // LOG.info("log thing works");
