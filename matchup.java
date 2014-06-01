@@ -168,7 +168,7 @@ public class matchup {
                     System.out.println("Pitcher not found");
                 }
                 else{
-                    batter.addData(2*index + 1, 1)
+                    batter.addData(2*index + 1, 1);
                     if(!att.toLowerCase().contains("out") && !att.contains("DP") && !att.contains("Error")){//if the batter gets a hit
                         batter.addData(2*index, 1);
                     }
