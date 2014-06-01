@@ -121,7 +121,6 @@ public class matchup {
              // extends Mapper<Object, Text, Text, Text>{
              public static final Log LOG = LogFactory.getLog(Map.class);
              
-
             public static ArrayList<String> clusters;
 
             public void populate(Context context) {
@@ -190,7 +189,8 @@ public class matchup {
                 
             }
 
-    public static ArrayList<Batter> parseString(String line, ArrayList<Batter> batterList) {
+    // public static ArrayList<Batter> parseString(String line, ArrayList<Batter> batterList) {
+    public static void parseString(String line, ArrayList<Batter> batterList) {
         try {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(new ByteArrayInputStream(line.getBytes()));
             String currentElement = "";
@@ -233,7 +233,7 @@ public class matchup {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return batterList;
+        // return batterList;
     }        
 
         // @Override
@@ -250,7 +250,8 @@ public class matchup {
             // a String object from the Writable, we use toString 
             String document = value.toString();
             ArrayList<Batter> batterList = new ArrayList<Batter>();
-            batterList = parseString(document, batterList);
+            // batterList = parseString(document, batterList);
+            parseString(document, batterList);
             // LOG.info("log thing works");
             // context.write(new Text("-1"), new Text(Integer.toString(batterList.size())));
             for (int i = 0; i < batterList.size(); i++) {
@@ -320,8 +321,8 @@ public class matchup {
         // This says that (k1, v1) should be read from text files 
         // and that (k3, v3) should be written to text files 
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(Text.class);
-        // job.setOutputValueClass(Batter.class);
+        // job.setOutputValueClass(Text.class);
+        job.setOutputValueClass(Batter.class);
 
         // The paths of these input/output are from application arguments
         FileInputFormat.addInputPath(job, new Path(otherArgs[0]));

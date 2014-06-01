@@ -115,7 +115,7 @@ public class xmltesting {
                 return rv;
         }
 
-    public static ArrayList<Batter> parseString(String line, ArrayList<Batter> batterList) {
+    public static void parseString(String line, ArrayList<Batter> batterList) {
         try {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(new ByteArrayInputStream(line.getBytes()));
             String currentElement = "";
@@ -171,7 +171,7 @@ public class xmltesting {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return batterList;    
+        // return batterList;    
     }
 
     public static void main(String[] args) throws IOException {
@@ -185,7 +185,7 @@ public class xmltesting {
             while ((line = br.readLine()) != null) {
                 // String document = value.toString();
                 ArrayList<Batter> batterList = new ArrayList<Batter>();
-                batterList = parseString(line, batterList);
+                parseString(line, batterList);
                 for (int i = 0; i < batterList.size(); i++) {
                     String element = batterList.get(i).getBatter().trim();
                     if (element.equals("")) {
