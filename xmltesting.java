@@ -119,7 +119,7 @@ public class xmltesting {
         try {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(new ByteArrayInputStream(line.getBytes()));
             String currentElement = "";
-            Batter batter = new Batter();
+            Batter batter;
             while (reader.hasNext()) {
                 int code = reader.next();
                 switch (code) {

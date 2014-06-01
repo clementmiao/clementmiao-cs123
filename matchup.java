@@ -194,7 +194,7 @@ public class matchup {
         try {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(new ByteArrayInputStream(line.getBytes()));
             String currentElement = "";
-            Batter batter = new Batter();
+            Batter batter;
             while (reader.hasNext()) {
                 int code = reader.next();
                 switch (code) {
@@ -206,9 +206,9 @@ public class matchup {
                     case XMLStreamConstants.START_ELEMENT:
                         String tag = reader.getName().toString();
                         if (tag.equals("atbat")) {
-                            batter = new Batter();
+                            Batter new_batter = new Batter();
                             // batter.setBatter(currentElement);
-                            batterList.add(batter);
+                            batterList.add(new_batter);
                             if (currentElement.equals("")) {
                                 currentElement = reader.getAttributeValue(null, "batter");
                             }
