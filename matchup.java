@@ -118,7 +118,7 @@ public class matchup {
     public static class Map 
              extends Mapper<Object, Text, Text, Batter>{
              // extends Mapper<Object, Text, Text, Text>{
-             public static final log LOG = LogFactory.getLog(MyMapper.class)
+             public static final log LOG = LogFactory.getLog(MyMapper.class);
              
 
             public static ArrayList<String> clusters;
@@ -208,7 +208,7 @@ public class matchup {
                             if (currentElement.equals("")) {
                                     currentElement = reader.getAttributeValue(null, "batter");
                                 } else {
-                                    LOG.("ERROR ABORT");
+                                    LOG.info("ERROR ABORT");
                                 }
                                 
                                 int index = containsBatter(currentElement, batterList);                                
