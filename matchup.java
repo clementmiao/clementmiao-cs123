@@ -118,7 +118,7 @@ public class matchup {
     public static class Map 
              extends Mapper<Object, Text, Text, Batter>{
              // extends Mapper<Object, Text, Text, Text>{
-             public static final log LOG = LogFactory.getLog(Map.class);
+             public static final Log LOG = LogFactory.getLog(Map.class);
              
 
             public static ArrayList<String> clusters;
@@ -250,9 +250,9 @@ public class matchup {
             String document = value.toString();
             ArrayList<Batter> batterList = new ArrayList<Batter>();
             batterList = parseString(document, batterList);
-            Log.info("log thing works");
+            LOG.info("log thing works");
             for (int i = 0; i < batterList.size(); i++) {
-                Log.info("batterlist is not empty");
+                LOG.info("batterlist is not empty");
                 context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
             }
         }
