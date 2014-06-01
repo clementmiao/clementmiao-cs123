@@ -252,7 +252,7 @@ public class matchup {
             ArrayList<Batter> batterList = new ArrayList<Batter>();
             batterList = parseString(document, batterList);
             // LOG.info("log thing works");
-            context.write(new Text("-1"), new Text(document));
+            context.write(new Text("-1"), new Text(Integer.toString(batterlist.size())));
             for (int i = 0; i < batterList.size(); i++) {
                 // LOG.info("batterlist is not empty");
                 context.write(new Text(Integer.toString(i)), new Text(document));
