@@ -206,9 +206,9 @@ public class matchup {
                     case XMLStreamConstants.START_ELEMENT:
                         String tag = reader.getName().toString();
                         if (tag.equals("atbat")) {
-                            Batter new_batter = new Batter();
+                            // batter = new Batter();
                             // batter.setBatter(currentElement);
-                            batterList.add(new_batter);
+                            // batterList.add(batter);
                             if (currentElement.equals("")) {
                                 currentElement = reader.getAttributeValue(null, "batter");
                             }
@@ -217,8 +217,8 @@ public class matchup {
                                     batter = new Batter();
                                     int size = clusters.size() * 2;
                                     batter.initArray(size);
-                                    batterList.add(batter);
                                     batter.setBatter(currentElement);
+                                    batterList.add(batter);
                                 } else {
                                     batter = batterList.get(index);
                                 }
