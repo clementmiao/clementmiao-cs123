@@ -25,6 +25,7 @@ import java.io.*;
 import javax.xml.stream.events.*;
 import javax.xml.stream.util.*;
 import javax.xml.namespace.QName;
+import org.apache.commons.logging.*;
 import org.apache.commons.logging.LogFactory;
 
 public class matchup {
@@ -118,7 +119,7 @@ public class matchup {
     public static class Map 
              extends Mapper<Object, Text, Text, Batter>{
              // extends Mapper<Object, Text, Text, Text>{
-             public static final log LOG = LogFactory.getLog(Map.class);
+             public static final Log LOG = LogFactory.getLog(Map.class);
              
 
             public static ArrayList<String> clusters;

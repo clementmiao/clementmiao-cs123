@@ -25,6 +25,7 @@ import java.io.*;
 import javax.xml.stream.events.*;
 import javax.xml.stream.util.*;
 import javax.xml.namespace.QName;
+import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 public class matchup {
