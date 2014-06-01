@@ -88,12 +88,10 @@ public class matchup {
         }
 
         public void initArray(int n) {
-            if (data.length == 0) {
                 data = new int[n];
                 for (int i = 0; i < n; i++) {
                     data[i] = 0;
                 }    
-            }
         }
                 
         public int getTotal(){
@@ -212,7 +210,7 @@ public class matchup {
                                 if ( index == -1) {
                                     batter = new Batter();
                                     int size = clusters.size() * 2;
-                                    // batter.initArray(size);
+                                    batter.initArray(size);
                                     batter.setBatter(currentElement);
                                     batterList.add(batter);
                                 } else {
