@@ -207,10 +207,10 @@ public class matchup {
                         String tag = reader.getName().toString();
                         if (tag.equals("atbat")) {
                             if (currentElement.equals("")) {
-                                    currentElement = reader.getAttributeValue(null, "batter");
-                                } else {
+                                currentElement = reader.getAttributeValue(null, "batter");
+                            } else {
                                     LOG.info("ERROR ABORT");
-                                }
+                            }
                                 
                                 int index = containsBatter(currentElement, batterList);                                
                                 if ( index == -1) {
@@ -224,6 +224,10 @@ public class matchup {
                                 }
                                     
                                     sort_atbat(reader, batter);
+                            } else {
+                                batter = new Batter();
+                                batter.setBatter(currentElement);
+                                batterList.add(batter);
                             }
                         break;
                 }
