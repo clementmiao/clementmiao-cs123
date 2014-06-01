@@ -20,5 +20,5 @@ hadoop jar matchup.jar org.myorg.matchup input/flat_games output_matchups
 
 rm ${RES_FILE}
 
-hdfs dfs -getmerge output ${RES_FILE}
+hdfs dfs -getmerge output_matchups ${RES_FILE}
 
