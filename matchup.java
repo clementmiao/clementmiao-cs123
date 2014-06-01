@@ -94,7 +94,6 @@ public class matchup {
                     data[i] = 0;
                 }    
             }
-            ;
         }
                 
         public int getTotal(){
@@ -118,38 +117,38 @@ public class matchup {
              // extends Mapper<Object, Text, Text, Batter>{
              extends Mapper<Object, Text, Text, Text>{
              
-            // public static ArrayList<String> clusters;
+            public static ArrayList<String> clusters;
 
-            // public void populate(Context context) {
-            //     FSDataInputStream in = null;
-            //     BufferedReader br = null;
-            //     try {
-            //         FileSystem fs = FileSystem.get(context.getConfiguration());
-            //         Path path = new Path("clusters.txt");
-            //         in = fs.open(path);
-            //         br = new BufferedReader(new InputStreamReader(in));
-            //     } catch (FileNotFoundException e1) {
-            //         e1.printStackTrace();
-            //         System.out.println("read from distributed cache: file not found!");
-            //     } catch (IOException e1) {
-            //         e1.printStackTrace();
-            //         System.out.println("read from distributed cache: IO Exception");
-            //     }
-            //     try {
-            //         clusters = new ArrayList<String>();
-            //         String line = "";
-            //         while ((line = br.readLine()) != null) {
-            //             clusters.add(line);
-            //         }
-            //     } catch (IOException e1) {
-            //         e1.printStackTrace();
-            //         System.out.println("read from distributed cache: read length and instances");
-            //     }    
-            // }
+            public void populate(Context context) {
+                FSDataInputStream in = null;
+                BufferedReader br = null;
+                try {
+                    FileSystem fs = FileSystem.get(context.getConfiguration());
+                    Path path = new Path("clusters.txt");
+                    in = fs.open(path);
+                    br = new BufferedReader(new InputStreamReader(in));
+                } catch (FileNotFoundException e1) {
+                    e1.printStackTrace();
+                    System.out.println("read from distributed cache: file not found!");
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                    System.out.println("read from distributed cache: IO Exception");
+                }
+                try {
+                    clusters = new ArrayList<String>();
+                    String line = "";
+                    while ((line = br.readLine()) != null) {
+                        clusters.add(line);
+                    }
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                    System.out.println("read from distributed cache: read length and instances");
+                }    
+            }
 
-            // public void setup(Context context) {
-            //     populate(context);
-            // }
+            public void setup(Context context) {
+                populate(context);
+            }
 
             public static int containsBatter(String batter, ArrayList<Batter> batterList) {
                 int rv = -1;
