@@ -26,7 +26,7 @@ import javax.xml.stream.events.*;
 import javax.xml.stream.util.*;
 import javax.xml.namespace.QName;
 
-public class matchup {
+public static class matchup {
 
     public static class Batter implements Writable {
         private int total;
@@ -111,7 +111,7 @@ public class matchup {
              extends Mapper<Object, Text, Text, Batter>{
              // extends Mapper<Object, Text, Text, Text>{
 
-            public ArrayList<String> clusters;
+            public static ArrayList<String> clusters;
 
             public void populate(Context context) {
                 FSDataInputStream in = null;
@@ -260,7 +260,7 @@ public class matchup {
                                              ) throws IOException, InterruptedException {
             Batter rv = new Batter();
             int total = 0;
-            for (Value val : values) {
+            for (Batter val : values) {
                 int[] data = val.getData();
                 if (rv.getTotal() == 0) {
                     rv.initArray(data.length);

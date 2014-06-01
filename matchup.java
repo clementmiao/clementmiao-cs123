@@ -111,7 +111,7 @@ public class matchup {
              extends Mapper<Object, Text, Text, Batter>{
              // extends Mapper<Object, Text, Text, Text>{
 
-            public ArrayList<String> clusters;
+            public static ArrayList<String> clusters;
 
             public void populate(Context context) {
                 FSDataInputStream in = null;
