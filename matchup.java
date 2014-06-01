@@ -117,8 +117,8 @@ public class matchup {
     }
 
     public static class Map 
-             // extends Mapper<Object, Text, Text, Batter>{
-             extends Mapper<Object, Text, Text, Text>{
+             extends Mapper<Object, Text, Text, Batter>{
+             // extends Mapper<Object, Text, Text, Text>{
              public static final Log LOG = LogFactory.getLog(Map.class);
              
 
@@ -206,15 +206,12 @@ public class matchup {
                     case XMLStreamConstants.START_ELEMENT:
                         String tag = reader.getName().toString();
                         if (tag.equals("atbat")) {
-                            batter = new Batter();
+                            // batter = new Batter();
                             // batter.setBatter(currentElement);
-                            batterList.add(batter);
+                            // batterList.add(batter);
                             if (currentElement.equals("")) {
                                 currentElement = reader.getAttributeValue(null, "batter");
-                            } else {
-                                    LOG.info("ERROR ABORT");
                             }
-                                
                                 int index = containsBatter(currentElement, batterList);                                
                                 if ( index == -1) {
                                     batter = new Batter();
@@ -227,10 +224,6 @@ public class matchup {
                                 }
                                     
                                     sort_atbat(reader, batter);
-                            } else {
-                                // batter = new Batter();
-                                // batter.setBatter(currentElement);
-                                // batterList.add(batter);
                             }
                         break;
                 }
@@ -259,11 +252,11 @@ public class matchup {
             ArrayList<Batter> batterList = new ArrayList<Batter>();
             batterList = parseString(document, batterList);
             // LOG.info("log thing works");
-            context.write(new Text("-1"), new Text(Integer.toString(batterList.size())));
+            // context.write(new Text("-1"), new Text(Integer.toString(batterList.size())));
             for (int i = 0; i < batterList.size(); i++) {
                 // LOG.info("batterlist is not empty");
-                context.write(new Text(Integer.toString(i)), new Text(document));
-                // context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
+                // context.write(new Text(Integer.toString(i)), new Text(document));
+                context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
             }
         }
     }
