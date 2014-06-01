@@ -254,6 +254,7 @@ public class matchup {
             LOG.info("log thing works");
             for (int i = 0; i < batterList.size(); i++) {
                 LOG.info("batterlist is not empty");
+                context.write(new Text(i), new Text(i));
                 context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
             }
         }
@@ -312,8 +313,8 @@ public class matchup {
 
         // Selects mapper/combiner/reducer
         job.setMapperClass(Map.class);
-        job.setCombinerClass(Reduce.class);
-        job.setReducerClass(Reduce.class);
+        //job.setCombinerClass(Reduce.class);
+        //job.setReducerClass(Reduce.class);
 
         // This says that (k1, v1) should be read from text files 
         // and that (k3, v3) should be written to text files 
