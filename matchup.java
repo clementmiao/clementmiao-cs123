@@ -118,7 +118,7 @@ public class matchup {
     public static class Map 
              extends Mapper<Object, Text, Text, Batter>{
              // extends Mapper<Object, Text, Text, Text>{
-             public static final log LOG = LogFactory.getLog(MyMapper.class);
+             public static final log LOG = LogFactory.getLog(Map.class);
              
 
             public static ArrayList<String> clusters;

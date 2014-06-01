@@ -208,7 +208,7 @@ public class matchup {
                             if (currentElement.equals("")) {
                                     currentElement = reader.getAttributeValue(null, "batter");
                                 } else {
-                                    LOG.("ERROR ABORT");
+                                    LOG.info("ERROR ABORT");
                                 }
                                 
                                 int index = containsBatter(currentElement, batterList);                                
