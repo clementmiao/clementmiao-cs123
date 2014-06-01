@@ -112,8 +112,8 @@ public class matchup {
     }
 
     public static class Map 
-             // extends Mapper<Object, Text, Text, Batter>{
-             extends Mapper<Object, Text, Text, Text>{
+             extends Mapper<Object, Text, Text, Batter>{
+             // extends Mapper<Object, Text, Text, Text>{
              
             public static ArrayList<String> clusters;
 
@@ -217,7 +217,7 @@ public class matchup {
                                     batter = batterList.get(index);
                                 }
                                     
-                                    // sort_atbat(reader, batter);
+                                    sort_atbat(reader, batter);
                             }
                         break;
                 }
@@ -248,12 +248,12 @@ public class matchup {
             parseString(document, batterList);
             // LOG.info("log thing works");
             // context.write(new Text("-1"), new Text(Integer.toString(batterList.size())));
-            context.write(new Text(Integer.toString(batterList.size())), new Text(Integer.toString(clusters.size())));
-            // for (int i = 0; i < batterList.size(); i++) {
+            // context.write(new Text(Integer.toString(batterList.size())), new Text(Integer.toString(clusters.size())));
+            for (int i = 0; i < batterList.size(); i++) {
             //     // LOG.info("batterlist is not empty");
             //     // context.write(new Text(Integer.toString(i)), new Text(document));
-            //     context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
-            // }
+                context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
+            }
         }
     }
 
@@ -310,14 +310,14 @@ public class matchup {
 
         // Selects mapper/combiner/reducer
         job.setMapperClass(Map.class);
-        //job.setCombinerClass(Reduce.class);
-        //job.setReducerClass(Reduce.class);
+        job.setCombinerClass(Reduce.class);
+        job.setReducerClass(Reduce.class);
 
         // This says that (k1, v1) should be read from text files 
         // and that (k3, v3) should be written to text files 
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(Text.class);
-        // job.setOutputValueClass(Batter.class);
+        // job.setOutputValueClass(Text.class);
+        job.setOutputValueClass(Batter.class);
 
         // The paths of these input/output are from application arguments
         FileInputFormat.addInputPath(job, new Path(otherArgs[0]));
