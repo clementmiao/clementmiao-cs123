@@ -8,8 +8,12 @@
 
 module load midway-hadoop
 
+module load git
 # Remove output directory if it exists
-hdfs dfs -rm -r -f output_matchups
+
+git pull
+
+hdfs dfs -rm -r output_matchups
 
 RES_FILE=results_matchups.txt
 
