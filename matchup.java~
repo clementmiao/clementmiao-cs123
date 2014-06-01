@@ -55,7 +55,7 @@ public class matchup {
 
         public void readFields(DataInput in) throws IOException {
             total = in.readInt();
-            pitcher = in.readUTF();
+            batter = in.readUTF();
             int len = in.readInt();
             data = new int[len];
             for (int i = 0; i < len; i++) {
@@ -103,7 +103,7 @@ public class matchup {
         }
 
         public void addData(int position, int value) {
-            data[i] += value;
+            data[position] += value;
         }
     }
 
@@ -158,8 +158,10 @@ public class matchup {
                 String att = reader.getAttributeValue(null, "event");
                 String pitcher = reader.getAttributeValue(null, "pitcher");
                 int index = -1;
-                for (int i = 0; i < clusters.size(); i++) {
-                    if(clusters.get(i).contains(pitcher)) {
+                int size = clusters.size();
+                for (int i = 0; i < size; i++) {
+                    String cluster = clusters.get(i);
+                    if(cluster.contains(pitcher)) {
                         index = i;
                         break;        
                     }
@@ -201,7 +203,8 @@ public class matchup {
                                 int index = containsBatter(currentElement, batterList);                                
                                 if ( index == -1) {
                                     batter = new Batter();
-                                    batter.initArray(clusters.size());
+                                    int size = clusters.size();
+                                    batter.initArray(size);
                                     batterList.add(batter);
                                     batter.setBatter(currentElement);
                                 } else {
@@ -252,7 +255,7 @@ public class matchup {
 
         // This function expects a key of type Text (a word from our document, in this case)
         // and a list of values obtained via iterator (a list of IntWritables, in this case).
-        public void reduce(Text key, Iterable<Value> values, 
+        public void reduce(Text key, Iterable<Batter> values, 
                                              Context context
                                              ) throws IOException, InterruptedException {
             Batter rv = new Batter();
