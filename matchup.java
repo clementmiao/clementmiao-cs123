@@ -254,8 +254,8 @@ public class matchup {
             LOG.info("log thing works");
             for (int i = 0; i < batterList.size(); i++) {
                 LOG.info("batterlist is not empty");
-                context.write(new Text(i), new Text(i));
-                context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
+                context.write(new Text(Integer.toString(i)), new Text(""));
+                // context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
             }
         }
     }
