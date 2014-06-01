@@ -117,8 +117,8 @@ public class matchup {
     }
 
     public static class Map 
-             extends Mapper<Object, Text, Text, Batter>{
-             // extends Mapper<Object, Text, Text, Text>{
+             // extends Mapper<Object, Text, Text, Batter>{
+             extends Mapper<Object, Text, Text, Text>{
              public static final Log LOG = LogFactory.getLog(Map.class);
              
             public static ArrayList<String> clusters;
@@ -322,7 +322,7 @@ public class matchup {
         // and that (k3, v3) should be written to text files 
         job.setOutputKeyClass(Text.class);
         // job.setOutputValueClass(Text.class);
-        job.setOutputValueClass(Batter.class);
+        // job.setOutputValueClass(Batter.class);
 
         // The paths of these input/output are from application arguments
         FileInputFormat.addInputPath(job, new Path(otherArgs[0]));
