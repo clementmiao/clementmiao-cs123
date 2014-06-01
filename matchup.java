@@ -158,30 +158,30 @@ public class matchup {
                 return rv;
             }
             
-            // public static void sort_atbat(XMLStreamReader reader, Batter batter) {
-            //     String att = reader.getAttributeValue(null, "event");
-            //     String pitcher = reader.getAttributeValue(null, "pitcher");
-            //     int index = -1;
-            //     int size = clusters.size();
-            //     for (int i = 0; i < size; i++) {
-            //         String cluster = clusters.get(i);
-            //         if(cluster.contains(pitcher)) {
-            //             index = i;
-            //             break;        
-            //         }
-            //     }
-            //     if(index == -1) {
-            //         LOG.info("Pitcher not found");
-            //     }
-            //     else{
-            //         batter.addData(2*index + 1, 1);
-            //         batter.incrementTotal(1);
-            //         if(!att.toLowerCase().contains("out") && !att.contains("DP") && !att.contains("Error")){//if the batter gets a hit
-            //             batter.addData(2*index, 1);
-            //         }
-            //     }
+            public static void sort_atbat(XMLStreamReader reader, Batter batter) {
+                String att = reader.getAttributeValue(null, "event");
+                String pitcher = reader.getAttributeValue(null, "pitcher");
+                int index = -1;
+                int size = clusters.size();
+                for (int i = 0; i < size; i++) {
+                    String cluster = clusters.get(i);
+                    if(cluster.contains(pitcher)) {
+                        index = i;
+                        break;        
+                    }
+                }
+                if(index == -1) {
+                    LOG.info("Pitcher not found");
+                }
+                else{
+                    batter.addData(2*index + 1, 1);
+                    batter.incrementTotal(1);
+                    if(!att.toLowerCase().contains("out") && !att.contains("DP") && !att.contains("Error")){//if the batter gets a hit
+                        batter.addData(2*index, 1);
+                    }
+                }
                 
-            // }
+            }
 
     // public static ArrayList<Batter> parseString(String line, ArrayList<Batter> batterList) {
     public static void parseString(String line, ArrayList<Batter> batterList) {
