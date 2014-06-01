@@ -206,9 +206,9 @@ public class matchup {
                     case XMLStreamConstants.START_ELEMENT:
                         String tag = reader.getName().toString();
                         if (tag.equals("atbat")) {
-                            // batter = new Batter();
+                            batter = new Batter();
                             // batter.setBatter(currentElement);
-                            // batterList.add(batter);
+                            batterList.add(batter);
                             if (currentElement.equals("")) {
                                 currentElement = reader.getAttributeValue(null, "batter");
                             }
@@ -253,12 +253,12 @@ public class matchup {
             // batterList = parseString(document, batterList);
             parseString(document, batterList);
             // LOG.info("log thing works");
-            // context.write(new Text("-1"), new Text(Integer.toString(batterList.size())));
-            for (int i = 0; i < batterList.size(); i++) {
-                // LOG.info("batterlist is not empty");
-                // context.write(new Text(Integer.toString(i)), new Text(document));
-                context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
-            }
+            context.write(new Text("-1"), new Text(Integer.toString(batterList.size())));
+            // for (int i = 0; i < batterList.size(); i++) {
+            //     // LOG.info("batterlist is not empty");
+            //     // context.write(new Text(Integer.toString(i)), new Text(document));
+            //     context.write(new Text(batterList.get(i).getBatter()), batterList.get(i));
+            // }
         }
     }
 

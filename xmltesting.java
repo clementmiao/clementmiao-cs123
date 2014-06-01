@@ -194,6 +194,7 @@ public class xmltesting {
                     System.out.println(batterList.get(i).getBatter().trim());
                      // + '\t' +batterList.get(i));
                 }
+                System.out.println(batterList.size());
                 // System.out.println(line);
                 //System.out.println(Arrays.deepToString(line_data));
                 // System.out.println(replace(line_data));
