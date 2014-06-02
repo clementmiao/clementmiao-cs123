@@ -1,0 +1,56 @@
+<game venue="Oriole Park at Camden Yards" date="April 10, 2007">
+	<team type="away" id="DET" name="Detroit Tigers">
+		<player id="112087" first="Sean" last="Casey" num="21" boxname="Casey" rl="R" position="1B" status="A" bat_order="7" game_position="1B" avg=".200" hr="0" rbi="1"/>
+		<player id="451491" first="Joel" last="Zumaya" num="54" boxname="Zumaya" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="0.00"/>
+		<player id="434378" first="Justin" last="Verlander" num="35" boxname="Verlander" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="0.00"/>
+		<player id="434158" first="Curtis" last="Granderson" num="28" boxname="Granderson" rl="R" position="CF" status="A" bat_order="1" game_position="CF" avg=".292" hr="2" rbi="8"/>
+		<player id="430958" first="Mike" last="Rabelo" num="58" boxname="Rabelo" rl="R" position="C" status="A" avg=".000" hr="0" rbi="0"/>
+		<player id="425827" first="Jeremy" last="Bonderman" num="38" boxname="Bonderman" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="3.75"/>
+		<player id="425656" first="Wilfredo" last="Ledezma" num="41" boxname="Ledezma" rl="L" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="0.00"/>
+		<player id="425146" first="Nate" last="Robertson" num="29" boxname="Robertson" rl="L" position="P" status="A" bat_order="0" game_position="P" avg=".000" hr="0" rbi="0" wins="1" losses="0" era="3.18"/>
+		<player id="408299" first="Omar" last="Infante" num="20" boxname="Infante" rl="R" position="SS" status="A" avg=".000" hr="0" rbi="0"/>
+		<player id="407845" first="Fernando" last="Rodney" num="56" boxname="Rodney" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="1" losses="1" era="13.50"/>
+		<player id="407801" first="Marcus" last="Thames" num="33" boxname="Thames" rl="R" position="RF" status="A" avg=".000" hr="0" rbi="0"/>
+		<player id="407155" first="Craig" last="Monroe" num="27" boxname="Monroe" rl="R" position="RF" status="A" bat_order="8" game_position="LF" avg=".176" hr="0" rbi="3"/>
+		<player id="400077" first="Mike" last="Maroth" num="46" boxname="Maroth" rl="L" position="P" status="A" avg=".000" hr="0" rbi="0" wins="1" losses="0" era="7.20"/>
+		<player id="276351" first="Jason" last="Grilli" num="49" boxname="Grilli" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="20.25"/>
+		<player id="276346" first="Brandon" last="Inge" num="15" boxname="Inge" rl="R" position="3B" status="A" avg=".000" hr="0" rbi="0"/>
+		<player id="239795" first="Chad" last="Durbin" num="52" boxname="Durbin" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="1" era="11.57"/>
+		<player id="150144" first="Bobby" last="Seay" num="44" boxname="Seay" rl="L" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="0.00"/>
+		<player id="136722" first="Carlos" last="Guillen" num="9" boxname="Guillen" rl="R" position="SS" status="A" bat_order="5" game_position="SS" avg=".217" hr="0" rbi="2"/>
+		<player id="116734" first="Todd" last="Jones" num="59" boxname="Jones" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="0.00"/>
+		<player id="118986" first="Jose" last="Mesa" num="94" boxname="Mesa" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="1" era="13.50"/>
+		<player id="120044" first="Magglio" last="Ordonez" num="30" boxname="Ordonez" rl="R" position="RF" status="A" bat_order="4" game_position="RF" avg=".238" hr="0" rbi="1"/>
+		<player id="135784" first="Placido" last="Polanco" num="14" boxname="Polanco" rl="R" position="2B" status="A" bat_order="2" game_position="2B" avg=".423" hr="0" rbi="2"/>
+		<player id="120413" first="Neifi" last="Perez" num="8" boxname="Perez" rl="R" position="SS" status="A" bat_order="9" game_position="3B" avg=".000" hr="0" rbi="0"/>
+		<player id="121358" first="Ivan" last="Rodriguez" num="7" boxname="Rodriguez" rl="R" position="C" status="A" bat_order="6" game_position="C" avg=".320" hr="2" rbi="4"/>
+		<player id="122111" first="Gary" last="Sheffield" num="3" boxname="Sheffield" rl="R" position="RF" status="A" bat_order="3" game_position="DH" avg=".143" hr="1" rbi="4"/>
+<coach position="pitching_coach" first="Chuck" last="Hernandez" id="431163" num="55"/><coach position="third_base_coach" first="Gene" last="Lamont" id="117437" num="22"/><coach position="first_base_coach" first="Andy" last="Van Slyke" id="123653" num="18"/><coach position="bullpen_coach" first="Jeff" last="Jones" id="116698" num=" "/><coach position="batting_coach" first="Lloyd" last="McClendon" id="118576" num="12"/><coach position="coach" first="Rafael" last="Belliard" id="110841" num="17"/><coach position="manager" first="Jim" last="Leyland" id="492447" num="10"/>	</team>
+	<team type="home" id="BAL" name="Baltimore Orioles">
+		<player id="112107" first="Alberto" last="Castillo" num="18" boxname="Castillo" rl="R" position="C" status="A" bat_order="9" game_position="C" avg=".167" hr="0" rbi="0"/>
+		<player id="114909" first="Chris" last="Gomez" num="14" boxname="Gomez" rl="R" position="SS" status="A" avg=".250" hr="0" rbi="0"/>
+		<player id="123173" first="Miguel" last="Tejada" num="10" boxname="Tejada" rl="R" position="SS" status="A" bat_order="4" game_position="SS" avg=".241" hr="1" rbi="3"/>
+		<player id="123828" first="Jamie" last="Walker" num="32" boxname="Walker" rl="L" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="2.45"/>
+		<player id="132788" first="Kevin" last="Millar" num="15" boxname="Millar" rl="R" position="D" status="A" bat_order="7" game_position="1B" avg=".200" hr="2" rbi="4"/>
+		<player id="150182" first="Scott" last="Williamson" num="51" boxname="Williamson" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="13.50"/>
+		<player id="276056" first="Danys" last="Baez" num="28" boxname="Baez" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="11.57"/>
+		<player id="332292" first="John" last="Parrish" num="36" boxname="Parrish" rl="L" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="0.00"/>
+		<player id="400158" first="Jay" last="Gibbons" num="31" boxname="Gibbons" rl="L" position="RF" status="A" bat_order="6" game_position="LF" avg=".227" hr="0" rbi="4"/>
+		<player id="455976" first="Nick" last="Markakis" num="21" boxname="Markakis" rl="L" position="LF" status="A" bat_order="3" game_position="RF" avg=".276" hr="1" rbi="3"/>
+		<player id="451256" first="Kurt" last="Birkins" num="25" boxname="Birkins" rl="L" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="0.00"/>
+		<player id="444884" first="Chris" last="Ray" num="37" boxname="Ray" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="1" era="9.82"/>
+		<player id="429400" first="Adam" last="Loewen" num="29" boxname="Loewen" rl="L" position="P" status="A" avg=".000" hr="0" rbi="0" wins="1" losses="0" era="3.60"/>
+		<player id="425555" first="Daniel" last="Cabrera" num="35" boxname="Cabrera" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="1" losses="1" era="3.07"/>
+		<player id="425503" first="Freddie" last="Bynum" num="3" boxname="Bynum" rl="R" position="LF" status="A" avg=".000" hr="0" rbi="0"/>
+		<player id="425386" first="Jeremy" last="Guthrie" num="46" boxname="Guthrie" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="3.38"/>
+		<player id="407853" first="Erik" last="Bedard" num="45" boxname="Bedard" rl="L" position="P" status="A" avg=".000" hr="0" rbi="0" wins="1" losses="1" era="6.94"/>
+		<player id="406878" first="Brian" last="Roberts" num="1" boxname="Roberts" rl="R" position="2B" status="A" bat_order="1" game_position="2B" avg=".192" hr="0" rbi="2"/>
+		<player id="333492" first="Aubrey" last="Huff" num="19" boxname="Huff" rl="R" position="RF" status="A" bat_order="5" game_position="DH" avg=".286" hr="0" rbi="4"/>
+		<player id="279913" first="Corey" last="Patterson" num="17" boxname="Patterson" rl="R" position="CF" status="A" bat_order="8" game_position="CF" avg=".190" hr="0" rbi="2"/>
+		<player id="206551" first="Melvin" last="Mora" num="6" boxname="Mora" rl="R" position="3B" status="A" bat_order="2" game_position="3B" avg=".281" hr="2" rbi="8"/>
+		<player id="136268" first="Chad" last="Bradford" num="53" boxname="Bradford" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="4.50"/>
+		<player id="132720" first="Paul" last="Bako" num="9" boxname="Bako" rl="R" position="C" status="A" avg=".133" hr="1" rbi="3"/>
+		<player id="124605" first="Jaret" last="Wright" num="27" boxname="Wright" rl="R" position="P" status="A" bat_order="0" game_position="P" avg=".000" hr="0" rbi="0" wins="0" losses="1" era="15.43"/>
+		<player id="123431" first="Steve" last="Trachsel" num="41" boxname="Trachsel" rl="R" position="P" status="A" avg=".000" hr="0" rbi="0" wins="0" losses="0" era="4.05"/>
+<coach position="third_base_coach" first="Juan" last="Samuel" id="121651" num="11"/><coach position="coach" first="Orlando" last="Gomez" id="427189" num=" "/><coach position="batting_coach" first="Terry" last="Crowley" id="112886" num="48"/><coach position="first_base_coach" first="Sam" last="Mejias" id="118927" num="50"/><coach position="bullpen_coach" first="Dave" last="Trembley" id="492539" num="41"/><coach position="manager" first="Sam" last="Perlozzo" id="120427" num="2"/><coach position="pitching_coach" first="Leo" last="Mazzone" id="427323" num="54"/><coach position="bench_coach" first="Tom" last="Trebelhorn" id="427512" num="26"/>	</team>
+<umpires><umpire position="home" name="Jerry Meals"/><umpire position="first" name="Bruce Dreckman"/><umpire position="second" name="Gary Darling"/><umpire position="third" name="Larry Poncino"/></umpires></game>
