@@ -20,7 +20,7 @@ RES_FILE=results_aggregation.txt
 sh compile.sh aggregation aggregation.java
 
 # Run Hadoop
-hadoop jar aggregation.jar org.myorg.aggregation input_aggregation/remote_data output_aggregation
+hadoop jar aggregation.jar org.myorg.aggregation input_aggregation/flat_games_all output_aggregation
 
 rm ${RES_FILE}
 
