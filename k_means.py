@@ -14,10 +14,11 @@ def readCSVtoDict(filename):
 	reader = csv.reader(csvfile,delimiter=',')
 	# row format is id,pitch total,L(bool),R(bool), attributes...
 	for row in reader:
-		pitcher_id = int(row[0])
-		atts = row[4:]
-		atts = map(lambda x:float(x),atts)
-		pitcher_dict[pitcher_id]=atts
+		if int(row[1]) != 0:
+			pitcher_id = int(row[0])
+			atts = row[4:]
+			atts = map(lambda x:float(x),atts)
+			pitcher_dict[pitcher_id]=atts
 	return pitcher_dict
 
 
@@ -140,6 +141,7 @@ def assignment(pitcher_dict,centroid_dict,k):
 		for pitcher in pitchers:
 			atts = pitcher_dict[pitcher]
 			clustersum += numpy.array(atts)
+		print pitchers
 		centroid = list(clustersum/len(pitchers))
 		next_centroid_dict[cluster_num] = centroid
 	return (next_centroid_dict,next_cluster_dict)
