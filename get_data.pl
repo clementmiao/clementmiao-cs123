@@ -53,14 +53,14 @@ sub getWithRetry($) {
 }
 
 # get all important files from MLB.com, 4/2/07 through yesterday
-$start = timelocal(0,0,0,28,4,111);
+$start = timelocal(0,0,0,1,2,108);
 ($mon, $mday, $year) = extractDate($start);
 print "starting at $mon/$mday/$year\n";
 
 ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
 $now = timelocal(0,0,0,$mday - 0,$mon,$year);
 #$now = timelocal(0,0,0,$mday - 1,$mon,$year);
-$now = timelocal(0,0,0,29,4,111);
+$now = timelocal(0,0,0,29,11,114);
 ($mon, $mday, $year) = extractDate($now);
 print "ending at $mon/$mday/$year\n";
 
@@ -158,7 +158,7 @@ for ($t = $start; $t < $now; $t += 60*60*24) {
             close FILE;
         }
         }
-        sleep(1); # be at least somewhat polite; one game per second
+        # sleep(1); # be at least somewhat polite; one game per second
     }
     }
 }
