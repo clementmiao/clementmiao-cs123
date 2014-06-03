@@ -25,7 +25,7 @@ def playerTeam():
                         last = player.get('last')
                         first = player.get('first')
                         #print("ID: " + pid)
-                        d[pid] = (name, first + last)
+                        d[pid] = (name, first + " " + last)
     for p in d:
         print("This should work " + p + " " + d[p][0] + " " + d[p][1])
             

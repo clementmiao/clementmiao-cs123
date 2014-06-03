@@ -21,11 +21,12 @@ def playerTeam():
                     name = team.get('name')
                     #print("name: " + name)
                     for player in team:
-                        pid = player.get('id')
-                        last = player.get('last')
-                        first = player.get('first')
-                        #print("ID: " + pid)
-                        d[pid] = (name, first + " " + last)
+                        if(player.tag != 'coach'):
+                            pid = player.get('id')
+                            last = player.get('last')
+                            first = player.get('first')
+                            #print("ID: " + pid)
+                            d[pid] = (name, first + " " + last)
     for p in d:
         print("This should work " + p + " " + d[p][0] + " " + d[p][1])
             
