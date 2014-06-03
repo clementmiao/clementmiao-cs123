@@ -13,14 +13,14 @@ module load git
 
 git pull
 
-hdfs dfs -rm -r output_aggregation
+hdfs dfs -rm -r -f output_aggregation
 
 RES_FILE=results_aggregation.txt
 
 sh compile.sh aggregation aggregation.java
 
 # Run Hadoop
-hadoop jar aggregation.jar org.myorg.aggregation input_aggregation output_aggregation
+hadoop jar aggregation.jar org.myorg.aggregation input_aggregation/remote_data output_aggregation
 
 rm ${RES_FILE}
 
