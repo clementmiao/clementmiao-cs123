@@ -10,18 +10,22 @@ import xml.etree.ElementTree as ET
 
 def playerTeam():
     d = {}
-    pa = '/home/charlie/clemetnmiao-cs123'
+    pa = '/home/cfisher14/clemetnmiao-cs123'
     for root, dirs, filenames in os.walk('players_07'):
         for f in filenames:
-            path = os.path.join(pa, 'players_07', f)
-            print(path)
+            path = os.path.join('players_07', f)
             tree = ET.parse(path)
             game = tree.getroot()
             for team in game:
-                name = team.get('name')
-                for player in child:
-                    pid = player.get('id')
-                    d[pid] = name
+                if(team.tag != 'umpires'):
+                    name = team.get('name')
+                    #print("name: " + name)
+                    for player in team:
+                        pid = player.get('id')
+                        last = player.get('last')
+                        first = player.get('first')
+                        #print("ID: " + pid)
+                        d[pid] = (name, first + last)
     for p in d:
-        print("This should work " + p + " " + d[p])
+        print("This should work " + p + " " + d[p][0] + " " + d[p][1])
             
