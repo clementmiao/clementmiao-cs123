@@ -12,17 +12,17 @@ module load git
 # Remove output directory if it exists
 
 git pull
-
-hdfs dfs -rm -r output_matchups
-
-RES_FILE=results_matchups.txt
+input_file=$1
+output_file=$2
+RES_FILE=$3
+hdfs dfs -rm -r -f ${output_file}
 
 sh compile.sh matchup matchup.java
 
 # Run Hadoop
-hadoop jar matchup.jar org.myorg.matchup input/flat_games output_matchups
+hadoop jar matchup.jar org.myorg.matchup ${input_file} ${output_file}
 
-rm ${RES_FILE}
+rm -f ${RES_FILE}
 
-hdfs dfs -getmerge output_matchups ${RES_FILE}
+hdfs dfs -getmerge ${output_file} ${RES_FILE}
 
