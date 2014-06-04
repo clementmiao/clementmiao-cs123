@@ -205,11 +205,14 @@ to start the neo4j server
 to add the results into our Neo4j database
 
 - Run: 
+
         python graph_db.py hitter [pitcher_name] [your_team]
 to recommend a hitter for your team
     or:
+
         python graph_db.py pitcher [hitter_name] [your_team]
 to recommend a pitcher for your team. Ex:
+
         python graph_db.py pitcher "Ichiro Suzuki" "New York Yankees"
 
 ## The Process Broken down
