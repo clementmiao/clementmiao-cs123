@@ -221,8 +221,15 @@ After the initial seeding, we proceed to do a standard k-means clustering. We as
 ###Matchups
 Our file goes takes in a list of clusters that was output from the previous step and goes through each game and keeps track of how each batter did against the different clusters, and outputs a text file where each line is a batter with one pair of (hits + walks, plate appearences) for each cluster.
     Once again, we used Hadoop to do this task, and one of the difficulties we faces was being able to have hadoop read in both the clusters text file and the game data to work with while still having both sets of information accessible to all mappers. Hence somehow, we needed to "parallelize" the clusters file, and purely loading it onto hdfs and reading it that way did not initially work. What ended up working was caching it on hdfs, havving in the setup function of the mapper that would be able to read this file from the hdfs cache, and then population an ArrayList of strings, which each element of the ArrayList representing a series of pitchers who belong in the same cluster. 
+
 ###Graph Database
-Graph database stuff
+For efficient recommendation, we combine 3 sources of tabular data -- player info, cluster info, and matchups -- into a graph database. The player info contains the MLBAM player id, the player's full name, and the players current team. The cluster info contains the pitcher's MLBAM player id and which cluster he has been assigned to. The matchups contain each player's MLBAM player id, his total plate appearances over the date arrange, and for each cluster, his total number of walks and hits and his total number of plate appearances.
+
+To create the graph database, we used the python library py2neo to access neo4j through the REST api. We also made use of neo4j's web interface. We have nodes representing teams, clusters, and players (including both pitchers and batters). We make no type distinction between pitchers and batters, because almost all pitchers are batters as well at times. Between players and clusters, we have the relation 'BELONGS TO,' representing that a pitcher belongs to a cluster. We also have the relation 'MATCHUP' which represents how well a batter did against a cluster and contains the properties OBP (on-base percentage) and PA (plate appearances). Between players and teams, we have the relation 'PLAYS FOR'. 
+
+This structure facilitated easy access to the information we wanted using CYPHER to query the database. We provide recommendations for batters to face specific pitchers in a few seconds at most, and much of this time is spent connecting to the server.
+
+
 ###Testing Our Results
 To test our results, we take a large sample of our data, find out what there expected on base percentage would be against a given cluster, and then see haow he actually did against those clusters in another set of our data. To gauge accuracy, we sum up the differences in OBP between our testing and training data sets, weighted by how many plate appearences are in our testing set (that way, predicting 20-40 when it is actually 0-40 is worse than predicting 1-2 when it is actually 0-2) Summing up all of these differences gives us a "score" for the fit, where lower is better.
 
@@ -244,7 +251,10 @@ Hadoop is nice for what we wanted to do; It let us execute a relatively simple t
 ### Git/Github
 During this whole project, we have been using git and github as our workflow management tool. This has been useful, as we often were unable to meet face to face, hence it allowed us to work independently, while still having access to the others' progress.
 
-### Neo4j
+### Neo4j and py2neo
+Neo4j was very useful for creating our recommendation engine. As it was our first time using neo4j for intensive purposes, the web user interface was extremely helpful for checking and debugging. Being familiar with SQL, CYPHER was a comfortable adjustment. We definitely hope to incorporate graph databases into future work, as it is much nicer to work with than tabular data at times.
+
 
 ## Conclusion
+
 
