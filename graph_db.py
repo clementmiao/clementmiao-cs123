@@ -11,7 +11,6 @@ import xml.etree.ElementTree as ET
 
 def playerTeam():
     d = {}
-    pa = '/home/cfisher14/clemetnmiao-cs123'
     for root, dirs, filenames in os.walk('players_07'):
         for f in filenames:
             path = os.path.join('players_07', f)
@@ -125,7 +124,9 @@ def processMatchups(matchups_dict,graph_db):
 
 
 def populateGraphDB(playerteam_dict,cluster_dict,matchups_dict,graph_db):
-	
+
+	graph_db.clear()
+
 	root = graph_db.get_or_create_indexed_node("root","k1","v1")
 
 	processPlayerTeam(playerteam_dict,graph_db,root)
@@ -147,6 +148,7 @@ def main():
 	populateGraphDB(playerteam_dict,cluster_dict,matchups_dict,graph_db)
 
 
+main()
 
 
 
