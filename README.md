@@ -1,3 +1,4 @@
+#For Project Report, See below (Cmd+F Project Report)
 # Project Proposal
 ### By Charlie Fisher, Clement Miao, Sam Przezdziecki
 =================
@@ -113,12 +114,11 @@ Some of our ideas:
 We will divide the tasks into the following groups, with the goal of completing each of these by 8th week:
 - One member will handle parallelizing the current code, including aggregation and clustering.
 - The other two will work on the recommendation and visualization, as well as implementing one of the additional ideas.
-<<<<<<< HEAD
+
 
 #Project Report 
-##For proposal and May 5th update, see README_old.md
 ==================
-### Process to run the project
+## Process to run the project
 
 
 Local Machine:
@@ -133,8 +133,21 @@ Midway Cluster (run: ssh midway.rcc.uchicago.edu):
 - Run: sh run_matchup.sh , to run the matchups on hadoop.
 - Run: neo4j start .
 - Run: python graph_db.py to add the results into our Neo4j database
-### 
-### The Process Broken down
-Our approach for aggrigating pitchers is the same as before; we average over all of 
 =======
->>>>>>> 4728234d5db7405721f34417d2cc550485dd025d
+## The Process Broken down
+### Aggregation
+Our approach for aggregating pitchers is the same as before. This time, we parallelized the process using hadoop. Each mapper is given a game, and then determines the pitch type and adds the desired attributes to that pitch. The combiner and reducer take that list (whch also has how many times each pitch type was thrown), and then averages the attributes for each pitch for that pitcher.
+The challenges for this one are that first of all, our prototype had done it in a way that was not parallelized. Our original implementation depended on a python dictionary that held all the data, hence a challenge for this process was writing an implementation of Writable that could hold the data for each pitcher. Secondly, our original implementation in the prototype first converted the game files to JSON, however in the Hadoop implementation, we decided to skip a step and manipulate XML files directly, using a reader object that goes through each XML tag. 
+At the end of the process, we output a txt file for which each line has the following format:
+player_id, total_pitches, left_handed (1 if true, 0 else), right_handed (1 if true, 0 else), {the 11 averages of attributes for FF and a counter for FF thrown}, {the 11 averages of attributes for FT and a counter for FT thrown}, etc for the other 9 types of pitches thrown. 
+###Clustering
+This process takes the end result file of the aggregation process, and an integer k as number of clusters, dividing the pitchers from the input file into lists of pitcher clusters. 
+We cluster them with a k-means algorithm
+###Matchups
+Our file goes takes in a list of clusters that was output from the previous step and goes through each game and keeps track of how each batter did against the different clusters, and outputs a text file where each line is a batter with one pair of (hits + walks, plate appearences) for each cluster.
+###Graph Database
+Graph database stuff
+###Testing Our Results
+To test our results, we take a large sample of our data, find out what there expected on base percentage would be against a given cluster, and then see haow he actually did against those clusters in another set of our data.
+ 
+=======
