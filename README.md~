@@ -133,8 +133,7 @@ Midway Cluster (run: ssh midway.rcc.uchicago.edu):
 - Run: sh run_matchup.sh , to run the matchups on hadoop.
 - Run: neo4j start .
 - Run: python graph_db.py to add the results into our Neo4j database
-=======
-<<<<<<< HEAD
+
 ## The Process Broken down
 ### Aggregation
 Our approach for aggregating pitchers is the same as before. This time, we parallelized the process using hadoop. Each mapper is given a game, and then determines the pitch type and adds the desired attributes to that pitch. The combiner and reducer take that list (whch also has how many times each pitch type was thrown), and then averages the attributes for each pitch for that pitcher.

@@ -148,7 +148,7 @@ Our file goes takes in a list of clusters that was output from the previous step
 ###Graph Database
 Graph database stuff
 ###Testing Our Results
-To test our results, we take a large sample of our data, find out what there expected on base percentage would be against a given cluster, and then see haow he actually did against those clusters in another set of our data.
+To test our results, we take a large sample of our data, find out what there expected on base percentage would be against a given cluster, and then see haow he actually did against those clusters in another set of our data. To gauge accuracy, we sum up the differences in OBP between our testing and training data sets, weighted by how many plate appearences are in our testing set (that way, predicting 20-40 when it is actually 0-40 is worse than predicting 1-2 when it is actually 0-2) Summing up all of these differences gives us a "score" for the fit, where lower is better.
  
 =======
 =======

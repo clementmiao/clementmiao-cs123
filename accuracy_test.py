@@ -25,10 +25,10 @@ def score(train, test):
     s = 0.0
     for player in test:
 
-        s += abs(train[player][0]/train[player][1] - test[player][0]/test[player][1])
+        s += abs((double)train[player][0]/train[player][1] - (double)test[player][0]/test[player][1])
 
         if player in train:
-            s += test[player][1]*abs(train[player][0]/train[player][1] - test[player][0]/test[player][1])
+            s += abs(test[player][1]*abs((double)train[player][0]/train[player][1] - (double)test[player][0]/test[player][1]))
 
     return s
 
