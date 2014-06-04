@@ -148,10 +148,6 @@ def main():
 	populateGraphDB(playerteam_dict,cluster_dict,matchups_dict,graph_db)
 
 
-main()
-
-
-
 
 def recommendHitters(pitcher_name,hitting_team):
 	query = "MATCH (p:player)-[:`BELONGS TO`]-(c:cluster)-[m:`MATCHUP`]-\
@@ -194,7 +190,14 @@ def recommendPitchers(batter_name,pitching_team):
 		print data[0] + "  OBP: " + str(data[1]) + "  PA: " + str(data[2])
 
 
-
+if (sys.argv[1] == "main"):
+	main()
+elif (len(sys.argv) == 4 and sys.argv[1] == "pitcher"):
+	recommendPitchers(sys.argv[2], sys.argv[3])
+elif (lens(sys.argv) == 4 and sys.argv[1] == "hitter"):
+	recommendHitters(sys.argv[2], sys.argv[3])
+else:
+	Print "Format is [main/pitcher/hitter] [ /batter_name/pitcher_name] [ /your_team]"
 
 
 
