@@ -2,7 +2,6 @@ import os
 import sys
 import glob
 import subprocess
-import json
 #import numpy as np
 import xml.etree.ElementTree as ET
 #from sets import Set
@@ -10,7 +9,6 @@ import xml.etree.ElementTree as ET
 
 def playerTeam():
     d = {}
-    pa = '/home/cfisher14/clemetnmiao-cs123'
     for root, dirs, filenames in os.walk('players_07'):
         for f in filenames:
             path = os.path.join('players_07', f)
