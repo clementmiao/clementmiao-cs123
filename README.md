@@ -114,12 +114,22 @@ Some of our ideas:
 We will divide the tasks into the following groups, with the goal of completing each of these by 8th week:
 - One member will handle parallelizing the current code, including aggregation and clustering.
 - The other two will work on the recommendation and visualization, as well as implementing one of the additional ideas.
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2a3a0720c1f8f43606182ec0c5536b60c1759861
+>>>>>>> 6eced5c12b75af940d0ee6db53331bfb0f114f96
 
 #Project Report 
 ==================
 ## Process to run the project
 
+<<<<<<< HEAD
+###
+=======
 
 Local Machine:
 - Get the data using the perl script as before, modifying the required lines to get the desired range.
@@ -134,6 +144,7 @@ Midway Cluster (run: ssh midway.rcc.uchicago.edu):
 - Run: neo4j start .
 - Run: python graph_db.py to add the results into our Neo4j database
 =======
+<<<<<<< HEAD
 ## The Process Broken down
 ### Aggregation
 Our approach for aggregating pitchers is the same as before. This time, we parallelized the process using hadoop. Each mapper is given a game, and then determines the pitch type and adds the desired attributes to that pitch. The combiner and reducer take that list (whch also has how many times each pitch type was thrown), and then averages the attributes for each pitch for that pitcher.
@@ -151,3 +162,7 @@ Graph database stuff
 To test our results, we take a large sample of our data, find out what there expected on base percentage would be against a given cluster, and then see haow he actually did against those clusters in another set of our data.
  
 =======
+=======
+>>>>>>> 4728234d5db7405721f34417d2cc550485dd025d
+>>>>>>> 2a3a0720c1f8f43606182ec0c5536b60c1759861
+>>>>>>> 6eced5c12b75af940d0ee6db53331bfb0f114f96
