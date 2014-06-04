@@ -45,10 +45,9 @@ def distanceToNearestCentroid(coords,centroid_dict):
 	centroids_list = centroid_dict.values()
 	min_distance = sys.maxint
 	for i in range(len(centroids_list)):
-		if coords != centroids_list[i]:
-			dist = distance(coords,centroids_list[i])
-			if dist < min_distance:
-				min_distance=dist
+		dist = distance(coords,centroids_list[i])
+		if dist < min_distance:
+			min_distance=dist
 	return min_distance
 
 
