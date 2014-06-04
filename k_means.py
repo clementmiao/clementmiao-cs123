@@ -106,13 +106,13 @@ def setCentroids(coords_list,k):
 def findNearestCentroid(coords,centroid_dict):
 	
 	min_distance = sys.maxint
-	nearest_centroid = -1
+	nearest_centroid = None
 	for cluster_num,centroid in centroid_dict.iteritems():
 		current_distance = distance(coords,centroid)
 		if current_distance < min_distance:
 			min_distance = current_distance
 			nearest_centroid = cluster_num
-	return cluster_num
+	return nearest_centroid
 
 
 
@@ -150,12 +150,13 @@ def assignment(pitcher_dict,centroid_dict,k):
 
 
 
-def main():
+def main(argv):
 
 	pitcher_dict = readCSVtoDict("results_aggregation.txt")
 
+	k = int(argv[0])
 	#Hardcoding k = 20 for now.
-	centroid_dict = setCentroids(pitcher_dict.values(),20)
+	centroid_dict = setCentroids(pitcher_dict.values(),k)
 	
 	stop = False
 
@@ -163,7 +164,7 @@ def main():
 	reps = 0
 	while not stop and reps < 1000:
 
-		next = assignment(pitcher_dict,centroid_dict,20)
+		next = assignment(pitcher_dict,centroid_dict,k)
 
 		if cluster_dict == next[1]:
 			stop = True
@@ -178,7 +179,7 @@ def main():
 
 
 
-main()
+main(sys.argv[1:])
 
 
 
