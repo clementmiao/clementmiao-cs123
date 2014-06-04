@@ -23,8 +23,8 @@ def readCSVtoDict(filename):
 
 
 #Write clusters to 'clusters.txt'; csv format, each row represents a cluser
-def writeToFile(clusters, file_name):
-	txtfile = open(file_name,'w')
+def writeToFile(clusters,filename):
+	txtfile = open(filename,'w')
 	writer = csv.writer(txtfile,delimiter=',')
 	for cluster in clusters:
 		writer.writerow(cluster)
@@ -116,6 +116,18 @@ def findNearestCentroid(coords,centroid_dict):
 
 
 
+def random_assignment(pitcher_dict,k):
+	
+	cluster_dict = {}
+
+	for k in range(1,k+1):
+		cluster_dict[k] = []
+
+	for pitcher_id in pitcher_dict.values():
+		cluster = random.choice(range(1,k+1))
+		cluster_dict[cluster].append(pitcher_id)
+
+	return cluster_dict
 
 
 
@@ -140,7 +152,6 @@ def assignment(pitcher_dict,centroid_dict,k):
 		for pitcher in pitchers:
 			atts = pitcher_dict[pitcher]
 			clustersum += numpy.array(atts)
-		print pitchers
 		centroid = list(clustersum/len(pitchers))
 		next_centroid_dict[cluster_num] = centroid
 	return (next_centroid_dict,next_cluster_dict)
@@ -149,38 +160,61 @@ def assignment(pitcher_dict,centroid_dict,k):
 
 
 
-
 def main(argv):
 	file_name = argv[1]
-	file_name = argv[2]
 	pitcher_dict = readCSVtoDict(file_name)
 
 	k = int(argv[0])
-	#Hardcoding k = 20 for now.
-	centroid_dict = setCentroids(pitcher_dict.values(),k)
 	
-	stop = False
 
-	cluster_dict = {}
-	reps = 0
-	while not stop and reps < 1000:
+	if (len(argv) == 4 and argv[3].lower() == "random"):
+		cluster_dict = random_assignment(pitcher_dict,k)
+	
+	else:
+		stop = False
+		centroid_dict = setCentroids(pitcher_dict.values(),k)
+		cluster_dict = {}
+		reps = 0
+		while not stop and reps < 1000:
 
-		next = assignment(pitcher_dict,centroid_dict,k)
+			next = assignment(pitcher_dict,centroid_dict,k)
 
-		if cluster_dict == next[1]:
-			stop = True
-		else: 
-			centroid_dict = next[0]
-			cluster_dict = next[1]
-			reps += 1
+			if cluster_dict == next[1]:
+				stop = True
+			else: 
+				centroid_dict = next[0]
+				cluster_dict = next[1]
+				reps += 1
 
-	writeToFile(cluster_dict.values(), argv[2])
+	writeToFile(cluster_dict.values(),argv[2])
 
 
 
 
 
 main(sys.argv[1:])
+
+
+
+
+
+
+
+def calculateVarianceExplained(cluster_dict):
+
+	rv = 0
+	for num,cluster in cluster_dict.iteritems():
+		cluster_size = len(cluster)
+		sum_distances = 0
+		for a in cluster:
+			a = numpy.array(a)
+			for b in cluster:
+				b = numpy.array(b)
+				sum_distances += (a-b)**2
+		rv += sum_distances/(2*cluster_size)
+	return rv
+
+
 
 
 
