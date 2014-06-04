@@ -20,7 +20,7 @@ RES_FILE=results_matchups.txt
 sh compile.sh matchup matchup.java
 
 # Run Hadoop
-hadoop jar matchup.jar org.myorg.matchup input/flat_games output_matchups
+hadoop jar matchup.jar org.myorg.matchup input_aggregation/flat_games_all output_matchups
 
 rm ${RES_FILE}
 
