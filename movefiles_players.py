@@ -7,7 +7,7 @@ import shutil
 
 #copy files from games that match "inning_all.xml" to folder in main directory
 
-fdepth = glob.glob('*/*/*/*/*')
+fdepth = glob.glob('games/*/*/*/*')
 ddepth = filter(lambda f: os.path.isdir(f), fdepth)
 i = 0
 sdepth = set()
@@ -16,7 +16,7 @@ for x in ddepth:
 for file in ddepth:
     innings_all = os.path.join(file, "players.xml")
     if os.path.isfile(innings_all) == True:
-        string = 'cp ' + innings_all + ' players_07/' + str(i) + '.xml'
+        string = 'cp ' + innings_all + ' players_09/' + str(i) + '.xml'
         subprocess.call(string, shell=True)
         print "another one hits the dust"
                

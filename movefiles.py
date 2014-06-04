@@ -17,7 +17,7 @@ for x in ddepth:
 for file in ddepth:
     innings_all = os.path.join(file, "inning_all.xml")
     if os.path.isfile(innings_all) == True:
-        string = 'cp ' + innings_all + ' flat_games_all_2/inning_all_2_' + str(i) + '.xml'
+        string = 'cp ' + innings_all + ' flat_games_all_2/inning_all_b_' + str(i) + '.xml'
         subprocess.call(string, shell=True)
         print "another one (innings_all) bites the dust"
         
@@ -25,7 +25,7 @@ for file in ddepth:
         for number in range(1,21):
             inning = os.path.join(file, "inning_" + str(number) + ".xml")
             if os.path.isfile(inning) == True:
-                string = 'cp ' + inning + ' flat_games_all_2/inning_2_' + str(i) + "_" + str(number) + '.xml'
+                string = 'cp ' + inning + ' flat_games_all_2/inning_b_' + str(i) + "_" + str(number) + '.xml'
                 subprocess.call(string, shell=True)
                 print "another one (inning) bites the dust"         
             
