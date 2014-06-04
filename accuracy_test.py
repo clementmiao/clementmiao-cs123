@@ -24,7 +24,12 @@ def readPlayerFile(file_name, d):
 def score(train, test):
     s = 0.0
     for player in test:
+<<<<<<< HEAD
         s += abs(train[player][0]/train[player][1] - test[player][0]/test[player][1])
+=======
+        if player in train:
+            s += test[player][1]*abs(train[player][0]/train[player][1] - test[player][0]/test[player][1])
+>>>>>>> 2a3a0720c1f8f43606182ec0c5536b60c1759861
     return s
 
 def accuracy(folder1, testFile):
