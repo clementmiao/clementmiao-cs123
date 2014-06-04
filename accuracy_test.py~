@@ -1,0 +1,23 @@
+import os
+import sys
+import subprocess
+#import numpy as np
+import xml.etree.ElementTree as ET
+
+def accuracy(folder1, folder2, clusterFile):
+    players = {}
+    #for each of the training files:
+    f = open(file_name, "r+")
+    for line in f.readlines():
+        att = []
+        arr = line.split(',')
+        att['total'] = arr[1]
+        for i in range(0, len(arr)/2 - 1):
+            att.append((arr[2*i + 2], arr[2*i + 1 + 2]))
+        if arr[0] not in players:
+            players[arr[0]] = att
+        else:
+            for i in range(0, len(att)):
+                players[arr[0]][i][0] += att[i][0]
+                players[arr[0]][i][1] += att[i][1]
+        

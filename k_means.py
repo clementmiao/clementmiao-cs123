@@ -14,16 +14,17 @@ def readCSVtoDict(filename):
 	reader = csv.reader(csvfile,delimiter=',')
 	# row format is id,pitch total,L(bool),R(bool), attributes...
 	for row in reader:
-		pitcher_id = int(row[0])
-		atts = row[4:]
-		atts = map(lambda x:float(x),atts)
-		pitcher_dict[pitcher_id]=atts
+		if int(row[1]) != 0:
+			pitcher_id = int(row[0])
+			atts = row[4:]
+			atts = map(lambda x:float(x),atts)
+			pitcher_dict[pitcher_id]=atts
 	return pitcher_dict
 
 
 #Write clusters to 'clusters.txt'; csv format, each row represents a cluser
 def writeToFile(clusters):
-	txtfile = open('clusters.txt','w')
+	txtfile = open('clusters_test.txt','w')
 	writer = csv.writer(txtfile,delimiter=',')
 	for cluster in clusters:
 		writer.writerow(cluster)
@@ -140,6 +141,7 @@ def assignment(pitcher_dict,centroid_dict,k):
 		for pitcher in pitchers:
 			atts = pitcher_dict[pitcher]
 			clustersum += numpy.array(atts)
+		print pitchers
 		centroid = list(clustersum/len(pitchers))
 		next_centroid_dict[cluster_num] = centroid
 	return (next_centroid_dict,next_cluster_dict)
@@ -151,7 +153,7 @@ def assignment(pitcher_dict,centroid_dict,k):
 
 def main():
 
-	pitcher_dict = readCSVtoDict("output.txt")
+	pitcher_dict = readCSVtoDict("results_aggregation.txt")
 
 	#Hardcoding k = 20 for now.
 	centroid_dict = setCentroids(pitcher_dict.values(),20)
