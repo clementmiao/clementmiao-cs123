@@ -14,7 +14,9 @@ def readCSVtoDict(filename):
 	reader = csv.reader(csvfile,delimiter=',')
 	# row format is id,pitch total,L(bool),R(bool), attributes...
 	for row in reader:
+
 		if int(row[1]) != 0:
+			# print row
 			pitcher_id = int(row[0])
 			atts = row[4:]
 			atts = map(lambda x:float(x),atts)
@@ -73,6 +75,7 @@ def weightedChoice(zipped):
 def setCentroids(coords_list,k):
 
 	numPitchers = len(coords_list)
+	# print numPitchers
 	notChosen = range(numPitchers)
 	
 	centroid_dict={}
@@ -137,11 +140,11 @@ def assignment(pitcher_dict,centroid_dict,k):
 	for cluster_num,pitchers in next_cluster_dict.iteritems():
 
 		clustersum = numpy.array([0] * (12*11))
-
+		print pitchers
 		for pitcher in pitchers:
 			atts = pitcher_dict[pitcher]
 			clustersum += numpy.array(atts)
-		print pitchers
+		# print pitchers
 		centroid = list(clustersum/len(pitchers))
 		next_centroid_dict[cluster_num] = centroid
 	return (next_centroid_dict,next_cluster_dict)
@@ -151,12 +154,13 @@ def assignment(pitcher_dict,centroid_dict,k):
 
 
 
-def main():
+def main(argv):
 
 	pitcher_dict = readCSVtoDict("results_aggregation.txt")
-
+	# print argv[0]
+	k = int(argv[0])
 	#Hardcoding k = 20 for now.
-	centroid_dict = setCentroids(pitcher_dict.values(),20)
+	centroid_dict = setCentroids(pitcher_dict.values(),k)
 	
 	stop = False
 
@@ -164,7 +168,7 @@ def main():
 	reps = 0
 	while not stop and reps < 1000:
 
-		next = assignment(pitcher_dict,centroid_dict,20)
+		next = assignment(pitcher_dict,centroid_dict,k)
 
 		if cluster_dict == next[1]:
 			stop = True
@@ -176,10 +180,7 @@ def main():
 	writeToFile(cluster_dict.values())
 
 
-
-
-
-main()
+main(sys.argv[1:])
 
 
 
