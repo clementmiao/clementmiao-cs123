@@ -25,6 +25,6 @@ sh compile.sh aggregation aggregation.java
 hadoop jar aggregation.jar org.myorg.aggregation ${input_folder} ${output_folder}
 
 rm -f ${RES_FILE}
-
+#Blah
 hdfs dfs -getmerge ${output_folder} ${RES_FILE}
 

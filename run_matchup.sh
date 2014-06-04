@@ -23,6 +23,6 @@ sh compile.sh matchup matchup.java
 hadoop jar matchup.jar org.myorg.matchup ${input_file} ${output_file}
 
 rm -f ${RES_FILE}
-
+# Blah
 hdfs dfs -getmerge ${output_file} ${RES_FILE}
 
