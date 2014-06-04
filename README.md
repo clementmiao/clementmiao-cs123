@@ -113,6 +113,7 @@ Some of our ideas:
 We will divide the tasks into the following groups, with the goal of completing each of these by 8th week:
 - One member will handle parallelizing the current code, including aggregation and clustering.
 - The other two will work on the recommendation and visualization, as well as implementing one of the additional ideas.
+<<<<<<< HEAD
 
 #Project Report 
 ##For proposal and May 5th update, see README_old.md
@@ -135,3 +136,5 @@ Midway Cluster (run: ssh midway.rcc.uchicago.edu):
 ### 
 ### The Process Broken down
 Our approach for aggrigating pitchers is the same as before; we average over all of 
+=======
+>>>>>>> 4728234d5db7405721f34417d2cc550485dd025d

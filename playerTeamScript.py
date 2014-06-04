@@ -2,6 +2,7 @@ import os
 import sys
 import glob
 import subprocess
+import json
 #import numpy as np
 import xml.etree.ElementTree as ET
 #from sets import Set

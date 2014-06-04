@@ -23,8 +23,8 @@ def readCSVtoDict(filename):
 
 
 #Write clusters to 'clusters.txt'; csv format, each row represents a cluser
-def writeToFile(clusters):
-	txtfile = open('clusters.txt','w')
+def writeToFile(clusters, file_name):
+	txtfile = open(file_name,'w')
 	writer = csv.writer(txtfile,delimiter=',')
 	for cluster in clusters:
 		writer.writerow(cluster)
@@ -152,6 +152,7 @@ def assignment(pitcher_dict,centroid_dict,k):
 
 def main(argv):
 	file_name = argv[1]
+	file_name = argv[2]
 	pitcher_dict = readCSVtoDict(file_name)
 
 	k = int(argv[0])
@@ -173,7 +174,7 @@ def main(argv):
 			cluster_dict = next[1]
 			reps += 1
 
-	writeToFile(cluster_dict.values())
+	writeToFile(cluster_dict.values(), argv[2])
 
 
 
