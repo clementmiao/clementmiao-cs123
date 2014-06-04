@@ -123,37 +123,48 @@ We will divide the tasks into the following groups, with the goal of completing 
 
 Local Machine:
 - Get the data using the perl script as before, modifying the required lines to get the desired range:
+
     perl get_data.pl
-- Run: 
+- Run:
+ 
     movefiles.py
 to get all of the games into one folder to work with hadoop.
-- Run: 
+- Run:
+ 
     movefiles_players.py 
 to create a folder of all the players.xml into one players folder.
-- Run: 
+- Run:
+ 
     nohup:scp -r flat_games_all midway.rcc.uchicago.edu:/tmp/clement 
 to put it into midway hadoop.
 
 Midway Cluster (run: ssh midway.rcc.uchicago.edu):
-- Run: 
+- Run:
+ 
     hdfs dfs -copyFromLocal /tmp/clement/flat_games_all input_aggregation 
 , to put the data in hdfs.
-- Run: 
+- Run:
+ 
     sh run_aggregation.sh 
 to run the hadoop job. The shell script will put a file "results_aggregation.txt" into the midway-hadoop filesystem. 
-- Run: 
+- Run:
+ 
     python k_means.py [k] [input_file] [output_file] 
 , replacing "k" with the number of clusters desired. In our case, "input_file" was results_aggregation.txt" and "output_file" was "clusters.txt"
-- Run: 
+- Run:
+ 
     hdfs dfs -copyFromLocal clusters.txt
 This will put the file clusters.txt into hdfs. 
-- Run: 
+- Run:
+ 
     sh run_matchup.sh
 to run the matchups on hadoop.
-- Run: 
+- Run:
+ 
     neo4j start
 to start the neo4j server
-- Run: 
+- Run:
+ 
     python graph_db.py 
 to add the results into our Neo4j database
 
