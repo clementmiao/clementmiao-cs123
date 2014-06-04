@@ -122,22 +122,56 @@ We will divide the tasks into the following groups, with the goal of completing 
 =======
 
 Local Machine:
-- Get the data using the perl script as before, modifying the required lines to get the desired range.
-- Run movefiles.py to get all of the games into one folder to work with hadoop.
-- Run: nohup:scp -r flat_games_all midway.rcc.uchicago.edu:/tmp/clement to put it into midway hadoop.
+- Get the data using the perl script as before, modifying the required lines to get the desired range:
+
+        perl get_data.pl
+- Run:
+ 
+        movefiles.py
+to get all of the games into one folder to work with hadoop.
+- Run:
+ 
+        movefiles_players.py 
+to create a folder of all the players.xml into one players folder.
+- Run:
+ 
+        nohup:scp -r flat_games_all midway.rcc.uchicago.edu:/tmp/clement 
+to put it into midway hadoop.
+
 Midway Cluster (run: ssh midway.rcc.uchicago.edu):
-- Run: hdfs dfs -copyFromLocal /tmp/clement/flat_games_all input_aggregation , to put the data in hdfs.
-- Run: sh run_aggregation.sh to run the hadoop job. The shell script will put a file "results_aggregation.txt" into the midway-hadoop filesystem. 
-- Run: python k_means.py k input_file output_file, replacing "k" with the number of clusters desired. In our case, "input_file" was results_aggregation.txt" and "output_file" was "clusters.txt"
-- Run: hdfs dfs -copyFromLocal clusters.txt   .This will put the file clusters.txt into hdfs. 
-- Run: sh run_matchup.sh , to run the matchups on hadoop.
-- Run: neo4j start .
-- Run: python graph_db.py to add the results into our Neo4j database
+- Run:
+ 
+        hdfs dfs -copyFromLocal /tmp/clement/flat_games_all input_aggregation 
+, to put the data in hdfs.
+- Run:
+ 
+        sh run_aggregation.sh 
+to run the hadoop job. The shell script will put a file "results_aggregation.txt" into the midway-hadoop filesystem. 
+- Run:
+ 
+        python k_means.py [k] [input_file] [output_file] 
+, replacing "k" with the number of clusters desired. In our case, "input_file" was results_aggregation.txt" and "output_file" was "clusters.txt"
+- Run:
+ 
+        hdfs dfs -copyFromLocal clusters.txt
+This will put the file clusters.txt into hdfs. 
+- Run:
+ 
+        sh run_matchup.sh
+to run the matchups on hadoop.
+- Run:
+ 
+        neo4j start
+to start the neo4j server
+- Run:
+ 
+        python graph_db.py 
+to add the results into our Neo4j database
 
 ## The Process Broken down
 ### Aggregation
 Our approach for aggregating pitchers is the same as before. This time, we parallelized the process using hadoop. Each mapper is given a game, and then determines the pitch type and adds the desired attributes to that pitch. The combiner and reducer take that list (whch also has how many times each pitch type was thrown), and then averages the attributes for each pitch for that pitcher.
-The challenges for this one are that first of all, our prototype had done it in a way that was not parallelized. Our original implementation depended on a python dictionary that held all the data, hence a challenge for this process was writing an implementation of Writable that could hold the data for each pitcher. Secondly, our original implementation in the prototype first converted the game files to JSON, however in the Hadoop implementation, we decided to skip a step and manipulate XML files directly, using a reader object that goes through each XML tag. 
+    The challenges for this one are that first of all, our prototype had done it in a way that was not parallelized. Our original implementation depended on a python dictionary that held all the data, hence a challenge for this process was writing an implementation of Writable that could hold the data for each pitcher. Secondly, our original implementation in the prototype first converted the game files to JSON, however in the Hadoop implementation, we decided to skip a step and manipulate XML files directly, using a reader object that goes through each XML tag. 
 At the end of the process, we output a txt file for which each line has the following format:
 player_id, total_pitches, left_handed (1 if true, 0 else), right_handed (1 if true, 0 else), {the 11 averages of attributes for FF and a counter for FF thrown}, {the 11 averages of attributes for FT and a counter for FT thrown}, etc for the other 9 types of pitches thrown. 
 ###Clustering
@@ -145,10 +179,16 @@ This process takes the end result file of the aggregation process, and an intege
 We cluster them with a k-means algorithm
 ###Matchups
 Our file goes takes in a list of clusters that was output from the previous step and goes through each game and keeps track of how each batter did against the different clusters, and outputs a text file where each line is a batter with one pair of (hits + walks, plate appearences) for each cluster.
+    Once again, we used Hadoop to do this task, and one of the difficulties we faces was being able to have hadoop read in both the clusters text file and the game data to work with while still having both sets of information accessible to all mappers. Hence somehow, we needed to "parallelize" the clusters file, and purely loading it onto hdfs and reading it that way did not initially work. What ended up working was caching it on hdfs, havving in the setup function of the mapper that would be able to read this file from the hdfs cache, and then population an ArrayList of strings, which each element of the ArrayList representing a series of pitchers who belong in the same cluster. 
 ###Graph Database
 Graph database stuff
 ###Testing Our Results
 To test our results, we take a large sample of our data, find out what there expected on base percentage would be against a given cluster, and then see haow he actually did against those clusters in another set of our data. To gauge accuracy, we sum up the differences in OBP between our testing and training data sets, weighted by how many plate appearences are in our testing set (that way, predicting 20-40 when it is actually 0-40 is worse than predicting 1-2 when it is actually 0-2) Summing up all of these differences gives us a "score" for the fit, where lower is better.
+
+## Design
+
+
+## Reflections on tools 
  
-=======
-=======
+## Conclusion
+
