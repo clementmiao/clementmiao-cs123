@@ -135,7 +135,7 @@ to get all of the games into one folder to work with hadoop.
 to create a folder of all the players.xml into one players folder.
 - Run:
  
-        nohup:scp -r flat_games_all midway.rcc.uchicago.edu:/tmp/clement 
+        nohup scp -r flat_games_all midway.rcc.uchicago.edu:/tmp/clement 
 to put it into midway hadoop.
 
 Midway Cluster (run: ssh midway.rcc.uchicago.edu):
@@ -145,16 +145,52 @@ Midway Cluster (run: ssh midway.rcc.uchicago.edu):
 , to put the data in hdfs.
 - Run:
  
-        sh run_aggregation.sh 
-to run the hadoop job. The shell script will put a file "results_aggregation.txt" into the midway-hadoop filesystem. 
+        sh run_aggregation.sh [input_folder] [output_folder] [RES_FILE]
+to run the hadoop job. The shell script will put a file [input_folder] into the midway-hadoop filesystem, output to [output_folder] on hdfs, and then does a getmerge to put the file [RES_FILE] in the local directory on midway. 
+- Run:
+        git add [RES_FILE]
+This is the RES_FILE from the previous step
+- Run:
+
+        git commit -m"passing results"
+- Run:
+
+        git push origin master
+        
+Back on the local machine ( we do this because numpy is not loaded in midway hadoop):
+- Run:
+
+        git pull
 - Run:
  
         python k_means.py [k] [input_file] [output_file] 
-, replacing "k" with the number of clusters desired. In our case, "input_file" was results_aggregation.txt" and "output_file" was "clusters.txt"
+, replacing "k" with the number of clusters desired. The input_file is the file that should have just been git pulled. In our case, "input_file" was results_aggregation.txt" and "output_file" was "clusters.txt".
+- Run:
+
+        git add [output_file]
+Where the output file is the output_file from the previous step.
+
+- Run:
+
+        git commit -m"[Message here]"
+        
+- Run:
+
+        git push origin master
+        
+On Midway-Hadoop machine (ssh midway.rcc.uchicago.edu):
+- Run:
+        git pull 
+To get the clusters file from the previous steps.
+- Run: 
+        cp cluster_file clusters.txt
+- Run:
+        hdfs dfs -rm clusters.txt
+Do this step if clusters.txt is already on hdfs.
 - Run:
  
         hdfs dfs -copyFromLocal clusters.txt
-This will put the file clusters.txt into hdfs. 
+This will put the file clusters.txt in our case into hdfs (unfortunately it has to be named clusters.txt because of our hadoop code). 
 - Run:
  
         sh run_matchup.sh
@@ -174,6 +210,7 @@ Our approach for aggregating pitchers is the same as before. This time, we paral
     The challenges for this one are that first of all, our prototype had done it in a way that was not parallelized. Our original implementation depended on a python dictionary that held all the data, hence a challenge for this process was writing an implementation of Writable that could hold the data for each pitcher. Secondly, our original implementation in the prototype first converted the game files to JSON, however in the Hadoop implementation, we decided to skip a step and manipulate XML files directly, using a reader object that goes through each XML tag. 
 At the end of the process, we output a txt file for which each line has the following format:
 player_id, total_pitches, left_handed (1 if true, 0 else), right_handed (1 if true, 0 else), {the 11 averages of attributes for FF and a counter for FF thrown}, {the 11 averages of attributes for FT and a counter for FT thrown}, etc for the other 9 types of pitches thrown. 
+For some players, you might notice that their entire arrays is filled with 0s (except for their handedness), as the pitch f/x has some holes in it, especially in the earlier years, when a lot of the data we need for our analysis and aggregation processes were not recorded. We have written our code to take into account those cases.
 ###Clustering
 This process takes the end result file of the aggregation process, and an integer k as number of clusters, dividing the pitchers from the input file into lists of pitcher clusters. 
 We cluster them with a k-means algorithm
@@ -186,9 +223,24 @@ Graph database stuff
 To test our results, we take a large sample of our data, find out what there expected on base percentage would be against a given cluster, and then see haow he actually did against those clusters in another set of our data. To gauge accuracy, we sum up the differences in OBP between our testing and training data sets, weighted by how many plate appearences are in our testing set (that way, predicting 20-40 when it is actually 0-40 is worse than predicting 1-2 when it is actually 0-2) Summing up all of these differences gives us a "score" for the fit, where lower is better.
 
 ## Design
-
+Our current implementation is just a series of command line commands to go from data acquisition from the MLB website to a working graph database. The current user interface is the web interface of Neo4j, and a certain Cypher command can give you a ranked list of players who you should put on the field, given the opposite team. 
+With such an interface, we can test a few scenarios easily, through the py2neo library, and hence take advantage of python's useability.
+Of course, this is not yet a tool which a coach can use live on the baseball field during a game. A quick tool that would make it a lot easier for a coach would be a small python script that given two command line arguments of a opposing player and a team, would translate that into a copy-pasteable cypher command, to put in the web interface. Of course, in this case a low-tech solution works very well, in which the coach before a game could just print out the recommended players for all possible opposing players during the coming game, to easily make a quick decision.
 
 ## Reflections on tools 
- 
+### Java
+We mostly used Java to work with Hadoop. Type-checking was often useful during the process of writing Hadoop mappers and reducers, as the manipulation of data got confusing at times.
+
+### Python
+We mostly used Python for quick scripts, to process data, to create the clusterings, as well as loading data into Neo4j. Python was a useful glue programming language, for when we needed a small task done, or for when dictionaries proved especially useful. We mostly used Python during the prototype phase, as the flexibility was really advantageous, as well as the quick prototyping. However, the lack of static typing at times led to errors that went unnoticed, for example integer division happening instead of float division. 
+
+### Hadoop
+Hadoop is nice for what we wanted to do; It let us execute a relatively simple task on lots of files all at the same time. However, sometimes Hadoop lacked the flexibility to do some of the things that we wanted to do, such as read things from two different files. Initially, we thought that there would not be any speed benefits to using Hadoop, however, it seems like hadoop is indeed very useful for the matchups job (getting batters' OBP vs. clusters). Additionally, using our python script to run the aggregation process, we ran into the case where the dictionary that was loaded into memory was so big that it would freeze our computers. Hence, we see the benefits of parallelization.
+
+### Git/Github
+During this whole project, we have been using git and github as our workflow management tool. This has been useful, as we often were unable to meet face to face, hence it allowed us to work independently, while still having access to the others' progress.
+
+### Neo4j
+
 ## Conclusion
 
