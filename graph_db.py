@@ -165,7 +165,7 @@ def recommendHitters(pitcher_name,hitting_team):
 	response = response[0]
 
 	for hitter in response:
-		data = hitter.values
+		data = hitter.values 
 		print data[0] + "  OBP: " + str(data[1]) + "  PA: " + str(data[2])
 
 
@@ -187,7 +187,8 @@ def recommendPitchers(batter_name,pitching_team):
 
 	for pitcher in response:
 		data = pitcher.values
-		print data[0] + "  OBP: " + str(data[1]) + "  PA: " + str(data[2])
+		if data[2] !=0:
+			print data[0] + "  OBP: " + str(data[1]) + "  PA: " + str(data[2])
 
 
 if (sys.argv[1] == "main"):
