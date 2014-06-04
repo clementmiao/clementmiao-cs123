@@ -201,8 +201,16 @@ to run the matchups on hadoop.
 to start the neo4j server
 - Run:
  
-        python graph_db.py 
+        python graph_db.py main
 to add the results into our Neo4j database
+
+- Run: 
+        python graph_db.py hitter [pitcher_name] [your_team]
+to recommend a hitter for your team
+    or:
+        python graph_db.py pitcher [hitter_name] [your_team]
+to recommend a pitcher for your team. Ex:
+        python graph_db.py pitcher "Ichiro Suzuki" "New York Yankees"
 
 ## The Process Broken down
 ### Aggregation
@@ -231,7 +239,7 @@ This structure facilitated easy access to the information we wanted using CYPHER
 
 
 ###Testing Our Results
-To test our results, we take a large sample of our data, find out what there expected on base percentage would be against a given cluster, and then see haow he actually did against those clusters in another set of our data. To gauge accuracy, we sum up the differences in OBP between our testing and training data sets, weighted by how many plate appearences are in our testing set (that way, predicting 20-40 when it is actually 0-40 is worse than predicting 1-2 when it is actually 0-2) Summing up all of these differences gives us a "score" for the fit, where lower is better.
+To test our results, we take a large sample of our data, find out what there expected on base percentage would be against a given cluster, and then see haow he actually did against those clusters in another set of our data. To gauge accuracy, we sum up the differences in OBP between our testing and training data sets, weighted by how many plate appearences are in our testing set (that way, predicting 20-40 when it is actually 0-40 is worse than predicting 1-2 when it is actually 0-2) Summing up all of these differences gives us a "score" for the fit, where lower is better. We then divide by the total number of plate appearences to give us approximately what the average difference between the predicted and actual values are. The score will range from 0 (where every prediction is pefect) to 1 (where an out is predicted every time and in actuallity there are no outs, or vice versa). We can compare our clusters to a random clustering to see how our score compares. To generate random clusters, add 'random' as another command line argument to the k-means cluster function
 
 ## Design
 Our current implementation is just a series of command line commands to go from data acquisition from the MLB website to a working graph database. The current user interface is the web interface of Neo4j, and a certain Cypher command can give you a ranked list of players who you should put on the field, given the opposite team. 
@@ -256,5 +264,5 @@ Neo4j was very useful for creating our recommendation engine. As it was our firs
 
 
 ## Conclusion
-
+After running our tests on both 2008 as our training data and 2009 as our test data, we get a score of .1165 when using our clustering method with 20 clusters, compared to a score of .1291 when using random clusters. This difference may not seem very big, however, if scores are thought of in terms of OBP differences, then when you consider that the standard deviation of OBP in the MLB is about .033, this suggests that our clustering predicts about a half standard deviation better than random. While we might have hoped for a slightly larger difference, we difinetly have evidence to support out idea that clustering pitchers does provide additional informathion than just using individual matchups. A further extension would be to try to do in season comparisons (i.e use 5 months of the season to predict the 6th), because even though there will be much smaller sample sizes, we eliminate the potential effects of being in different years. Furthermore, we need to do further analysis of the influence of k (number of clusters) on our results. We believe that by varying k, we might be able to determine the 'optimal' configuration. (We will have additional insights for the presentation as we tweak our inputs)
 

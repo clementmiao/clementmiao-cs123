@@ -43,9 +43,9 @@ def score(train, test):
                 else:
                     trainAvg = 0.0
                     testAvg = 0.0
-                s += 1.0*test_1#*abs(trainAvg - testAvg)
+                s += 1.0*test_1*abs(trainAvg - testAvg)
 
-    return 1 - s / test['total']
+    return s / test['total']
 
 def accuracy(folder1, testFile):
     playersTrain = {}
