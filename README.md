@@ -113,3 +113,10 @@ Some of our ideas:
 We will divide the tasks into the following groups, with the goal of completing each of these by 8th week:
 - One member will handle parallelizing the current code, including aggregation and clustering.
 - The other two will work on the recommendation and visualization, as well as implementing one of the additional ideas.
+
+#Project Report 
+##For proposal and May 5th update, see README_old.md
+==================
+### Process to run the project
+
+###
