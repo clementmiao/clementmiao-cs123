@@ -14,9 +14,7 @@ def readCSVtoDict(filename):
 	reader = csv.reader(csvfile,delimiter=',')
 	# row format is id,pitch total,L(bool),R(bool), attributes...
 	for row in reader:
-
 		if int(row[1]) != 0:
-			# print row
 			pitcher_id = int(row[0])
 			atts = row[4:]
 			atts = map(lambda x:float(x),atts)
@@ -25,8 +23,8 @@ def readCSVtoDict(filename):
 
 
 #Write clusters to 'clusters.txt'; csv format, each row represents a cluser
-def writeToFile(clusters):
-	txtfile = open('clusters_test.txt','w')
+def writeToFile(clusters, file_name):
+	txtfile = open(file_name,'w')
 	writer = csv.writer(txtfile,delimiter=',')
 	for cluster in clusters:
 		writer.writerow(cluster)
@@ -48,10 +46,9 @@ def distanceToNearestCentroid(coords,centroid_dict):
 	centroids_list = centroid_dict.values()
 	min_distance = sys.maxint
 	for i in range(len(centroids_list)):
-		if coords != centroids_list[i]:
-			dist = distance(coords,centroids_list[i])
-			if dist < min_distance:
-				min_distance=dist
+		dist = distance(coords,centroids_list[i])
+		if dist < min_distance:
+			min_distance=dist
 	return min_distance
 
 
@@ -75,7 +72,6 @@ def weightedChoice(zipped):
 def setCentroids(coords_list,k):
 
 	numPitchers = len(coords_list)
-	# print numPitchers
 	notChosen = range(numPitchers)
 	
 	centroid_dict={}
@@ -110,13 +106,13 @@ def setCentroids(coords_list,k):
 def findNearestCentroid(coords,centroid_dict):
 	
 	min_distance = sys.maxint
-	nearest_centroid = -1
+	nearest_centroid = None
 	for cluster_num,centroid in centroid_dict.iteritems():
 		current_distance = distance(coords,centroid)
 		if current_distance < min_distance:
 			min_distance = current_distance
 			nearest_centroid = cluster_num
-	return cluster_num
+	return nearest_centroid
 
 
 
@@ -140,11 +136,11 @@ def assignment(pitcher_dict,centroid_dict,k):
 	for cluster_num,pitchers in next_cluster_dict.iteritems():
 
 		clustersum = numpy.array([0] * (12*11))
-		print pitchers
+
 		for pitcher in pitchers:
 			atts = pitcher_dict[pitcher]
 			clustersum += numpy.array(atts)
-		# print pitchers
+		print pitchers
 		centroid = list(clustersum/len(pitchers))
 		next_centroid_dict[cluster_num] = centroid
 	return (next_centroid_dict,next_cluster_dict)
@@ -155,9 +151,10 @@ def assignment(pitcher_dict,centroid_dict,k):
 
 
 def main(argv):
+	file_name = argv[1]
+	file_name = argv[2]
+	pitcher_dict = readCSVtoDict(file_name)
 
-	pitcher_dict = readCSVtoDict("results_aggregation.txt")
-	# print argv[0]
 	k = int(argv[0])
 	#Hardcoding k = 20 for now.
 	centroid_dict = setCentroids(pitcher_dict.values(),k)
@@ -177,7 +174,10 @@ def main(argv):
 			cluster_dict = next[1]
 			reps += 1
 
-	writeToFile(cluster_dict.values())
+	writeToFile(cluster_dict.values(), argv[2])
+
+
+
 
 
 main(sys.argv[1:])
