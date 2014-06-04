@@ -213,7 +213,11 @@ player_id, total_pitches, left_handed (1 if true, 0 else), right_handed (1 if tr
 For some players, you might notice that their entire arrays is filled with 0s (except for their handedness), as the pitch f/x has some holes in it, especially in the earlier years, when a lot of the data we need for our analysis and aggregation processes were not recorded. We have written our code to take into account those cases.
 ###Clustering
 This process takes the end result file of the aggregation process, and an integer k as number of clusters, dividing the pitchers from the input file into lists of pitcher clusters. 
-We cluster them with a k-means algorithm
+We cluster them with a k-means algorithm. 
+For the initial placement of the centroids, we decided to use an algorithm called k-means++, because it guarantees that the final clustering will be reasonably close to the optimal clustering. The first centroid is chosen randomly from the points. Then we calculate D(x) for each point x, the distance to the nearest centroid. To choose the next centroid, we select from the remaining points with choice weighted by D(x)^2.
+After the initial seeding, we proceed to do a standard k-means clustering. We assign each point to the nearest centroid, then recalculate the centroids by averaging all of the points within the cluster.
+
+
 ###Matchups
 Our file goes takes in a list of clusters that was output from the previous step and goes through each game and keeps track of how each batter did against the different clusters, and outputs a text file where each line is a batter with one pair of (hits + walks, plate appearences) for each cluster.
     Once again, we used Hadoop to do this task, and one of the difficulties we faces was being able to have hadoop read in both the clusters text file and the game data to work with while still having both sets of information accessible to all mappers. Hence somehow, we needed to "parallelize" the clusters file, and purely loading it onto hdfs and reading it that way did not initially work. What ended up working was caching it on hdfs, havving in the setup function of the mapper that would be able to read this file from the hdfs cache, and then population an ArrayList of strings, which each element of the ArrayList representing a series of pitchers who belong in the same cluster. 
