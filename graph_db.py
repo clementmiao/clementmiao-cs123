@@ -197,7 +197,7 @@ elif (len(sys.argv) == 4 and sys.argv[1] == "pitcher"):
 elif (lens(sys.argv) == 4 and sys.argv[1] == "hitter"):
 	recommendHitters(sys.argv[2], sys.argv[3])
 else:
-	Print "Format is [main/pitcher/hitter] [ /batter_name/pitcher_name] [ /your_team]"
+	print "Format is [main/pitcher/hitter] [ /batter_name/pitcher_name] [ /your_team]"
 
 
 
