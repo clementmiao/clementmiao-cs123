@@ -195,6 +195,12 @@ This will put the file clusters.txt in our case into hdfs (unfortunately it has 
  
         sh run_matchup.sh
 to run the matchups on hadoop.
+
+This will give you one set of data. Once you have 2 sets of data, you can use one as the training set and one as the testing set by running the command:
+
+        python accuracy_test.py [training data] [testing data]
+This will return the "score" (which is basically average OBP difference) between the two sets of data. 
+
 - Run:
  
         neo4j start
